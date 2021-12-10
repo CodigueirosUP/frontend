@@ -8,6 +8,7 @@ import Contact from "./pages/Contact";
 import Header from "./components/header/Header";
 import Managers from "./pages/Managers";
 import Services from "./pages/Services";
+import Footer from "./components/footer/Footer";
 
 const Routers = () => {
   return (
@@ -23,6 +24,7 @@ const Routers = () => {
         <Route path='/servicos' element={<Services />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
+      <Footer/>
     </BrowserRouter>
   )
 }
