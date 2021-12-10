@@ -1,4 +1,4 @@
-import {BrowserRouter, Routes, Route} from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Welcome from './pages/Welcome'
 import Login from './pages/Login';
 import NotFound from "./pages/NotFound";
@@ -10,14 +10,14 @@ import Header from "./components/header/Header";
 const Routers = () => {
   return (
     <BrowserRouter>
-    <Header />
+      <Header />
       <Routes>
-        <Route path='/' element={<Welcome/>}/>
-        <Route path='/login' element={<Login/>}/>
-        <Route path='/dashboard' element={<Dashboard />}/>
-        <Route path='/sobre' element={<About/>}/>
-        <Route path='/contato' element={<Contact/>}/>
-        <Route path='*' element={<NotFound/>}/>
+        <Route path='/' element={<Welcome />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/dashboard' element={<Dashboard />} />
+        <Route path='/sobre' element={<About />} />
+        <Route path='/contato' element={<Contact />} />
+        <Route path='*' element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   )
