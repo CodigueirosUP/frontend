@@ -34,4 +34,19 @@ code {
 
 
 
-/* ------------------------------------NOTFOUND------------------------------------ */
+/* ------------------------------------NOTFOUND-----------------------------------*/
+
+.notFound {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.notFound p{
+  color: gray;
+}
+.notFound img{
+  width: 350px;
+}
+
+
