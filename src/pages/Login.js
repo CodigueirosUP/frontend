@@ -1,8 +1,10 @@
 
 const Login = () => {
   return (
-    <div>
-      <h1>loginn</h1>
+    <div className="container">
+      <div className="content">
+        <h1>loginn</h1>
+      </div>
     </div>
   )
 }

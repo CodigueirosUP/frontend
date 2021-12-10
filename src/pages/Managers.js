@@ -1,8 +1,10 @@
 
 const Managers = () => {
   return (
-    <div>
-      
+    <div className="container">
+       <div className="content">
+         
+       </div>
     </div>
   )
 }
