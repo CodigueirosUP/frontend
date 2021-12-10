@@ -1,0 +1,13 @@
+.body {
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  background-color: rgb(25, 25, 25);
+  color: white;
+}
+
+.body span {
+  margin-right: 10px;
+}
