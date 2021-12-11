@@ -12,7 +12,7 @@ const ManagerProvider  = ({children}) =>{
 }
 
   const getManagers = async () => {
-  const {data} = await ApiWallet.get('/gerente/getGerentes');
+  const {data} = await ApiWallet.get('/gerente/get-gerentes');
   setManagerList(data);
 }
 
