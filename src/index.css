@@ -29,6 +29,45 @@ code {
   min-height: calc(100vh - 109.94px);
 }
 
+/* ------------------------------------WELCOME------------------------------------ */
+.welcome{
+  display: flex;
+}
+
+.welcome img{
+  height: 500px;
+  position: absolute;
+  width: 250px;
+}
+
+
+
+.welcome h1{
+  color: #EE2A25;
+  font-size: 50px;
+  padding-left: 40%;
+  padding-top: 10%;
+}
+
+.welcome p{
+  color: #000000;
+  font-size: 20px;
+  padding-top: 30%;
+  font-weight: bold;
+}
+
+button{
+  background-color: #009CDB;
+  border: none;
+  border-radius: 8px;
+  color: #FFFFFF;
+  font-size: 16px;
+  padding: 12px 12px;
+
+}
+
+
+
 /* ------------------------------------LOGIN------------------------------------ */
 
 
