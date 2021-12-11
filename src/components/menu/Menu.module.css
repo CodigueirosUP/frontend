@@ -22,3 +22,14 @@
   list-style-type: none;
   margin-left: 20px;
 }
+
+.imgUser {
+  font-size: 30px;
+  margin-right: 5px;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  color: white;
+}

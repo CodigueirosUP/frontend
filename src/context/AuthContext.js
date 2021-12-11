@@ -7,6 +7,8 @@ const AuthProvider = ({children}) => {
 
   const [loading, setLoading] = useState(true);
   const [auth, setAuth] = useState(false);
+  const [userInput, setUserInput] = useState('');
+  const [typeUser, setTypeUser] = useState([]);
 
   const handleLogin = async (values) => {
     const { data } = await ApiWallet.post('/auth', values);
@@ -14,21 +16,26 @@ const AuthProvider = ({children}) => {
     ApiWallet.defaults.headers.common['Authorization'] = data;
     setAuth(true);
     setLoading(false);
-    // // navigate('/pessoa');
-    window.location.href = '/dashboard';
   }
 
   const handleLogout = () => {
     localStorage.removeItem('token');
+    localStorage.removeItem('typeuser');
     ApiWallet.defaults.headers.common['Authorization'] = '';
     setAuth(false);
     setLoading(true);
     window.location.href = '/login';
   }
 
+  const getType = async (userName) => {
+    const { data } = await ApiWallet.get(`/type/${userName}`)
+    setTypeUser(data);
+    localStorage.setItem('typeuser', userName)
+  }
+
   return(
     <AuthContext.Provider value={
-      {handleLogin, loading, auth, setLoading, setAuth, handleLogout}
+      {handleLogin, loading, auth, setLoading, setAuth, handleLogout, getType, typeUser, setUserInput, userInput}
       }>
       {children}
     </AuthContext.Provider>

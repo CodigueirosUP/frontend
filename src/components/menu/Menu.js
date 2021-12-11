@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom'
 import styles from './Menu.module.css'
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { AuthContext } from '../../context/AuthContext'
+import { FaUserCircle } from 'react-icons/fa';
 
 const Menu = () => {
 
-  const { auth } = useContext(AuthContext);
+  const { auth, typeUser } = useContext(AuthContext);
 
   return (
     <>
@@ -17,6 +18,7 @@ const Menu = () => {
             <li><Link to='/servicos'>Serviços</Link></li>
             <li><Link to='/sobre' >Sobre</Link></li>
             <li><Link to='/contato' >Contato</Link></li>
+            {typeUser.usuario && <li><span className={styles.user}><FaUserCircle className={styles.imgUser} />{typeUser.usuario}</span></li>}
           </nav>
           :
           <nav className={styles.menu}>

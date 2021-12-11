@@ -8,7 +8,7 @@ const ManagerProvider  = ({children}) =>{
   const [managerList, setManagerList] = useState([]);
 
   const postManager = async (gerenteValues) => {
-    await ApiWallet.post('/gerente/CreateGerentes', gerenteValues);
+    await ApiWallet.post('/auth/create-gerente', gerenteValues);
 }
 
   const getManagers = async () => {
