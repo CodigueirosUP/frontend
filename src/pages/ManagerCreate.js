@@ -72,8 +72,7 @@ import ReactDOM from 'react-dom';
 import { useFormik, FormikProvider, Form, useField } from 'formik';
 // import './styles.css';
 import * as Yup from 'yup';
-import { MenagerContext } from '../context/ManagerContext';
-import api from '../api'
+import { ManagerContext } from '../context/ManagerContext';
 
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -122,28 +121,31 @@ const TextInputLiveFeedback = ({ label, helpText, ...props }) => {
 
 const MenagerCreate = () => {
 
-  // const {setListMenager, listMenager} = useContext(MenagerContext)
+  const { postManager } = useContext(ManagerContext)
 
-  // const getListMenager = async () => {
-  // const {data} = await api.get('/gerente/getGerentes');
-  // setListMenager(data);
-  // }
+  const gerenteDTO = { 
+    email: '',
+    nomeCompleto: '',
+    usuario: {
+      senha: '',
+      usuario: 'aaaa'
+   }
+  }
 
-  // useEffect(() => {
-  //   getListMenager();
-  // },[]);
 
   const formik = useFormik({
     initialValues: {
       email: '',
       nomeCompleto: '',
-      usuario: {
-        senha: '',
-        usuario: ''
-      }
+      usuario: '',
+      senha: ''
     },
     onSubmit: async (values) => {
-      await api.post('/gerente/getGerentes', values);
+      gerenteDTO.email = values.email
+      gerenteDTO.nomeCompleto = values.nomeCompleto
+      gerenteDTO.usuario.usuario = values.usuario
+      gerenteDTO.usuario.senha = values.senha
+      postManager(gerenteDTO)
       // getListMenager();
       // console.log(getListMenager)
     },
@@ -155,29 +157,25 @@ const MenagerCreate = () => {
           'Favor inserir um email válido'
         ),
       nomeCompleto: Yup.string()
-      .min(8, 'Must be at least 8 characters')
-      .max(20, 'Must be less  than 20 characters')
-      .required('Username is required')
+      .max(32, 'Máximo 32 caracteres')
+      .required('Campo Obrigatório')
       .matches(
-        /^[a-zA-Z0-9]+$/,
-        'Cannot contain special characters or spaces'
+        /[A-Z][a-z]* [A-Z][a-z]*/,
+        'Insira o nome completo com iniciais maiúsculas'
       ),
       senha: Yup.string()
-      .min(8, 'Must be at least 8 characters')
-      .max(20, 'Must be less  than 20 characters')
-      .required('Username is required')
-      .matches(
-        /^[a-zA-Z0-9]+$/,
-        'Cannot contain special characters or spaces'
-      ),
+      .min(6, 'Mínumo 6 caracteres')
+      .max(12, 'Máximo 12 caracteres')
+      .required('Campo Obrigatório')
+      // .matches(
+      //   /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#])[0-9a-zA-Z$*&@#]{6,}$/,
+      //   'Necessário um caractere especial, uma letra maiúscula, uma letra minúscula, um número e no mínimo 6 caracteres'
+      // ),
+      ,
       usuario: Yup.string()
-      .min(8, 'Must be at least 8 characters')
-      .max(20, 'Must be less  than 20 characters')
-      .required('Username is required')
-      .matches(
-        /^[a-zA-Z0-9]+$/,
-        'Cannot contain special characters or spaces'
-      )
+      .min(6, 'Mínimo 6 caracteres')
+      .max(12, 'Máximo 12 caracteres')
+      .required('Campo Obrigatório')
     }),
   });
 

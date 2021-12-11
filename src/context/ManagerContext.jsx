@@ -1,17 +1,29 @@
-import React, {createContext, useState} from "react"
+import React, {createContext, useState, useContext} from "react"
+import ApiWallet from "../api"
 
 
-const MenagerContext = createContext()
+const ManagerContext = createContext()
 
-const MenagerProvider  = ({children}) =>{
+const ManagerProvider  = ({children}) =>{
 
   const [listMenager, setListMenager] = useState([])
 
+
+  const postManager = async (gerenteValues) => {
+    await ApiWallet.post('/gerente/CreateGerentes', gerenteValues);
+}
+
+  const getListManager = async () => {
+  const {data} = await ApiWallet.get('/gerente/getGerentes');
+  setListMenager(data);
+}
+
+
   return(
-    <MenagerContext.Provider value={{listMenager, setListMenager}}>
+    <ManagerContext.Provider value={{listMenager, setListMenager, postManager, getListManager}}>
       {children}
-    </MenagerContext.Provider>
+    </ManagerContext.Provider>
   )
 }
 
-export {MenagerContext, MenagerProvider};
+export {ManagerContext, ManagerProvider};
