@@ -4,11 +4,14 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import Routers from './routers';
 import { AuthProvider } from './context/AuthContext'
+import { ManagerProvider } from './context/ManagerContext'
 
 ReactDOM.render(
   <React.StrictMode>
     <AuthProvider>
-      <Routers/>
+      <ManagerProvider>
+        <Routers />
+      </ManagerProvider>
     </AuthProvider>
   </React.StrictMode>,
   document.getElementById('root')

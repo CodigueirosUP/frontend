@@ -11,6 +11,7 @@ import Header from "./components/header/Header";
 import Managers from "./pages/Managers";
 import Services from "./pages/Services";
 import Footer from "./components/footer/Footer";
+import ManagerCreate from "./pages/ManagerCreate";
 import ApiWallet from "./api";
 
 const Routers = () => {
@@ -37,6 +38,7 @@ const Routers = () => {
             <Route path='/sobre' element={<About />} />
             <Route path='/contato' element={<Contact />} />
             <Route path='/gerentes' element={<Managers />} />
+            <Route path='/criargerentes' element={<ManagerCreate />} />
             <Route path='/servicos' element={<Services />} />
             <Route path='*' element={<NotFound />} />
           </Routes>
@@ -55,3 +57,4 @@ const Routers = () => {
 }
 
 export default Routers;
+
