@@ -67,8 +67,7 @@
 // export default ManagerCreate
 
 
-import React, { useContext, useEffect } from 'react';
-import ReactDOM from 'react-dom';
+import React, { useContext } from 'react';
 import { useFormik, FormikProvider, Form, useField } from 'formik';
 // import './styles.css';
 import * as Yup from 'yup';
