@@ -6,7 +6,7 @@ const Login = () => {
 
   const { handleLogin } = useContext(AuthContext);
   const [teste, setTeste] = useState('teste');
-
+  
   const adminOrManager = (user) => {
     console.log(teste)
     if(user === 'admin'){
