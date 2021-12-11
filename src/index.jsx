@@ -1,13 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-
 import reportWebVitals from './reportWebVitals';
 import Routers from './routers';
+import { AuthProvider } from './context/AuthContext'
+import { MenagerProvider } from './context/ManagerContext'
 
 ReactDOM.render(
   <React.StrictMode>
-    <Routers/>
+    <AuthProvider>
+      <MenagerProvider>
+        <Routers />
+      </MenagerProvider>
+    </AuthProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
