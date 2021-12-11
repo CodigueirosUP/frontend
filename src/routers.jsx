@@ -13,6 +13,7 @@ import Services from "./pages/Services";
 import Footer from "./components/footer/Footer";
 import ManagerCreate from "./pages/ManagerCreate";
 import ApiWallet from "./api";
+import ServiceCreate from "./pages/ServiceCreate";
 
 const Routers = () => {
 
@@ -39,6 +40,7 @@ const Routers = () => {
             <Route path='/contato' element={<Contact />} />
             <Route path='/gerentes' element={<Managers />} />
             <Route path='/criargerentes' element={<ManagerCreate />} />
+            <Route path='/criarservico' element={<ServiceCreate />} />
             <Route path='/servicos' element={<Services />} />
             <Route path='*' element={<NotFound />} />
           </Routes>
