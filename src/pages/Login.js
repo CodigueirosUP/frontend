@@ -5,6 +5,15 @@ import { Formik, Field, Form } from 'formik';
 const Login = () => {
 
   const { handleLogin } = useContext(AuthContext);
+  const [teste, setTeste] = useState('teste');
+
+  const adminOrManager = (user) => {
+    console.log(teste)
+    if(user === 'admin'){
+      setTeste('mudou');
+      console.log(teste)
+    }
+  }
 
   return (
     <div className="container">
@@ -15,8 +24,9 @@ const Login = () => {
             usuario: '',
             senha: ''
           }}
-          onSubmit={async (values) => {
+          onSubmit={ (values) => {
             handleLogin(values);
+            adminOrManager(values.usuario)
           }}
         >
           <Form>
