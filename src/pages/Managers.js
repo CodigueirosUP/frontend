@@ -1,6 +1,7 @@
 import { useEffect, useContext } from "react"
 import { ManagerContext } from "../context/ManagerContext"
 import { useNavigate } from 'react-router-dom'
+import CardManager from '../components/cardManager/CardManager'
 
 const Managers = () => {
 
@@ -17,14 +18,10 @@ const Managers = () => {
     <div className="container">
        <div className="content">
          <h1>Gerente</h1>
-         {managerList && managerList.map(manager => (
-           <>
-           <p>idGerente: {manager.idGerente}</p>
-           <p>idUsuario: {manager.usuario.idUsuario}</p>
-           <p>Nome usuario: {manager.usuario.usuario}</p>
-           </>
-         ))}
          <button onClick={()=>navigate('/criargerentes')}>Adicionar gerente</button>
+         {managerList && managerList.map(manager => (
+           <CardManager key= {manager.idGerente} manager = {manager} />
+         ))}
        </div>
     </div>
   )

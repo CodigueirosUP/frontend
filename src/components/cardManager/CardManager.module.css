@@ -1,0 +1,19 @@
+.containerCardMenager {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 400px;
+  height: 100px;
+  margin-bottom: 20px;
+  background-color: rgb(175, 175, 175);
+}
+
+.containerCardMenager p {
+  margin-left: 24px;
+}
+
+.pageCardMenager {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
