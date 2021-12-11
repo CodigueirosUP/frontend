@@ -1,20 +1,13 @@
 import { useContext, useState, useEffect } from "react"
 import { AuthContext } from "../context/AuthContext"
 import { Formik, Field, Form } from 'formik';
+import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
 
-  const { handleLogin } = useContext(AuthContext);
-  const [teste, setTeste] = useState('teste');
+  const { handleLogin, setUserInput } = useContext(AuthContext);
+  const navigate = useNavigate();
   
-  const adminOrManager = (user) => {
-    console.log(teste)
-    if(user === 'admin'){
-      setTeste('mudou');
-      console.log(teste)
-    }
-  }
-
   return (
     <div className="container">
       <div className="content">
@@ -25,8 +18,9 @@ const Login = () => {
             senha: ''
           }}
           onSubmit={ (values) => {
+            localStorage.setItem('typeuser', values.usuario)
             handleLogin(values);
-            adminOrManager(values.usuario)
+            navigate('/dashboard');
           }}
         >
           <Form>

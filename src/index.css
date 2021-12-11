@@ -10,7 +10,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-html, body, * {
+html, body, *, span {
   margin: 0;
   padding: 0;
 }
