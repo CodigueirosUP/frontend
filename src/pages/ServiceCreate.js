@@ -3,6 +3,7 @@ import { useFormik, FormikProvider, Form, useField, Field } from 'formik';
 import * as Yup from 'yup';
 import { ManagerContext } from '../context/ManagerContext';
 import SelectCustom from '../components/customElement/SelectCustom';
+import { ServiceContext } from '../context/ServiceContext';
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
@@ -15,15 +16,28 @@ const moedaOption = [
 ]
 
 const periocidadeOption = [
-  {value:0, label:'Mensal'},
-  {value:1, label:'Trimestral'},
-  {value:2, label:'Anual'}
+  {value:"MENSAL", label:'Mensal'},
+  {value:"TRIMESTRAL", label:'Trimestral'},
+  {value:"SEMESTRAL", label:'Semestral'},
+  {value:"ANUAL", label:'Anual'}
 ]
 
 const statusOption = [
   {value:'ATIVO', label:'Ativo'},
   {value:'INATIVO', label:'Inativo'}
 ]
+
+const servicoDTO = {
+    descricao: "",
+    moeda: "",
+    nome: "",
+    periocidade: "",
+    status: "",
+    valor: 0,
+    webSite: ""
+}
+
+
 
 const TextInputLiveFeedback = ({ label, helpText, ...props }) => {
   const [field, meta] = useField(props);
@@ -74,6 +88,15 @@ const ServiceCreate = () => {
     getManagers();
   }, [])
 
+  const { postService } = useContext(ServiceContext);
+
+  const managerOption = [];
+
+  {
+    managerList.map(manager => {
+      managerOption.push({value: manager.idGerente, label: manager.nomeCompleto})
+    })
+  }
 
   const formik = useFormik({
     initialValues: {
@@ -87,9 +110,16 @@ const ServiceCreate = () => {
     },
     onSubmit: async (values) => {
       values.valor = parseInt(values.valor);
-      values.periocidade = parseInt(values.periocidade);
-      console.log(values)
-      // await ApiWallet.post('/servico/create-servico', values)
+      servicoDTO.descricao = values.descricao;
+      servicoDTO.moeda = values.moeda;
+      servicoDTO.nome = values.nome;
+      servicoDTO.periocidade = values.periocidade;
+      servicoDTO.status = values.status;
+      servicoDTO.valor = values.valor;
+      servicoDTO.webSite = values.website
+      console.log(servicoDTO)
+      console.log(values.gerente)
+      postService(values.gerente, servicoDTO);
     },
     //   validationSchema: Yup.object({
     //     nome: Yup.string()
@@ -161,6 +191,14 @@ const ServiceCreate = () => {
                 onChange={status => formik.setFieldValue('status', status.value)}
                 value={formik.values.status}
                 options={statusOption}
+              />
+            </div>
+            <div>
+              <label>Gerente</label>
+              <SelectCustom
+                onChange={gerente => formik.setFieldValue('gerente', gerente.value)}
+                value={formik.values.gerente}
+                options={managerOption}
               />
             </div>
             <div>

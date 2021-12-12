@@ -1,3 +1,4 @@
+import { wait } from "@testing-library/react"
 import React, {createContext, useState} from "react"
 import ApiWallet from "../api"
 
@@ -14,9 +15,12 @@ const ServiceProvider  = ({children}) =>{
   setListService(data);
 }
 
+  const postService = async (idManager, serviceValues) => {
+    await ApiWallet.post(`/servico/create-servico?idGerente=${idManager}`, serviceValues);
+  }
 
   return(
-    <ServiceContext.Provider value={{listService, setListService, getListService}}>
+    <ServiceContext.Provider value={{listService, setListService, getListService, postService}}>
       {children}
     </ServiceContext.Provider>
   )

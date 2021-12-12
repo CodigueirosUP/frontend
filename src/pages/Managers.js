@@ -12,8 +12,6 @@ const Managers = () => {
     getManagers();
   }, [])
 
-  console.log(managerList);
-
   return (
     <div className="container">
        <div className="content">
