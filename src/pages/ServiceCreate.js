@@ -1,11 +1,29 @@
-import React from 'react';
-import { useFormik, FormikProvider, Form, useField } from 'formik';
-// import './styles.css';
+import React, { useContext, useEffect } from 'react';
+import { useFormik, FormikProvider, Form, useField, Field } from 'formik';
 import * as Yup from 'yup';
-import ApiWallet from '../api';
-
+import { ManagerContext } from '../context/ManagerContext';
+import SelectCustom from '../components/customElement/SelectCustom';
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+const moedaOption = [
+  {value:'REAL', label:'REAL'},
+  {value:'DOLAR', label:'DOLAR'},
+  {value:'EURO', label:'EURO'},
+  {value:'IENE', label:'IENE'},
+  {value:'YUAN', label:'YUAN'}
+]
+
+const periocidadeOption = [
+  {value:0, label:'Mensal'},
+  {value:1, label:'Trimestral'},
+  {value:2, label:'Anual'}
+]
+
+const statusOption = [
+  {value:'ATIVO', label:'Ativo'},
+  {value:'INATIVO', label:'Inativo'}
+]
 
 const TextInputLiveFeedback = ({ label, helpText, ...props }) => {
   const [field, meta] = useField(props);
@@ -16,15 +34,15 @@ const TextInputLiveFeedback = ({ label, helpText, ...props }) => {
   const [didFocus, setDidFocus] = React.useState(false);
   const handleFocus = () => setDidFocus(true);
   const showFeedback =
-    (!!didFocus && field.value.trim().length > 2) || meta.touched;
+    // (!!didFocus && field.value.trim().length > 2) || 
+    meta.touched;
 
   return (
     <div
-      className={`form-control ${
-        showFeedback ? (meta.error ? 'invalid' : 'valid') : ''
-      }`}
+      className={`form-control ${showFeedback ? (meta.error ? 'invalid' : 'valid') : ''
+        }`}
     >
-      <div className="flex items-center space-between">
+      <div className="flex items-center">
         <label htmlFor={props.id}>{label}</label>{' '}
         {showFeedback ? (
           <div
@@ -51,111 +69,109 @@ const TextInputLiveFeedback = ({ label, helpText, ...props }) => {
 
 const ServiceCreate = () => {
 
+  const { getManagers, managerList } = useContext(ManagerContext);
+  useEffect(() => {
+    getManagers();
+  }, [])
+
+
   const formik = useFormik({
     initialValues: {
-      descricao: '',
-      moeda: '',
       nome: '',
-      periocidade: '',
+      descricao: '',
+      website: '',
       valor: '',
-      website:''
+      moeda: '',
+      periocidade: '',
+      status: ''
     },
     onSubmit: async (values) => {
-      await ApiWallet.post('/servico/createServico', values)
+      values.valor = parseInt(values.valor);
+      values.periocidade = parseInt(values.periocidade);
+      console.log(values)
+      // await ApiWallet.post('/servico/create-servico', values)
     },
-    validationSchema: Yup.object({
-      nome: Yup.string()
-      .max(32, 'Máximo 32 caracteres')
-      .min(6, 'Mínumo 6 caracteres')
-      .required('Campo Obrigatório')
-      .matches(
-        /[a-zA-Z]+/,
-        'Inserir apenas letras'
-      ),
+    //   validationSchema: Yup.object({
+    //     nome: Yup.string()
+    //     .max(32, 'Máximo 32 caracteres')
+    //     .min(6, 'Mínumo 6 caracteres')
+    //     .required('Campo Obrigatório')
+    //     .matches(
+    //       /[a-zA-Z]+/,
+    //       'Inserir apenas letras'
+    //     ),
 
-      descricao: Yup.string()
-      .max(32, 'Máximo 32 caracteres')
-      .min(6, 'Mínumo 6 caracteres')
-      .required('Campo Obrigatório')
-      .matches(
-        /[a-zA-Z]+/,
-        'Inserir uma descrição válida'
-      ),
+    //     descricao: Yup.string()
+    //     .max(32, 'Máximo 32 caracteres')
+    //     .min(6, 'Mínumo 6 caracteres')
+    //     .required('Campo Obrigatório')
+    //     .matches(
+    //       /[a-zA-Z]+/,
+    //       'Inserir uma descrição válida'
+    //     ),
 
-      website: Yup.string()
-      .min(6, 'Mínumo 6 caracteres')
-      .max(32, 'Máximo 32 caracteres')
-      .required('Campo Obrigatório')
-      .matches(
-        /^((ftp|http|https):\/\/)?www\.([A-z]+)\.([A-z]{2,})/,
-        'Favor inserir um email válido'
-      ),
+    //     website: Yup.string()
+    //     .min(6, 'Mínumo 6 caracteres')
+    //     .max(32, 'Máximo 32 caracteres')
+    //     .required('Campo Obrigatório')
+    //     .matches(
+    //       /^((ftp|http|https):\/\/)?www\.([A-z]+)\.([A-z]{2,})/,
+    //       'Favor inserir um email válido'
+    //     ),
 
-      valor: Yup.string()
-      .min(6, 'Mínimo 6 caracteres')
-      .max(32, 'Máximo 12 caracteres')
-      .required('Campo Obrigatório')
-      .matches(
-        /@"^-?[0-9][0-9,\.]+$"/,
-        'Favor inserir um valor válido'
-      ),
-
-  }),
+    //     valor: Yup.string()
+    //     .min(6, 'Mínimo 6 caracteres')
+    //     .max(32, 'Máximo 12 caracteres')
+    //     .required('Campo Obrigatório')
+    //     .matches(
+    //       /@"^-?[0-9][0-9,\.]+$"/,
+    //       'Favor inserir um valor válido'
+    //     ),
+    // }),
   });
 
   return (
-    <FormikProvider value={formik}>
-      <Form>
-        <TextInputLiveFeedback
-          label="nome"
-          id="nome"
-          name="nome"
-          helpText="Must be 8-20 characters and cannot contain special characters."
-          type="text"
-        />
-        <TextInputLiveFeedback
-          label="descricao"
-          id="descricao"
-          name="descricao"
-          helpText="Must be 8-20 characters and cannot contain special characters."
-          type="text"
-        />
-        <TextInputLiveFeedback
-          label="website"
-          id="website"
-          name="website"
-          helpText="Must be 8-20 characters and cannot contain special characters."
-          type="text"
-        />
-        <TextInputLiveFeedback
-          label="valor"
-          id="valor"
-          name="valor"
-          helpText="Must be 8-20 characters and cannot contain special characters."
-          type="text"
-        />
-        <select name="periocidade" id="periocidade">
-          <option value= 'mensal' >Mensal</option>
-          <option value="trimestral">Trimestral</option>
-          <option value="anual">Anual</option>
-        </select>
-        <select name="moeda" id="moeda">
-          <option value="real">R$ (Real)</option>
-          <option value="dolar">USD (Dolar)</option>
-          <option value="euro">€ (Euro)</option>
-          <option value="iene">¥ (Iene)</option>
-          <option value="yuan">¥ (Yuan)</option>
-        </select>
-        <select name="gerente" id="gerente">
-          <option value="gerente">Gerente</option>
-        </select>
+    <div className='container'>
+      <div className='content'>
+        <FormikProvider value={formik}>
+          <Form>
+            <TextInputLiveFeedback label="Nome do Serviço" id="nome" name="nome" type="text" />
+            <TextInputLiveFeedback label="descricao" id="descricao" name="descricao" type="text" />
+            <TextInputLiveFeedback label="website" id="website" name="website" type="text" />
+            <TextInputLiveFeedback label="valor" id="valor" name="valor" type="text" />
+            <div>
+              <label>moeda</label>
+              <SelectCustom
+                onChange={moeda => formik.setFieldValue('moeda', moeda.value)}
+                value={formik.values.moeda}
+                options={moedaOption}
+              />
+            </div>
+            <div>
+              <label>periocidade</label>
+              <SelectCustom
+                onChange={periocidade => formik.setFieldValue('periocidade', periocidade.value)}
+                value={formik.values.periocidade}
+                options={periocidadeOption}
+              />
+            </div>
+            <div>
+              <label>status</label>
+              <SelectCustom
+                onChange={status => formik.setFieldValue('status', status.value)}
+                value={formik.values.status}
+                options={statusOption}
+              />
+            </div>
+            <div>
+              <button type="submit">Adicionar</button>
+              <button type="reset">Resetar</button>
+            </div>
+          </Form>
+        </FormikProvider>
+      </div>
+    </div>
 
-        <div>
-          <button type="submit">Submit</button>
-          <button type="reset">Reset</button>
-        </div>
-      </Form>
-    </FormikProvider>
   );
 };
 

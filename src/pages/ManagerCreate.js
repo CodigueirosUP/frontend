@@ -102,42 +102,22 @@ const MenagerCreate = () => {
   });
 
   return (
-    <FormikProvider value={formik}>
-      <Form>
-        <TextInputLiveFeedback
-          label="email"
-          id="email"
-          name="email"
-          helpText="Must be 8-20 characters and cannot contain special characters."
-          type="text"
-        />
-        <TextInputLiveFeedback
-          label="nomeCompleto"
-          id="nomeCompleto"
-          name="nomeCompleto"
-          helpText="Must be 8-20 characters and cannot contain special characters."
-          type="text"
-        />
-        <TextInputLiveFeedback
-          label="senha"
-          id="senha"
-          name="senha"
-          helpText="Must be 8-20 characters and cannot contain special characters."
-          type="text"
-        />
-          <TextInputLiveFeedback
-          label="usuario"
-          id="usuario"
-          name="usuario"
-          helpText="Must be 8-20 characters and cannot contain special characters."
-          type="text"
-        />
-        <div>
-          <button type="submit">Submit</button>
-          <button type="reset">Reset</button>
-        </div>
-      </Form>
-    </FormikProvider>
+    <div className='container'>
+      <div className='content'>
+        <FormikProvider value={formik}>
+          <Form>
+            <TextInputLiveFeedback label="email" id="email" name="email" type="text" />
+            <TextInputLiveFeedback label="nomeCompleto" id="nomeCompleto" name="nomeCompleto" type="text" />
+            <TextInputLiveFeedback label="senha" id="senha" name="senha" type="text" />
+            <TextInputLiveFeedback label="usuario" id="usuario" name="usuario" type="text" />
+            <div>
+              <button type="submit">Submit</button>
+              <button type="reset">Reset</button>
+            </div>
+          </Form>
+        </FormikProvider>
+      </div>
+    </div>
   );
 };
 
