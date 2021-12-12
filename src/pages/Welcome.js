@@ -1,6 +1,11 @@
 import logoHome from "../images/img.png"
 import logoDolar from "../images/dol.png"
+import { useNavigate } from "react-router-dom"
+
 const Welcome = () => {
+
+  const navigate = useNavigate();
+
   return (
     <div className="container">
       <div className="content">
@@ -15,7 +20,7 @@ const Welcome = () => {
         </div>
       </div>
 
-      <button>Começar</button>
+      <button onClick={() => navigate("/login")}>Começar</button>
 
     </div>
 
