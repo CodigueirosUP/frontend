@@ -3,7 +3,7 @@ import { AuthContext } from "../context/AuthContext";
 
 const Dashboard = () => {
 
-  const {handleLogout, typeUser, getType, userInput} = useContext(AuthContext);
+  const {typeUser, getType} = useContext(AuthContext);
 
   useEffect(()=>{
     getType(localStorage.getItem('typeuser'));
@@ -14,7 +14,6 @@ const Dashboard = () => {
       <div className="content">
         <h1>Dashboard</h1>
         <p>{typeUser.nomeCompleto}</p>
-        <button onClick={()=>handleLogout()}>sair</button>
       </div>
     </div>
   )
