@@ -20,7 +20,7 @@ const Welcome = () => {
         </div>
       </div>
 
-      <button onClick={() => navigate("/login")}>Começar</button>
+      <button className="buttoninit" onClick={() => navigate("/login")}>Começar</button>
 
     </div>
 

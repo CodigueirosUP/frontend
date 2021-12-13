@@ -56,7 +56,7 @@ code {
   font-weight: bold;
 }
 
-button{
+.buttoninit{
   background-color: #009CDB;
   border: none;
   border-radius: 8px;
