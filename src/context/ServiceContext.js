@@ -25,6 +25,8 @@ const ServiceProvider  = ({children}) =>{
 
   const findServiceById = async (id) => {
     const {data} = await ApiWallet.get(`/servico/${id}`);
+    console.log(data);
+    
     return data;
   }
 

@@ -174,7 +174,9 @@ const ServiceCreate = () => {
       formik.setFieldValue('valor', serviceEdicao?.valor || '');
       formik.setFieldValue('moeda', serviceEdicao?.moeda || '');
       formik.setFieldValue('periocidade', serviceEdicao?.periocidade || '');
-      formik.setFieldValue('gerente', serviceEdicao?.gerente || '');
+      formik.setFieldValue('gerente', serviceEdicao?.gerente.idGerente || '');
+      console.log(serviceEdicao.gerente.idGerente)
+    
       
     }
   }
