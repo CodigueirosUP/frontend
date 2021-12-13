@@ -43,6 +43,7 @@ const Routers = () => {
             <Route path='/criargerentes/:id' element={<ManagerCreate />} />
             <Route path='/criargerentes' element={<ManagerCreate />} />
             <Route path='/criarservico' element={<ServiceCreate />} />
+            <Route path='/criarservico/:id' element={<ServiceCreate />} />
             <Route path='/servicos' element={<Services />} />
             <Route path='*' element={<NotFound />} />
           </Routes>

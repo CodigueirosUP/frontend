@@ -4,6 +4,7 @@ import * as Yup from 'yup';
 import { ManagerContext } from '../context/ManagerContext';
 import SelectCustom from '../components/customElement/SelectCustom';
 import { ServiceContext } from '../context/ServiceContext';
+import { useParams } from 'react-router-dom';
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
@@ -32,7 +33,6 @@ const servicoDTO = {
     moeda: "",
     nome: "",
     periocidade: "",
-    status: "",
     valor: 0,
     webSite: ""
 }
@@ -83,20 +83,23 @@ const TextInputLiveFeedback = ({ label, helpText, ...props }) => {
 
 const ServiceCreate = () => {
 
-  const { getManagers, managerList } = useContext(ManagerContext);
+  const { getManagers, managerList} = useContext(ManagerContext);
   useEffect(() => {
     getManagers();
   }, [])
 
-  const { postService } = useContext(ServiceContext);
+  const { postService, putService, findServiceById  } = useContext(ServiceContext);
 
   const managerOption = [];
+
+  const {id} = useParams(); 
 
   {
     managerList.map(manager => {
       managerOption.push({value: manager.idGerente, label: manager.nomeCompleto})
     })
   }
+
 
   const formik = useFormik({
     initialValues: {
@@ -105,21 +108,23 @@ const ServiceCreate = () => {
       website: '',
       valor: '',
       moeda: '',
-      periocidade: '',
-      status: ''
+      periocidade: ''
     },
+
     onSubmit: async (values) => {
       values.valor = parseInt(values.valor);
       servicoDTO.descricao = values.descricao;
       servicoDTO.moeda = values.moeda;
       servicoDTO.nome = values.nome;
       servicoDTO.periocidade = values.periocidade;
-      servicoDTO.status = values.status;
       servicoDTO.valor = values.valor;
       servicoDTO.webSite = values.website
-      console.log(servicoDTO)
-      console.log(values.gerente)
-      postService(values.gerente, servicoDTO);
+      if ( id) {
+        putService(id, servicoDTO)
+      } else { 
+        postService(values.gerente, servicoDTO);
+      }
+  
     },
     //   validationSchema: Yup.object({
     //     nome: Yup.string()
@@ -159,6 +164,23 @@ const ServiceCreate = () => {
     //     ),
     // }),
   });
+  
+  const fetchService = async () => {
+    if (id) {
+      const serviceEdicao = await findServiceById(id);
+      formik.setFieldValue('nome', serviceEdicao?.nome || '');
+      formik.setFieldValue('descricao', serviceEdicao?.descricao || '');
+      formik.setFieldValue('website', serviceEdicao?.webSite || '');
+      formik.setFieldValue('valor', serviceEdicao?.valor || '');
+      formik.setFieldValue('moeda', serviceEdicao?.moeda || '');
+      formik.setFieldValue('periocidade', serviceEdicao?.periocidade || '');
+      formik.setFieldValue('gerente', serviceEdicao?.gerente.idGerente || '');
+    }
+  }
+
+  useEffect( () => {
+    fetchService()
+  },[id])
 
   return (
     <div className='container'>
@@ -183,14 +205,6 @@ const ServiceCreate = () => {
                 onChange={periocidade => formik.setFieldValue('periocidade', periocidade.value)}
                 value={formik.values.periocidade}
                 options={periocidadeOption}
-              />
-            </div>
-            <div>
-              <label>status</label>
-              <SelectCustom
-                onChange={status => formik.setFieldValue('status', status.value)}
-                value={formik.values.status}
-                options={statusOption}
               />
             </div>
             <div>
