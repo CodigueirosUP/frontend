@@ -12,15 +12,20 @@ const Managers = () => {
     getManagers();
   }, [])
 
+  const CardManagerList = () => {
+    return (
+      managerList && managerList.map(manager => (
+        <CardManager key= {manager.idGerente} manager={manager} attList={getManagers} />
+      )))
+  }
+
   return (
     <div className="container">
-       <div className="content">
-         <h1>Gerentes</h1>
-         <button onClick={()=>navigate('/criargerentes')}>Adicionar gerente</button>
-         {managerList && managerList.map(manager => (
-           <CardManager key= {manager.idGerente} manager={manager} attList={getManagers} />
-         ))}
-       </div>
+      <div className="content">
+        <h1>Gerentes</h1>
+        <button onClick={()=>navigate('/criargerentes')}>Adicionar gerente</button>
+        <CardManagerList />
+      </div>
     </div>
   )
 }

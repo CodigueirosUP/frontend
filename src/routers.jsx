@@ -42,6 +42,7 @@ const Routers = () => {
             <Route path='/sobre' element={<About />} />
             <Route path='/contato' element={<Contact />} />
             <Route path='/gerentes' element={<Managers />} />
+            <Route path='/criargerentes/:id' element={<ManagerCreate />} />
             <Route path='/criargerentes' element={<ManagerCreate />} />
             <Route path='/criarservico' element={<ServiceCreate />} />
             <Route path='/servicos' element={<Services />} />
