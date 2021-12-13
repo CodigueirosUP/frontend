@@ -1,52 +1,19 @@
 import React, { useContext, useEffect } from 'react';
-import { useFormik, FormikProvider, Form, useField } from 'formik';
+import { useFormik, FormikProvider, Form } from 'formik';
+import { useParams } from 'react-router-dom';
 // import './styles.css';
 import * as Yup from 'yup';
 import { ManagerContext } from '../context/ManagerContext';
+import TextInputLiveFeedback from '../components/TextInpuLiveFeedback/TextInputLiveFeedback';
 
-const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+// const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
-const TextInputLiveFeedback = ({ label, helpText, ...props }) => {
-  const [field, meta] = useField(props);
-  const [didFocus, setDidFocus] = React.useState(false);
-  const handleFocus = () => setDidFocus(true);
-  const showFeedback =
-    (!!didFocus && field.value.trim().length > 2) || meta.touched;
-
-  return (
-    <div
-      className={`form-control ${
-        showFeedback ? (meta.error ? 'invalid' : 'valid') : ''
-      }`}
-    >
-      <div className="flex items-center space-between">
-        <label htmlFor={props.id}>{label}</label>{' '}
-        {showFeedback ? (
-          <div
-            id={`${props.id}-feedback`}
-            aria-live="polite"
-            className="feedback text-sm"
-          >
-            {meta.error ? meta.error : '✓'}
-          </div>
-        ) : null}
-      </div>
-      <input
-        {...props}
-        {...field}
-        aria-describedby={`${props.id}-feedback ${props.id}-help`}
-        onFocus={handleFocus}
-      />
-      <div className="text-xs" id={`${props.id}-help`} tabIndex="-1">
-        {helpText}
-      </div>
-    </div>
-  );
-};
 
 const MenagerCreate = () => {
 
-  const { postManager } = useContext(ManagerContext)
+  const { postManager, putManager, findManagerById } = useContext(ManagerContext)
+
+  const { id } = useParams()
 
   const gerenteDTO = { 
     email: '',
@@ -54,9 +21,9 @@ const MenagerCreate = () => {
     usuario: {
       senha: '',
       usuario: 'aaaa'
-   }
+    }
   }
-
+ 
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -69,15 +36,17 @@ const MenagerCreate = () => {
       gerenteDTO.nomeCompleto = values.nomeCompleto
       gerenteDTO.usuario.usuario = values.usuario
       gerenteDTO.usuario.senha = values.senha
-      postManager(gerenteDTO)
+      if (id) {
+        putManager(id, gerenteDTO)
+      } else {
+        postManager(gerenteDTO)
+      }
     },
     validationSchema: Yup.object({
       email: Yup.string()
         .required('Campo Obrigatório')
-        .matches(
-          /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-          'Favor inserir um email válido'
-        ),
+        .email('Favor inserir um email válido'
+      ),
       nomeCompleto: Yup.string()
       .max(32, 'Máximo 32 caracteres')
       .required('Campo Obrigatório')
@@ -101,16 +70,29 @@ const MenagerCreate = () => {
     }),
   });
 
+  const fetchManager = async () => {
+    if (id) {
+      const managerEdicao = await findManagerById(id)
+      formik.setFieldValue('email', managerEdicao?.email || '');
+      formik.setFieldValue('nomeCompleto', managerEdicao?.nomeCompleto || '');
+      formik.setFieldValue('usuario', managerEdicao?.usuario.usuario || '');
+    }
+  }
+
+  useEffect(() => {
+    fetchManager();
+  }, [id])
+
   return (
     <div className='container'>
       <div className='content'>
         <FormikProvider value={formik}>
           <Form>
-            <h1>Cadastro de Gerente</h1>
-            <TextInputLiveFeedback label="email" id="email" name="email" type="text" />
-            <TextInputLiveFeedback label="nomeCompleto" id="nomeCompleto" name="nomeCompleto" type="text" />
-            <TextInputLiveFeedback label="senha" id="senha" name="senha" type="text" />
-            <TextInputLiveFeedback label="usuario" id="usuario" name="usuario" type="text" />
+            <h1>{id ? 'Editar Gerente' : 'Cadastro de Gerente' }</h1>
+            <TextInputLiveFeedback label="Nome Completo" id="nomeCompleto" name="nomeCompleto" type="text" />
+            <TextInputLiveFeedback label="Email" id="email" name="email" type="text" />
+            <TextInputLiveFeedback label="Usuário" id="usuario" name="usuario" type="text" />
+            <TextInputLiveFeedback label="Senha" id="senha" name="senha" type="text" />
             <div>
               <button type="submit">Submit</button>
               <button type="reset">Reset</button>
