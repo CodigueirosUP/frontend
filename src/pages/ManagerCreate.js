@@ -106,6 +106,7 @@ const MenagerCreate = () => {
       <div className='content'>
         <FormikProvider value={formik}>
           <Form>
+            <h1>Cadastro de Gerente</h1>
             <TextInputLiveFeedback label="email" id="email" name="email" type="text" />
             <TextInputLiveFeedback label="nomeCompleto" id="nomeCompleto" name="nomeCompleto" type="text" />
             <TextInputLiveFeedback label="senha" id="senha" name="senha" type="text" />
