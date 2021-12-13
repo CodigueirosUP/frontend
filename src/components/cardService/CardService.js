@@ -7,11 +7,13 @@ const CardService = ({ service, attList, setIdEdicao }) => {
 
   const deleteServices = async (idServico) => {
     try{
-      await ApiWallet.delete(`/servicos/${idServico}`)
+      await ApiWallet.delete(`/servico/delete-servico/${idServico}`)
     }finally {
       attList()
     }
   }
+
+  
 
 
   return (
@@ -24,9 +26,7 @@ const CardService = ({ service, attList, setIdEdicao }) => {
         <p>Periodicidade: {service.periocidade}</p>
         <button onClick={() => setIdEdicao(service.idServico)}><FaEdit /></button>
         <button onClick={() => deleteServices(service.idServico)} ><RiDeleteBin2Fill /></button>
-
       </div>
-
     </div>
   )
 }

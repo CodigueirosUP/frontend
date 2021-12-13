@@ -10,7 +10,7 @@ const ServiceProvider  = ({children}) =>{
   const [listService, setListService] = useState([])
 
 
-  const getListService = async () => {
+  const getService = async () => {
   const {data} = await ApiWallet.get('/servico/list-servico');
   setListService(data);
 }
@@ -19,8 +19,10 @@ const ServiceProvider  = ({children}) =>{
     await ApiWallet.post(`/servico/create-servico?idGerente=${idManager}`, serviceValues);
   }
 
+  
+
   return(
-    <ServiceContext.Provider value={{listService, setListService, getListService, postService}}>
+    <ServiceContext.Provider value={{listService, getService, postService}}>
       {children}
     </ServiceContext.Provider>
   )
