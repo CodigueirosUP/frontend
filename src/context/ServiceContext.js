@@ -16,13 +16,20 @@ const ServiceProvider  = ({children}) =>{
 }
 
   const postService = async (idManager, serviceValues) => {
-    await ApiWallet.post(`/servico/create-servico?idGerente=${idManager}`, serviceValues);
+    await ApiWallet.post(`/servico/create-servico/${idManager}`, serviceValues);
   }
 
-  
+  const putService = async (id, serviceValues) => {
+    await ApiWallet.put(`/servico/edit-servico/${id}`, serviceValues)
+  }
+
+  const findServiceById = async (id) => {
+    const {data} = await ApiWallet.get(`/servico/${id}`);
+    return data;
+  }
 
   return(
-    <ServiceContext.Provider value={{listService, getService, postService}}>
+    <ServiceContext.Provider value={{listService, getService, postService, putService, findServiceById}}>
       {children}
     </ServiceContext.Provider>
   )
