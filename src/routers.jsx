@@ -25,9 +25,7 @@ const Routers = () => {
       setAuth(true);
       setLoading(false);
       ApiWallet.defaults.headers.common['Authorization'] = token;
-    }
-    if(localStorage.getItem('typeuser')){
-      getType(localStorage.getItem('typeuser'));
+      getType();
     }
   }, [])
 

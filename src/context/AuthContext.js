@@ -20,7 +20,6 @@ const AuthProvider = ({children}) => {
 
   const handleLogout = () => {
     localStorage.removeItem('token');
-    localStorage.removeItem('typeuser');
     ApiWallet.defaults.headers.common['Authorization'] = '';
     setAuth(false);
     setLoading(true);
@@ -28,9 +27,8 @@ const AuthProvider = ({children}) => {
   }
 
   const getType = async (userName) => {
-    const { data } = await ApiWallet.get(`/type/${userName}`)
+    const { data } = await ApiWallet.get(`/username`)
     setTypeUser(data);
-    localStorage.setItem('typeuser', userName)
   }
 
   return(
