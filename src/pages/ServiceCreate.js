@@ -118,7 +118,7 @@ const ServiceCreate = () => {
       servicoDTO.nome = values.nome;
       servicoDTO.periocidade = values.periocidade;
       servicoDTO.valor = values.valor;
-      servicoDTO.webSite = values.webSite
+      servicoDTO.webSite = values.website
       if ( id) {
         putService(id, servicoDTO)
       } else { 
@@ -175,9 +175,6 @@ const ServiceCreate = () => {
       formik.setFieldValue('moeda', serviceEdicao?.moeda || '');
       formik.setFieldValue('periocidade', serviceEdicao?.periocidade || '');
       formik.setFieldValue('gerente', serviceEdicao?.gerente.idGerente || '');
-      console.log(serviceEdicao.gerente.idGerente)
-    
-      
     }
   }
 
