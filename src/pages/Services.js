@@ -5,11 +5,11 @@ import { ServiceContext } from "../context/ServiceContext"
 
 const Services = () => {
 
-  const {getListService, listService} = useContext(ServiceContext);
+  const {getService, listService} = useContext(ServiceContext);
   const navigate = useNavigate();
 
   useEffect(() => {
-    getListService();
+    getService();
     
   },[])
   console.log(listService)
@@ -20,7 +20,7 @@ const Services = () => {
          <h1>Serviços</h1>
          <button onClick={()=>navigate('/criarservico')}>Adicionar serviço</button>
          {listService && listService.map(service => (
-           <CardService key = {service.idServico} service = {service}/>
+           <CardService key = {service.idServico} attList={getService} service = {service}/>
          ))}
        </div>
     </div>
