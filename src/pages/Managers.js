@@ -18,7 +18,7 @@ const Managers = () => {
          <h1>Gerentes</h1>
          <button onClick={()=>navigate('/criargerentes')}>Adicionar gerente</button>
          {managerList && managerList.map(manager => (
-           <CardManager key= {manager.idGerente} manager = {manager} />
+           <CardManager key= {manager.idGerente} manager={manager} attList={getManagers} />
          ))}
        </div>
     </div>
