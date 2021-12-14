@@ -22,8 +22,11 @@ const ServiceProvider = ({ children }) => {
     }
   }
   
-  const postService = async (idManager, serviceValues) => {
-    await ApiWallet.post(`/servico/create-servico/${idManager}`, serviceValues);
+  const postService = async (idManager, serviceValues, navigate) => {
+    await ApiWallet.post(`/servico/create-servico/${idManager}`, serviceValues).then((response) => {
+      alert('servico cadastrado com sucesso');
+      navigate('/servicos');
+    })
   }
 
   const putService = async (id, serviceValues) => {

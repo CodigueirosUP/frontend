@@ -5,8 +5,10 @@ import { ManagerContext } from '../context/ManagerContext';
 import SelectCustom from '../components/customElement/SelectCustom';
 import { ServiceContext } from '../context/ServiceContext';
 import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
 
 const moedaOption = [
   {value:'REAL', label:'REAL'},
@@ -92,6 +94,8 @@ const TextInputLiveFeedback = ({ label, helpText, ...props }) => {
 };
 
 const ServiceCreate = () => {
+  
+  const navigate = useNavigate();
 
   const { getManagers, managerList} = useContext(ManagerContext);
   useEffect(() => {
@@ -140,7 +144,7 @@ const ServiceCreate = () => {
         servicoCreateDTO.periocidade = values.periocidade;
         servicoCreateDTO.valor = values.valor;
         servicoCreateDTO.webSite = values.website;
-        postService(values.gerente, servicoCreateDTO);
+        postService(values.gerente, servicoCreateDTO, navigate);
       }
   
     },
