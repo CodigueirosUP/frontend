@@ -1,0 +1,43 @@
+.container {
+  background-color: rgb(25, 25, 25);
+  padding: 10px;
+}
+
+header {
+  background-color: rgb(25, 25, 25);
+  padding: 10px;
+}
+.rigth {
+  display: flex;
+  margin-right: 10px;
+}
+
+.imgUser {
+  font-size: 30px;
+  margin-right: 5px;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  color: white;
+}
+
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;  
+}
+
+.headerContainer a {
+  display: flex;
+  align-items: center;
+  margin-left: 15px;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.headerContainer span {
+  margin-left: 20px;
+}

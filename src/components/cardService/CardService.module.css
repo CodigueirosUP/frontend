@@ -1,0 +1,18 @@
+.containerCardService {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 400px;
+  margin-bottom: 20px;
+  background-color: rgb(175, 175, 175);
+}
+
+.containerCardService p {
+  margin-left: 24px;
+}
+
+.pageCardService {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
