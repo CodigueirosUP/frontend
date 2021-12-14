@@ -12,17 +12,13 @@ const ServiceProvider = ({ children }) => {
 
   const [listService, setListService] = useState([])
 
-  
   const getService = async (typeUser) => {
     
     if (typeUser.idUser === 1) {
       const { data } = await ApiWallet.get('/servico/list-servico');
       setListService(data);
-      console.log('funcao getservice')
-      console.log(data)
     } else {
       setListService(typeUser.servicoDTOList)
-      console.log('funcao getservice else')
     }
   }
   
@@ -36,8 +32,6 @@ const ServiceProvider = ({ children }) => {
 
   const findServiceById = async (id) => {
     const { data } = await ApiWallet.get(`/servico/${id}`);
-    console.log(data);
-
     return data;
   }
 
