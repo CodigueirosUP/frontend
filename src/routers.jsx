@@ -14,18 +14,21 @@ import Footer from "./components/footer/Footer";
 import ManagerCreate from "./pages/ManagerCreate";
 import ApiWallet from "./api";
 import ServiceCreate from "./pages/ServiceCreate";
+import { ServiceContext } from "./context/ServiceContext";
 
 const Routers = () => {
 
-  const { auth, setAuth, setLoading, getType } = useContext(AuthContext);
+  const { auth, setAuth, setLoading, getType, typeUser } = useContext(AuthContext);
+  const { getService } = useContext(ServiceContext);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
-      setAuth(true);
-      setLoading(false);
       ApiWallet.defaults.headers.common['Authorization'] = token;
       getType();
+      setAuth(true);
+      setLoading(false);
+      getService(typeUser);
     }
   }, [])
 

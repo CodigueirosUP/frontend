@@ -28,13 +28,23 @@ const statusOption = [
   {value:'INATIVO', label:'Inativo'}
 ]
 
-const servicoDTO = {
+const servicoEditDTO = {
+    idGerente: 0,
     descricao: "",
     moeda: "",
     nome: "",
     periocidade: "",
     valor: 0,
     webSite: ""
+}
+
+const servicoCreateDTO = {
+  descricao: "",
+  moeda: "",
+  nome: "",
+  periocidade: "",
+  valor: 0,
+  webSite: ""
 }
 
 
@@ -108,21 +118,29 @@ const ServiceCreate = () => {
       website: '',
       valor: '',
       moeda: '',
-      periocidade: ''
+      periocidade: '',
+      gerente: ''
     },
 
     onSubmit: async (values) => {
       values.valor = parseInt(values.valor);
-      servicoDTO.descricao = values.descricao;
-      servicoDTO.moeda = values.moeda;
-      servicoDTO.nome = values.nome;
-      servicoDTO.periocidade = values.periocidade;
-      servicoDTO.valor = values.valor;
-      servicoDTO.webSite = values.website
       if ( id) {
-        putService(id, servicoDTO)
+        servicoEditDTO.idGerente = values.gerente;
+        servicoEditDTO.descricao = values.descricao;
+        servicoEditDTO.moeda = values.moeda;
+        servicoEditDTO.nome = values.nome;
+        servicoEditDTO.periocidade = values.periocidade;
+        servicoEditDTO.valor = values.valor;
+        servicoEditDTO.webSite = values.website;
+        putService(id, servicoEditDTO);
       } else { 
-        postService(values.gerente, servicoDTO);
+        servicoCreateDTO.descricao = values.descricao;
+        servicoCreateDTO.moeda = values.moeda;
+        servicoCreateDTO.nome = values.nome;
+        servicoCreateDTO.periocidade = values.periocidade;
+        servicoCreateDTO.valor = values.valor;
+        servicoCreateDTO.webSite = values.website;
+        postService(values.gerente, servicoCreateDTO);
       }
   
     },

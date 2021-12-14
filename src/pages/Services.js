@@ -1,18 +1,18 @@
 import { useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom'
 import CardService from '../components/cardService/CardService';
+import { AuthContext } from '../context/AuthContext';
 import { ServiceContext } from "../context/ServiceContext"
 
 const Services = () => {
 
+  const {typeUser} = useContext(AuthContext);
   const {getService, listService} = useContext(ServiceContext);
   const navigate = useNavigate();
 
   useEffect(() => {
-    getService();
-    
+    getService(typeUser);
   },[])
-  console.log(listService)
 
   return (
     <div className="container">
