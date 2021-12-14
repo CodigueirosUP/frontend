@@ -18,8 +18,7 @@ const Login = () => {
             senha: ''
           }}
           onSubmit={ (values) => {
-            handleLogin(values);
-            navigate('/dashboard');
+            handleLogin(values, navigate);
           }}
         >
           <Form>
