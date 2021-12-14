@@ -8,6 +8,7 @@ const AuthProvider = ({children}) => {
   const [loading, setLoading] = useState(true);
   const [auth, setAuth] = useState(false);
   const [userInput, setUserInput] = useState('');
+  const [typeUser, setTypeUser] = useState([]);
 
 
   const handleLogin = async (values) => {
@@ -26,9 +27,14 @@ const AuthProvider = ({children}) => {
     window.location.href = '/login';
   }
 
+  const getType = async (userName) => {
+    const { data } = await ApiWallet.get(`/username`)
+    setTypeUser(data);
+  }
+
   return(
     <AuthContext.Provider value={
-      {handleLogin, loading, auth, setLoading, setAuth, handleLogout, setUserInput, userInput}
+      {handleLogin, loading, auth, setLoading, setAuth, handleLogout, setUserInput, userInput, getType, typeUser}
       }>
       {children}
     </AuthContext.Provider>
