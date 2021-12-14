@@ -11,12 +11,26 @@ const AuthProvider = ({children}) => {
   const [typeUser, setTypeUser] = useState([]);
 
 
-  const handleLogin = async (values) => {
-    const { data } = await ApiWallet.post('/auth', values);
-    localStorage.setItem('token', data);
-    ApiWallet.defaults.headers.common['Authorization'] = data;
-    setAuth(true);
-    setLoading(false);
+  const handleLogin = async (values, navigate) => {
+    await ApiWallet.post('/auth', values).then((response) => {
+      localStorage.setItem('token', response.data);
+      ApiWallet.defaults.headers.common['Authorization'] = response.data;
+      setAuth(true);
+      setLoading(false);
+      navigate('/dashboard');
+    })
+      .catch((error) => {
+        // Error
+        if (error.response) {
+          if (error.response.data.errors) {
+            alert('Ambos os campos precisam ser definidos');
+          }
+          if (error.response.data.message) {
+            alert(error.response.data.message);
+            ;
+          }
+        }
+      })
   }
 
   const handleLogout = () => {
