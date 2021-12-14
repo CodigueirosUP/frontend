@@ -17,7 +17,7 @@ const ManagerProvider = ({ children }) => {
   }
 
   const putManager = async (id, gerenteValues) => {
-    await ApiWallet.put(`/gerente/idGerente?idGerente=${id}`, gerenteValues)
+    await ApiWallet.put(`/gerente/${id}`, gerenteValues)
   }
 
   const findManagerById = async (id) => {

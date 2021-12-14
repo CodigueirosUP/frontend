@@ -7,25 +7,20 @@ import { FaUserCircle } from 'react-icons/fa';
 
 const Header = () => {
 
-  const {handleLogout, typeUser} = useContext(AuthContext);
+  const {handleLogout} = useContext(AuthContext);
 
   return (
     <header >
       <div className={styles.headerContainer}>
         <div>
-        <a href="/">
-          <img width='50px' src={logo} alt="Logo" />
-          <span>Onde está o Wallet?</span>
-        </a>
+          <a href="/">
+            <img width='50px' src={logo} alt="Logo" />
+            <span>Onde está o Wallet?</span>
+          </a>
         </div>
         <div className={styles.rigth}>
-        <Menu />
-        {typeUser.usuario && 
-        <>
-        <span><span className={styles.user}><FaUserCircle className={styles.imgUser} />{typeUser.usuario}</span></span>
-        <button onClick={()=>handleLogout()}>sair</button>
-        </>
-        }
+          <Menu />
+          <button onClick={()=>handleLogout()}>sair</button>
         </div>
       </div>
     </header>

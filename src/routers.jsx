@@ -17,7 +17,7 @@ import ServiceCreate from "./pages/ServiceCreate";
 
 const Routers = () => {
 
-  const { auth, setAuth, setLoading, getType } = useContext(AuthContext);
+  const { auth, setAuth, setLoading } = useContext(AuthContext);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -25,7 +25,6 @@ const Routers = () => {
       setAuth(true);
       setLoading(false);
       ApiWallet.defaults.headers.common['Authorization'] = token;
-      getType();
     }
   }, [])
 
