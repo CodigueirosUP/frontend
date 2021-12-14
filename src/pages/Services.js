@@ -6,13 +6,13 @@ import { ServiceContext } from "../context/ServiceContext"
 
 const Services = () => {
 
-  const {typeUser} = useContext(AuthContext);
+  const {typeUser, getType} = useContext(AuthContext);
   const {getService, listService} = useContext(ServiceContext);
   const navigate = useNavigate();
 
   useEffect(() => {
     getService(typeUser);
-  },[])
+  }, [getType])
 
   return (
     <div className="container">
