@@ -27,7 +27,7 @@ const AuthProvider = ({children}) => {
     window.location.href = '/login';
   }
 
-  const getType = async (userName) => {
+  const getType = async () => {
     const { data } = await ApiWallet.get(`/username`)
     setTypeUser(data);
   }

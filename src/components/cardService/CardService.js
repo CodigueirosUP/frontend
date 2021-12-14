@@ -17,9 +17,6 @@ const CardService = ({ service, attList, setIdEdicao }) => {
     }
   }
 
-
-
-
   return (
     <div className={styles.pageCardService}>
       <div className={styles.containerCardService}>
@@ -29,6 +26,7 @@ const CardService = ({ service, attList, setIdEdicao }) => {
         <p>Moeda: {service.moeda}</p>
         <p>Valor: {service.valor}</p>
         <p>Periodicidade: {service.periocidade}</p>
+        <p>Gerente Encarregado: {service.gerente.nomeCompleto}</p>
         <button onClick={() => { navigate(`/criarservico/${service.idServico}`) }} ><FaEdit /></button>
         <button onClick={() => deleteServices(service.idServico)} ><RiDeleteBin2Fill /></button>
       </div>

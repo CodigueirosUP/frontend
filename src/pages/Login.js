@@ -18,7 +18,6 @@ const Login = () => {
             senha: ''
           }}
           onSubmit={ (values) => {
-            localStorage.setItem('typeuser', values.usuario)
             handleLogin(values);
             navigate('/dashboard');
           }}
