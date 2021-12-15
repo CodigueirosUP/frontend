@@ -4,11 +4,13 @@ import logo from '../../images/kisspng-where-s-wally-the-fantastic-journey-walke
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { FaUserCircle } from 'react-icons/fa';
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
 
   const {handleLogout, typeUser} = useContext(AuthContext);
-
+  const navigate = useNavigate()
+ 
   return (
     <header >
       <div className={styles.headerContainer}>
@@ -19,13 +21,13 @@ const Header = () => {
         </a>
         </div>
         <div className={styles.rigth}>
-        <Menu />
-        {typeUser.usuario && 
-        <>
-        <span><span className={styles.user}><FaUserCircle className={styles.imgUser} />{typeUser.usuario}</span></span>
-        <button onClick={()=>handleLogout()}>sair</button>
-        </>
-        }
+          <Menu />
+          {typeUser.usuario && 
+            <>
+              <span><span className={styles.user}><FaUserCircle className={styles.imgUser} />{typeUser.usuario}</span></span>
+              <button onClick={() => handleLogout(navigate)}>sair</button>
+            </>
+          }
         </div>
       </div>
     </header>
