@@ -1,11 +1,11 @@
-import { useContext, useState, useEffect } from "react"
+import { useContext } from "react"
 import { AuthContext } from "../context/AuthContext"
 import { Formik, Field, Form } from 'formik';
 import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
 
-  const { handleLogin, setUserInput } = useContext(AuthContext);
+  const { handleLogin } = useContext(AuthContext);
   const navigate = useNavigate();
   
   return (
