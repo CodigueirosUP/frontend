@@ -12,16 +12,32 @@ const Services = () => {
 
   useEffect(() => {
     getService(typeUser);
-  }, [])
+  }, [getType])
+  console.log(typeUser)
+  console.log(listService)
+
+  const adminOrManager = () => {
+    if(typeUser.usuario === 'admin'){
+      return(
+        listService && listService.map(service => (
+          <CardService key = {service.idServico} attList={getService} service = {service}/>
+        ))
+      );
+    }else {
+      return(
+        typeUser.servicoDTOList && typeUser.servicoDTOList.map(service => (
+          <CardService key = {service.idServico} attList={getService} service = {service}/>
+        ))
+      );
+    }
+  }
 
   return (
     <div className="container">
        <div className="content">
          <h1>Serviços</h1>
          <button onClick={()=>navigate('/criarservico')}>Adicionar serviço</button>
-         {listService && listService.map(service => (
-           <CardService key = {service.idServico} attList={getService} service = {service}/>
-         ))}
+         {adminOrManager()}
        </div>
     </div>
   )

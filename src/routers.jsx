@@ -34,9 +34,10 @@ const Routers = () => {
     }
   }, [])
 
-  const allRoutes = useMemo(() => {
-    return ( auth ?    
-      <Routes>
+  const authorizationRouters = () => {
+    if (typeUser.usuario === 'admin') {
+      return (
+        <Routes>
         <Route path='/' element={<Welcome />} />
         <Route path='/dashboard' element={<Dashboard />} />
         <Route path='/sobre' element={<About />} />
@@ -49,6 +50,24 @@ const Routers = () => {
         <Route path='/servicos' element={<Services />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
+      );
+    } else {
+      return (
+        <Routes>
+        <Route path='/' element={<Welcome />} />
+        <Route path='/dashboard' element={<Dashboard />} />
+        <Route path='/sobre' element={<About />} />
+        <Route path='/contato' element={<Contact />} />
+        <Route path='*' element={<NotFound />} />
+      </Routes>
+      );
+    }
+
+  }
+
+  const allRoutes = useMemo(() => {
+    return ( auth ?    
+      authorizationRouters()
       :
       <Routes>
         <Route path='/' element={<Welcome />} />
