@@ -5,7 +5,7 @@ import { AuthContext } from '../../context/AuthContext'
 
 const Menu = () => {
 
-  const { auth } = useContext(AuthContext);
+  const { auth, typeUser } = useContext(AuthContext);
 
   return (
     <>
@@ -13,8 +13,12 @@ const Menu = () => {
         auth ?
           <nav className={styles.menu}>
             <li><Link to='/dashboard' >Dashboard</Link></li>
+            {typeUser.usuario === 'admin' && 
+            <>
             <li><Link to='/gerentes'>Gerentes</Link></li>
             <li><Link to='/servicos'>Serviços</Link></li>
+            </>
+            }
             <li><Link to='/sobre' >Sobre</Link></li>
             <li><Link to='/contato' >Contato</Link></li>
           </nav>
