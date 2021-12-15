@@ -139,6 +139,13 @@ const ServiceCreate = () => {
         servicoEditDTO.valor = values.valor;
         servicoEditDTO.webSite = values.website;
         putService(id, servicoEditDTO)
+        .then(() =>{
+          navigate('/servicos')
+          toastSucess('Serviço editado com sucesso!')
+        })
+        .catch(() => {
+          toastError('Erro ao cadastrar!')
+        })
         
       
       } else { 
@@ -151,7 +158,7 @@ const ServiceCreate = () => {
         postService(values.gerente, servicoCreateDTO)
         .then(() => {
           //navigate('/servicos');
-          window.location.href='/servicos'
+          navigate('/servicos')
           toastSucess('Serviço cadastrado com sucesso');
         })
         .cath(() => {
