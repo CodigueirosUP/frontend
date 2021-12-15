@@ -12,7 +12,7 @@ const Services = () => {
 
   useEffect(() => {
     getService(typeUser);
-  }, [getType])
+  }, [])
 
   return (
     <div className="container">
