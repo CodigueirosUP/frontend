@@ -7,20 +7,20 @@ import { ServiceContext } from "../context/ServiceContext"
 const Services = () => {
 
   const {typeUser, getType} = useContext(AuthContext);
-  const {getService, listService} = useContext(ServiceContext);
+  const {getService, getServiceAttListAdmin, listService} = useContext(ServiceContext);
   const navigate = useNavigate();
 
   useEffect(() => {
     getService(typeUser);
   }, [getType])
-  console.log(typeUser)
-  console.log(listService)
+  // console.log(typeUser)
+  // console.log(listService)
 
   const adminOrManager = () => {
     if(typeUser.usuario === 'admin'){
       return(
         listService && listService.map(service => (
-          <CardService key = {service.idServico} attList={getService} service = {service}/>
+          <CardService key = {service.idServico} attList={getServiceAttListAdmin} service = {service}/>
         ))
       );
     }else {
