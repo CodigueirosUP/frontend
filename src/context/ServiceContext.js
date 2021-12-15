@@ -24,9 +24,8 @@ const ServiceProvider = ({ children }) => {
     }
   }
   
-  const postService = async (idManager, serviceValues, navigate) => {
+  const postService = async (idManager, serviceValues) => {
     await ApiWallet.post(`/servico/create-servico/${idManager}`, serviceValues).then((response) => {
-      navigate('/servicos');
     })
   }
 

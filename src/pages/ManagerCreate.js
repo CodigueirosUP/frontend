@@ -71,10 +71,10 @@ const MenagerCreate = () => {
         putManager(id, gerenteDTO)
         .then(() => {
           navigate('/gerentes')
-          toastSucess('Gerente cadastrado com sucesso')
+          toastSucess('Gerente editado com sucesso!')
         })
         .catch(() => {
-          toastError('Erro ao cadastrar')
+          toastError('Erro ao cadastrar!')
         })
         .finaly(() => {
           toastSucess('entrou aquii')
@@ -86,7 +86,7 @@ const MenagerCreate = () => {
         postManager(gerenteDTO)
         .then(() => {
           navigate('/gerentes')
-          toastSucess('Gerente cadastrado com sucesso')
+          toastSucess('Gerente cadastrado com sucesso!')
         })
         .catch((error) => {
           toastError(error.response.data.message)
