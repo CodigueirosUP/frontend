@@ -3,6 +3,7 @@ import { FaEdit } from 'react-icons/fa'
 import { RiDeleteBin2Fill } from 'react-icons/ri'
 import ApiWallet from '../../api'
 import { useNavigate } from 'react-router-dom'
+import { toastError, toastSucess } from '../../utils/toast'
 
 
 const CardManager = ({manager, attList, setIdEdicao}) => {
@@ -11,10 +12,17 @@ const CardManager = ({manager, attList, setIdEdicao}) => {
 
   const deleteManager = async (idGerente) => {
     try {
-      await ApiWallet.delete(`/gerente/${idGerente}`);
+      await ApiWallet.delete(`/gerente/${idGerente}`)
+      .then(() => {
+        toastSucess('Gerente removido com sucesso')
+      })
+      .catch(() => {
+        toastError('Algo deu errado ao tentar remover')
+      })
     } finally {
       attList()
     }
+
   }
   
   return (

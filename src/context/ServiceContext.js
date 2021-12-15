@@ -3,14 +3,16 @@ import React, { createContext, useState } from "react"
 import ApiWallet from "../api"
 
 
-
 const ServiceContext = createContext()
-
-
 
 const ServiceProvider = ({ children }) => {
 
   const [listService, setListService] = useState([])
+
+  const getServiceAttListAdmin =  async () => {
+    const { data } = await ApiWallet.get('/servico/list-servico');
+    setListService(data);
+  }
 
   const getService = async (typeUser) => {
     
@@ -24,7 +26,6 @@ const ServiceProvider = ({ children }) => {
   
   const postService = async (idManager, serviceValues, navigate) => {
     await ApiWallet.post(`/servico/create-servico/${idManager}`, serviceValues).then((response) => {
-      alert('servico cadastrado com sucesso');
       navigate('/servicos');
     })
   }
@@ -39,7 +40,7 @@ const ServiceProvider = ({ children }) => {
   }
 
   return (
-    <ServiceContext.Provider value={{ listService, getService, postService, putService, findServiceById }}>
+    <ServiceContext.Provider value={{ listService, getService, postService, putService, findServiceById, getServiceAttListAdmin }}>
       {children}
     </ServiceContext.Provider>
   )

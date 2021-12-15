@@ -4,8 +4,8 @@ import * as Yup from 'yup';
 import { ManagerContext } from '../context/ManagerContext';
 import SelectCustom from '../components/customElement/SelectCustom';
 import { ServiceContext } from '../context/ServiceContext';
-import { useParams } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import { toastError, toastSucess } from '../utils/toast';
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
@@ -94,8 +94,9 @@ const TextInputLiveFeedback = ({ label, helpText, ...props }) => {
 };
 
 const ServiceCreate = () => {
-  
+
   const navigate = useNavigate();
+
 
   const { getManagers, managerList} = useContext(ManagerContext);
   useEffect(() => {
@@ -114,7 +115,6 @@ const ServiceCreate = () => {
     })
   }
 
-
   const formik = useFormik({
     initialValues: {
       nome: '',
@@ -126,6 +126,8 @@ const ServiceCreate = () => {
       gerente: ''
     },
 
+
+
     onSubmit: async (values) => {
       values.valor = parseInt(values.valor);
       if ( id) {
@@ -136,7 +138,9 @@ const ServiceCreate = () => {
         servicoEditDTO.periocidade = values.periocidade;
         servicoEditDTO.valor = values.valor;
         servicoEditDTO.webSite = values.website;
-        putService(id, servicoEditDTO);
+        putService(id, servicoEditDTO)
+        
+      
       } else { 
         servicoCreateDTO.descricao = values.descricao;
         servicoCreateDTO.moeda = values.moeda;
@@ -144,7 +148,16 @@ const ServiceCreate = () => {
         servicoCreateDTO.periocidade = values.periocidade;
         servicoCreateDTO.valor = values.valor;
         servicoCreateDTO.webSite = values.website;
-        postService(values.gerente, servicoCreateDTO, navigate);
+        postService(values.gerente, servicoCreateDTO)
+        .then(() => {
+          //navigate('/servicos');
+          window.location.href='/servicos'
+          toastSucess('Serviço cadastrado com sucesso');
+        })
+        .cath(() => {
+          toastError('Erro ao cadastrar serviço')
+        })
+        
       }
   
     },

@@ -1,10 +1,11 @@
 import React, { useContext, useEffect } from 'react';
 import { useFormik, FormikProvider, Form } from 'formik';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 // import './styles.css';
 import * as Yup from 'yup';
 import { ManagerContext } from '../context/ManagerContext';
 import TextInputLiveFeedback from '../components/TextInpuLiveFeedback/TextInputLiveFeedback';
+import {toastSucess, toastError } from '../utils/toast'
 
 // const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
@@ -14,6 +15,8 @@ const MenagerCreate = () => {
   const { postManager, putManager, findManagerById } = useContext(ManagerContext)
 
   const { id } = useParams()
+
+  const navigate = useNavigate()
 
   const gerenteDTO = { 
     email: '',
@@ -66,10 +69,33 @@ const MenagerCreate = () => {
 
       if (id) {
         putManager(id, gerenteDTO)
+        .then(() => {
+          navigate('/gerentes')
+          toastSucess('Gerente cadastrado com sucesso')
+        })
+        .catch(() => {
+          toastError('Erro ao cadastrar')
+        })
+        .finaly(() => {
+          toastSucess('entrou aquii')
+          console.log("entroiuuuuy")
+        })
       } else {
         gerenteDTO.usuario.usuario = values.usuario
         gerenteDTO.usuario.senha = values.senha
         postManager(gerenteDTO)
+        .then(() => {
+          navigate('/gerentes')
+          toastSucess('Gerente cadastrado com sucesso')
+        })
+        .catch((error) => {
+          toastError(error.response.data.message)
+        })
+        .finaly(() => {
+          //toastSucess(message)
+          //console.log("entroiuuuuy")
+        })
+        
       }
     },
     validationSchema: validationSchema()
@@ -99,7 +125,7 @@ const MenagerCreate = () => {
             {!id && <TextInputLiveFeedback label="Usuário" id="usuario" name="usuario" type="text" />}
             {!id && <TextInputLiveFeedback label="Senha" id="senha" name="senha" type="text" />}
             <div>
-              <button type="submit">Submit</button>
+              <button type="submit">Cadastrar</button>
               <button type="reset">Reset</button>
             </div>
           </Form>
