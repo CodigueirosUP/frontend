@@ -18,10 +18,8 @@ const DashboardProvider = ({children}) => {
     }
   }
   
-
   const identifyMaxValue = () => {
-    const values = [];
-    dataService.map(service => values.push(service.valor));
+    const values = dataService.map(service => service.valor)
     const maxService = dataService.find(service => service.valor === Math.max(...values)); 
     setMaxServiceValue(maxService);
   }
