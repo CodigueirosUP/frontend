@@ -6,7 +6,9 @@ const DashboardContext = createContext();
 const DashboardProvider = ({children}) => {
 
   const [dataService, setDataService] = useState([]);
-  const [maxServiceValue, setMaxServiceValue] = useState();
+  const [moreExpansiveService, setMoreExpansiveService] = useState();
+  const [totalValueService, setTotalValueService] = useState();
+
 
   const IdentifyUser = async (user) => {
     if( user.idUser === 1){
@@ -14,26 +16,24 @@ const DashboardProvider = ({children}) => {
       setDataService(data)
     }else{
       setDataService(user)
-      
     }
   }
-  
-  const identifyMaxValue = (user) => {
-    if(user.usuario === 'admin'){
-      const values = dataService.map(service => service.valor)
-      const maxService = dataService.find(service => service.valor === Math.max(...values)); 
-      console.log(dataService)
-      setMaxServiceValue(maxService);
-    }else {
-      const values = dataService.servicoDTOList.map(service => service.valor)
-      const maxService = dataService.servicoDTOList.find(service => service.valor === Math.max(...values)); 
-      console.log(dataService)
-      setMaxServiceValue(maxService);
-    }
+ 
+  const identifyMoreExpansiveValue = () => {
+    const values = dataService.map(service => service.valor);
+    const maxService = dataService.find(service => service.valor === Math.max(...values)); 
+    setMoreExpansiveService(maxService);
+  }
+
+  const identifyTotalValue = () => {
+    const values = dataService.map(service => service.valor);
+    const totalValueService = values.reduce((values, totalValues) => values + totalValues, 0); 
+    setTotalValueService(totalValueService);
+    console.log(totalValueService)
   }
 
   return(
-  <DashboardContext.Provider value={{dataService, setDataService, IdentifyUser, maxServiceValue, identifyMaxValue}}>
+  <DashboardContext.Provider value={{dataService, setDataService, IdentifyUser, moreExpansiveService, identifyMoreExpansiveValue, identifyTotalValue, totalValueService}}>
     {children}
   </DashboardContext.Provider>
   )

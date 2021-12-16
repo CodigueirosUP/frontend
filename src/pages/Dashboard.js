@@ -3,16 +3,22 @@ import { AuthContext } from "../context/AuthContext";
 import { FaFilter, FaSearch } from 'react-icons/fa';
 import grafico from '../images/exemplo-de-grafico-de-barras.jpg'
 import { DashboardContext } from "../context/DashboardContext";
+import { formactCurrencyIeneAndYuan, formactCurrencyReal } from "../utils/formactCurrency";
 
 const Dashboard = () => {
 
   const { typeUser, getType } = useContext(AuthContext);
-  const { IdentifyUser, identifyMaxValue, maxServiceValue } = useContext(DashboardContext);
+  const { IdentifyUser, identifyMoreExpansiveValue, moreExpansiveService, totalValueService, setTotalValueService, identifyTotalValue } = useContext(DashboardContext);
 
   useEffect(()=>{
     getType();
     
   },[])
+
+  useEffect(()=>{
+    identifyMoreExpansiveValue()
+    identifyTotalValue()
+  })
 
   useEffect(()=>{
     IdentifyUser(typeUser);
@@ -22,7 +28,6 @@ const Dashboard = () => {
   return (
     <div className="container">
       <div className="content">
-        <button onClick={()=>identifyMaxValue(typeUser)}>pegaaaa</button>
         <div>
           <div>
             <h4>Todos os gerentes</h4>
@@ -32,7 +37,7 @@ const Dashboard = () => {
           </div>
           <div >
             <span>Gasto total</span>
-            <h1>R$99.999,99</h1>
+            <h1>{formactCurrencyReal(totalValueService)}</h1>
             <span>Dezembro/21</span>
           </div>
           <div >
@@ -40,11 +45,11 @@ const Dashboard = () => {
             <h1>R$99.999,99</h1>
             <span>Janeiro/21</span>
           </div>
-          {maxServiceValue ?
+          {moreExpansiveService ?
             <div>
               <span>Serviço mais caro</span>
-              <h3>{maxServiceValue.nome}</h3>
-              <h1>{maxServiceValue.valor}</h1>
+              <h3>{moreExpansiveService.nome}</h3>
+              <h1>{formactCurrencyIeneAndYuan(moreExpansiveService.valor)}</h1>
             </div> :
             <div>
               <h2>Não existem serviços cadastrados</h2>
