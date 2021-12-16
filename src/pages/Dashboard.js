@@ -16,12 +16,13 @@ const Dashboard = () => {
 
   useEffect(()=>{
     IdentifyUser(typeUser);
+    console.log(typeUser)
   },[typeUser])
 
   return (
     <div className="container">
       <div className="content">
-        <button onClick={()=>identifyMaxValue()}>pegaaaa</button>
+        <button onClick={()=>identifyMaxValue(typeUser)}>pegaaaa</button>
         <div>
           <div>
             <h4>Todos os gerentes</h4>

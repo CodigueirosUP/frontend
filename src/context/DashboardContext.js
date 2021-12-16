@@ -18,10 +18,18 @@ const DashboardProvider = ({children}) => {
     }
   }
   
-  const identifyMaxValue = () => {
-    const values = dataService.map(service => service.valor)
-    const maxService = dataService.find(service => service.valor === Math.max(...values)); 
-    setMaxServiceValue(maxService);
+  const identifyMaxValue = (user) => {
+    if(user.usuario === 'admin'){
+      const values = dataService.map(service => service.valor)
+      const maxService = dataService.find(service => service.valor === Math.max(...values)); 
+      console.log(dataService)
+      setMaxServiceValue(maxService);
+    }else {
+      const values = dataService.servicoDTOList.map(service => service.valor)
+      const maxService = dataService.servicoDTOList.find(service => service.valor === Math.max(...values)); 
+      console.log(dataService)
+      setMaxServiceValue(maxService);
+    }
   }
 
   return(
