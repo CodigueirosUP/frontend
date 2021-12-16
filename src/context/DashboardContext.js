@@ -14,16 +14,16 @@ const DashboardProvider = ({children}) => {
       setDataService(data)
     }else{
       setDataService(user)
-
+      
     }
   }
+  
 
   const identifyMaxValue = () => {
     const values = [];
-    dataService.map(service => {values.push(service.valor)});
-    setMaxServiceValue(Math.max(...values));
-    const maxService = dataService.find(service => service.valor === maxServiceValue); 
-    console.log(maxService);
+    dataService.map(service => values.push(service.valor));
+    const maxService = dataService.find(service => service.valor === Math.max(...values)); 
+    setMaxServiceValue(maxService);
   }
 
   return(

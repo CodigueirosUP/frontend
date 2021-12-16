@@ -16,7 +16,6 @@ const Dashboard = () => {
 
   useEffect(()=>{
     IdentifyUser(typeUser);
-    
   },[typeUser])
 
   return (
@@ -40,11 +39,16 @@ const Dashboard = () => {
             <h1>R$99.999,99</h1>
             <span>Janeiro/21</span>
           </div>
-          <div >
-            <span>Serviço mais caro</span>
-            <h3>Amazon Services</h3>
-            <h1>{maxServiceValue}</h1>
-          </div>
+          {maxServiceValue ?
+            <div>
+              <span>Serviço mais caro</span>
+              <h3>{maxServiceValue.nome}</h3>
+              <h1>{maxServiceValue.valor}</h1>
+            </div> :
+            <div>
+              <h2>Não existem serviços cadastrados</h2>
+            </div>
+          }
         </div>
         <div>
           <div >
