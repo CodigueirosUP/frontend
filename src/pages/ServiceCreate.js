@@ -143,8 +143,8 @@ const ServiceCreate = () => {
           navigate('/servicos')
           toastSucess('Serviço editado com sucesso!')
         })
-        .catch(() => {
-          toastError('Erro ao cadastrar!')
+        .catch((errors) => {
+          toastError(errors.response.data.errors[0])
         })
         
       
@@ -161,8 +161,8 @@ const ServiceCreate = () => {
           navigate('/servicos')
           toastSucess('Serviço cadastrado com sucesso');
         })
-        .cath(() => {
-          toastError('Erro ao cadastrar serviço')
+        .catch((errors) => {
+          toastError(errors.response.data.errors[0])
         })
         
       }
