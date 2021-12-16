@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import { toastError, toastSucess } from '../../utils/toast'
 import { useContext } from 'react'
 import { ServiceContext } from '../../context/ServiceContext'
+import { formactCurrencyReal } from '../../utils/formactCurrency'
 
 
 
@@ -38,7 +39,7 @@ const CardService = ({ service, attList, setIdEdicao }) => {
         <p>Descrição: {service.descricao}</p>
         <p>Website: {service.webSite}</p>
         <p>Moeda: {service.moeda}</p>
-        <p>Valor: {service.valor}</p>
+        <p>Valor: {formactCurrencyReal(service.valor)}</p>
         <p>Periodicidade: {service.periocidade}</p>
         {service.gerente &&  <p>Gerente Encarregado: {service.gerente.nomeCompleto}</p>}
         <button onClick={() => { navigate(`/criarservico/${service.idServico}`) }} ><FaEdit /></button>
