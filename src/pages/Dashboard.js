@@ -22,12 +22,12 @@ const Dashboard = () => {
 
   useEffect(()=>{
     IdentifyUser(typeUser);
+    console.log(typeUser)
   },[typeUser])
 
   return (
     <div className="container">
       <div className="content">
-        <button onClick={()=>identifyTotalValue()}>pegaaaa</button>
         <div>
           <div>
             <h4>Todos os gerentes</h4>
