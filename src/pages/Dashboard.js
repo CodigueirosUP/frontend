@@ -3,11 +3,12 @@ import { AuthContext } from "../context/AuthContext";
 import { FaFilter, FaSearch } from 'react-icons/fa';
 import grafico from '../images/exemplo-de-grafico-de-barras.jpg'
 import { DashboardContext } from "../context/DashboardContext";
+import CardServiceDashboard from "../components/cardServiceDashboard/CardServiceDashboard";
 
 const Dashboard = () => {
 
   const { typeUser, getType } = useContext(AuthContext);
-  const { IdentifyUser, identifyMaxValue, maxServiceValue } = useContext(DashboardContext);
+  const { IdentifyUser, identifyMaxValue, maxServiceValue, dataService, filterOrder } = useContext(DashboardContext);
 
   useEffect(()=>{
     getType();
@@ -52,14 +53,17 @@ const Dashboard = () => {
           }
         </div>
         <div>
-          <div >
+          <div className="sectionListService">
+            <h3>Serviços</h3>
            <FaFilter />
-           <select name="filtro" id="filtro">
-             <option value="maiormenor">Maior → Menor</option>
-             <option value="menormaior">Menor ← Maior</option>
+           <select name="filtro" id="filtro" onChange={(e) => filterOrder(e.target.value)}>
+             <option value="0" >Maior → Menor</option>
+             <option value="1" >Menor ← Maior</option>
            </select>
            <div>
-             <span>AQUI FICA A LISTA</span>
+             {dataService && dataService.map(service => (
+          <CardServiceDashboard key = {service.idServico} service = {service}/>))   
+             }
            </div>
           </div>
           <div >
