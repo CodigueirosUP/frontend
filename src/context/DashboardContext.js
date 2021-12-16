@@ -15,7 +15,7 @@ const DashboardProvider = ({children}) => {
       const { data } = await ApiWallet.get('/servico/list-servico');
       setDataService(data)
     }else{
-      setDataService(user)
+      setDataService(user.servicoDTOList)
     }
   }
  
@@ -32,8 +32,27 @@ const DashboardProvider = ({children}) => {
     console.log(totalValueService)
   }
 
+  const filterOrder = (option) => {
+    if(option === '0'){
+      setDataService(
+        dataService.sort((a, b) => {
+          return a.valor > b.valor ? -1 : (a.valor < b.valor) ? 1 : 0;
+        } )
+      )
+      console.log(dataService)
+    }
+    else if(option === '1'){
+      setDataService(
+        dataService.sort((a, b) => {
+         return a.valor < b.valor ? -1 : (a.valor > b.valor) ? 1 : 0;
+        } )
+      )
+       console.log(dataService)
+  }
+}
+
   return(
-  <DashboardContext.Provider value={{dataService, setDataService, IdentifyUser, moreExpansiveService, identifyMoreExpansiveValue, identifyTotalValue, totalValueService}}>
+  <DashboardContext.Provider value={{filterOrder, dataService, setDataService, IdentifyUser, moreExpansiveService, identifyMoreExpansiveValue, identifyTotalValue, totalValueService}}>
     {children}
   </DashboardContext.Provider>
   )
