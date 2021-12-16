@@ -7,19 +7,22 @@ import { DashboardContext } from "../context/DashboardContext";
 const Dashboard = () => {
 
   const { typeUser, getType } = useContext(AuthContext);
-  const { IdentifyUser } = useContext(DashboardContext);
+  const { IdentifyUser, identifyMaxValue, maxServiceValue } = useContext(DashboardContext);
 
   useEffect(()=>{
     getType();
+    
   },[])
 
   useEffect(()=>{
     IdentifyUser(typeUser);
+    
   },[typeUser])
 
   return (
     <div className="container">
       <div className="content">
+        <button onClick={()=>identifyMaxValue()}>pegaaaa</button>
         <div>
           <div>
             <h4>Todos os gerentes</h4>
@@ -40,7 +43,7 @@ const Dashboard = () => {
           <div >
             <span>Serviço mais caro</span>
             <h3>Amazon Services</h3>
-            <h1>R$99.999,99</h1>
+            <h1>{maxServiceValue}</h1>
           </div>
         </div>
         <div>
