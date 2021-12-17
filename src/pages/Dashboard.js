@@ -14,12 +14,6 @@ const Dashboard = () => {
   const { typeUser, getType } = useContext(AuthContext);
   const { IdentifyUser, dataService, filterOrder, identifyMoreExpansiveValue, moreExpansiveService, totalValueService, identifyTotalValue } = useContext(DashboardContext);
 
-
-  useEffect(()=>{
-    identifyMoreExpansiveValue(typeUser)
-    identifyTotalValue(typeUser)
-  })
-
   useEffect(()=>{
     IdentifyUser(typeUser);
   },[typeUser])
@@ -64,11 +58,11 @@ const Dashboard = () => {
              <option value="1" >Menor ← Maior</option>
            </select>
            <div>
-             {dataService &&
+             {/* {dataService &&
              dataService.map(service => (
           <CardServiceDashboard key = {service.idServico} service = {service}/>))   
              
-             }
+             } */}
            </div>
           </div>
           <div >

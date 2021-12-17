@@ -19,7 +19,8 @@ const AuthProvider = ({children}) => {
       localStorage.setItem('token', response.data);
       ApiWallet.defaults.headers.common['Authorization'] = response.data;
       setAuth(true);
-      navigate('/dashboard');
+      // navigate('/dashboard');
+      window.location.href = '/dashboard'
     })
     .catch((error) => {
       // Error

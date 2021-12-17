@@ -12,17 +12,20 @@ const DashboardProvider = ({children}) => {
 
 
   const IdentifyUser = async (user) => {
+   
     if( user.idUser === 1){
       const { data } = await ApiWallet.get('/servico/list-servico');
+      console.log('data', data)
       setDataService(data)
       setDataServiceValues(data)
-      console.log(dataServiceValues)
-      console.log(dataService)
+      console.log('admin - dataServiceValues', dataServiceValues)
+      console.log('admin - dataService', dataService)
     }else{
+      console.log('user', user)
       setDataService(user)
       setDataServiceValues(user.servicoDTOList)
-      console.log(dataServiceValues)
-      console.log(dataService)
+      console.log('gerente - dataServiceValues', dataServiceValues)
+      console.log('gerente - dataService', dataService)
     }
   }
  

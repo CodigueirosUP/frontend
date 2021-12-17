@@ -17,11 +17,13 @@ import ServiceCreate from "./pages/ServiceCreate";
 import { ServiceContext } from "./context/ServiceContext";
 import Loading from "./components/loading/Loading";
 import { ToastContainer } from 'react-toastify';
+import { DashboardContext } from "./context/DashboardContext";
 
 const Routers = () => {
 
   const { auth, setAuth, setLoading, getType, typeUser, loading } = useContext(AuthContext);
   const { getService } = useContext(ServiceContext);
+  const { IdentifyUser } = useContext(DashboardContext);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -31,6 +33,7 @@ const Routers = () => {
       setAuth(true);
       getService(typeUser);
       setLoading(false);
+      // IdentifyUser(typeUser)
     }
   }, [])
 
