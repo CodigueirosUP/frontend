@@ -6,6 +6,7 @@ const DashboardContext = createContext();
 const DashboardProvider = ({children}) => {
 
   const [dataService, setDataService] = useState([]);
+  const [dataServiceValues, setDataServiceValues] = useState([]);
   const [moreExpansiveService, setMoreExpansiveService] = useState();
   const [totalValueService, setTotalValueService] = useState();
 
@@ -14,22 +15,35 @@ const DashboardProvider = ({children}) => {
     if( user.idUser === 1){
       const { data } = await ApiWallet.get('/servico/list-servico');
       setDataService(data)
+      setDataServiceValues(data)
+      console.log(dataServiceValues)
+      console.log(dataService)
     }else{
-      setDataService(user.servicoDTOList)
+      setDataService(user)
+      setDataServiceValues(user.servicoDTOList)
+      console.log(dataServiceValues)
+      console.log(dataService)
     }
   }
  
-  const identifyMoreExpansiveValue = () => {
-    const values = dataService.map(service => service.valor);
-    const maxService = dataService.find(service => service.valor === Math.max(...values)); 
-    setMoreExpansiveService(maxService);
+  const identifyMoreExpansiveValue = (user) => {
+    if( user.idUser === 1){
+      const values = dataService.map(service => service.valor);
+      const maxService = dataService.find(service => service.valor === Math.max(...values)); 
+      setMoreExpansiveService(maxService);
+    }else{
+      console.log('falta fazer do gerente')
+    }
   }
 
-  const identifyTotalValue = () => {
-    const values = dataService.map(service => service.valor);
-    const totalValueService = values.reduce((values, totalValues) => values + totalValues, 0); 
-    setTotalValueService(totalValueService);
-    console.log(totalValueService)
+  const identifyTotalValue = (user) => {
+    if( user.idUser === 1){
+      const values = dataService.map(service => service.valor);
+      const totalValueService = values.reduce((values, totalValues) => values + totalValues, 0); 
+      setTotalValueService(totalValueService);
+    }else{
+      console.log('falta fazer do gerente')
+    }
   }
 
   const filterOrder = (option) => {
@@ -39,7 +53,6 @@ const DashboardProvider = ({children}) => {
           return a.valor > b.valor ? -1 : (a.valor < b.valor) ? 1 : 0;
         } )
       )
-      console.log(dataService)
     }
     else if(option === '1'){
       setDataService(
@@ -47,7 +60,6 @@ const DashboardProvider = ({children}) => {
          return a.valor < b.valor ? -1 : (a.valor > b.valor) ? 1 : 0;
         } )
       )
-       console.log(dataService)
   }
 }
 

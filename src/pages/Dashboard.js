@@ -5,25 +5,23 @@ import grafico from '../images/exemplo-de-grafico-de-barras.jpg'
 import { DashboardContext } from "../context/DashboardContext";
 import CardServiceDashboard from "../components/cardServiceDashboard/CardServiceDashboard";
 import { formactCurrencyIeneAndYuan, formactCurrencyReal } from "../utils/formactCurrency";
+import Graphic from "../components/graphic/Graphic";
+
+
 
 const Dashboard = () => {
 
   const { typeUser, getType } = useContext(AuthContext);
-  const { IdentifyUser, dataService, filterOrder, identifyMoreExpansiveValue, moreExpansiveService, totalValueService, setTotalValueService, identifyTotalValue } = useContext(DashboardContext);
+  const { IdentifyUser, dataService, filterOrder, identifyMoreExpansiveValue, moreExpansiveService, totalValueService, identifyTotalValue } = useContext(DashboardContext);
+
 
   useEffect(()=>{
-    getType();
-    
-  },[])
-
-  useEffect(()=>{
-    identifyMoreExpansiveValue()
-    identifyTotalValue()
+    identifyMoreExpansiveValue(typeUser)
+    identifyTotalValue(typeUser)
   })
 
   useEffect(()=>{
     IdentifyUser(typeUser);
-    console.log(typeUser)
   },[typeUser])
 
   return (
@@ -66,14 +64,16 @@ const Dashboard = () => {
              <option value="1" >Menor ← Maior</option>
            </select>
            <div>
-             {dataService && dataService.map(service => (
+             {dataService &&
+             dataService.map(service => (
           <CardServiceDashboard key = {service.idServico} service = {service}/>))   
+             
              }
            </div>
           </div>
           <div >
             <div>
-              <img src= {grafico} alt="grafico" />
+              <Graphic/>
             </div>
           </div>
         </div>

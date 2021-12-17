@@ -1,14 +1,11 @@
 import React, { useContext, useEffect } from 'react';
-import { useFormik, FormikProvider, Form, useField, Field } from 'formik';
+import { useFormik, FormikProvider, Form, useField } from 'formik';
 import * as Yup from 'yup';
 import { ManagerContext } from '../context/ManagerContext';
 import SelectCustom from '../components/customElement/SelectCustom';
 import { ServiceContext } from '../context/ServiceContext';
 import { useNavigate, useParams } from 'react-router-dom';
 import { toastError, toastSucess } from '../utils/toast';
-
-const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-
 
 const moedaOption = [
   {value:'REAL', label:'REAL'},
@@ -23,11 +20,6 @@ const periocidadeOption = [
   {value:"TRIMESTRAL", label:'Trimestral'},
   {value:"SEMESTRAL", label:'Semestral'},
   {value:"ANUAL", label:'Anual'}
-]
-
-const statusOption = [
-  {value:'ATIVO', label:'Ativo'},
-  {value:'INATIVO', label:'Inativo'}
 ]
 
 const servicoEditDTO = {
@@ -49,18 +41,12 @@ const servicoCreateDTO = {
   webSite: ""
 }
 
-
-
 const TextInputLiveFeedback = ({ label, helpText, ...props }) => {
   const [field, meta] = useField(props);
 
-  // Show inline feedback if EITHER
-  // - the input is focused AND value is longer than 2 characters
-  // - or, the has been visited (touched === true)
   const [didFocus, setDidFocus] = React.useState(false);
   const handleFocus = () => setDidFocus(true);
   const showFeedback =
-    // (!!didFocus && field.value.trim().length > 2) || 
     meta.touched;
 
   return (
@@ -168,43 +154,38 @@ const ServiceCreate = () => {
       }
   
     },
-    //   validationSchema: Yup.object({
-    //     nome: Yup.string()
-    //     .max(32, 'Máximo 32 caracteres')
-    //     .min(6, 'Mínumo 6 caracteres')
-    //     .required('Campo Obrigatório')
-    //     .matches(
-    //       /[a-zA-Z]+/,
-    //       'Inserir apenas letras'
-    //     ),
+      validationSchema: Yup.object({
+        nome: Yup.string()
+        .max(32, 'Máximo 32 caracteres')
+        .min(6, 'Mínumo 6 caracteres')
+        .required('Campo Obrigatório')
+        .matches(
+          /[a-zA-Z]+/,
+          'Inserir apenas letras'
+        ),
 
-    //     descricao: Yup.string()
-    //     .max(32, 'Máximo 32 caracteres')
-    //     .min(6, 'Mínumo 6 caracteres')
-    //     .required('Campo Obrigatório')
-    //     .matches(
-    //       /[a-zA-Z]+/,
-    //       'Inserir uma descrição válida'
-    //     ),
+        descricao: Yup.string()
+        .max(32, 'Máximo 32 caracteres')
+        .min(6, 'Mínumo 6 caracteres')
+        .required('Campo Obrigatório')
+        .matches(
+          /[a-zA-Z]+/,
+          'Inserir uma descrição válida'
+        ),
 
-    //     website: Yup.string()
-    //     .min(6, 'Mínumo 6 caracteres')
-    //     .max(32, 'Máximo 32 caracteres')
-    //     .required('Campo Obrigatório')
-    //     .matches(
-    //       /^((ftp|http|https):\/\/)?www\.([A-z]+)\.([A-z]{2,})/,
-    //       'Favor inserir um email válido'
-    //     ),
+        website: Yup.string()
+        .min(6, 'Mínumo 6 caracteres')
+        .max(32, 'Máximo 32 caracteres')
+        .required('Campo Obrigatório')
+        .matches(
+          /^((ftp|http|https):\/\/)?www\.([A-z]+)\.([A-z]{2,})/,
+          'Favor inserir um website válido'
+        ),
 
-    //     valor: Yup.string()
-    //     .min(6, 'Mínimo 6 caracteres')
-    //     .max(32, 'Máximo 12 caracteres')
-    //     .required('Campo Obrigatório')
-    //     .matches(
-    //       /@"^-?[0-9][0-9,\.]+$"/,
-    //       'Favor inserir um valor válido'
-    //     ),
-    // }),
+        valor: Yup.string()
+        .max(32, 'Máximo 12 caracteres')
+        .required('Campo Obrigatório'),
+    }),
   });
   
   const fetchService = async () => {

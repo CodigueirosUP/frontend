@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import styles from './Menu.module.css'
-import { useContext, useEffect } from 'react'
+import { useContext } from 'react'
 import { AuthContext } from '../../context/AuthContext'
 
 const Menu = () => {
