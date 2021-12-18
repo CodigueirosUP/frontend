@@ -12,6 +12,7 @@ const Services = () => {
 
   useEffect(() => {
     getService(typeUser);
+    console.log(listService)
   }, [getType])
   // console.log(typeUser)
   // console.log(listService)
