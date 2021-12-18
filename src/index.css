@@ -45,6 +45,7 @@ code {
 
 }
 
+<<<<<<< HEAD
 .rigth {
   display: flex;
   flex-direction: column;
@@ -61,6 +62,9 @@ code {
 }
 
 .welcome .rigth h1{
+=======
+.welcome h1{
+>>>>>>> 12f1af10fb87db76cfa082c5cb6f6e4d54aa3693
   color: #EE2A25;
   font-size: 50px;
 }
@@ -79,6 +83,7 @@ code {
   color: #FFFFFF;
   font-size: 16px;
   padding: 12px 12px;
+<<<<<<< HEAD
   margin-top: 20px;
 }
 
@@ -87,6 +92,8 @@ code {
   cursor: pointer;
   border: 3px solid #009CDB;
   color: #009CDB;
+=======
+>>>>>>> 12f1af10fb87db76cfa082c5cb6f6e4d54aa3693
 }
 
 
@@ -260,4 +267,127 @@ input[type='submit']:focus-visible {
   color: red;
 }
 
+/* ------------------------------------Contato-----------------------------------*/
+.contacttitle{
+display: flex;
+align-items: center;
+flex-direction: column;
 
+}
+
+.contact{
+display: flex;
+align-items: center;
+flex-direction: column;
+margin-bottom: 15px;
+}
+
+.contactquestion{
+  width: 100%;
+  padding-left: 15px;
+  font-style: italic;
+  background-color: rgb(211, 211, 211);
+  display: flex;
+  top: 84px;
+  right: 0;
+  justify-content: space-around;
+
+}
+
+
+.contactForm{
+  background-color: rgb(238, 42, 37, 0.8);
+  width: 300px;
+ 
+}
+
+.contactForm form{
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.contactForm input{
+  width: 221px;
+  border-radius: 5px;
+}
+
+.contactForm label{
+  justify-content: start;
+  width: 235px;
+  margin-top: 16px;
+}
+
+.contactForm select{
+ margin-top: 0;
+ border-radius: 5px;
+
+}
+
+/* .container button{
+  width: 100px;
+  cursor: pointer;
+  margin: 15px;
+  background-color: #009CDB;
+} */
+
+.contactquestion h1{
+  color: #EE2A25;
+}
+
+.btnContainer{
+  height: 75px;
+  margin-top: 15px;
+  justify-content: center;
+}
+
+.btnContainer button {
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 16px;
+  letter-spacing: 1px;
+  padding: 13px 20px 13px;
+  outline: 0;
+  border: 1px solid black;
+  cursor: pointer;
+  position:relative;
+  background-color: rgb(211, 211, 211);
+  
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  justify-content: center;
+  z-index: 5;
+}
+
+.btnContainer button:after {
+  content: "";
+  border-radius: 20px;
+  background-color: #009CDB;
+  width: 100%;
+  z-index: -1;
+  position: absolute;
+  height: 100%;
+  top: 7px;
+  left: 7px;
+  transition: 0.2s;
+}
+
+.btnContainer button:hover:after {
+  top: 0px;
+  left: 0px;
+}
+
+@media (min-width: 768px) {
+  .btnContainer button {
+    padding: 13px 50px 13px;
+  }
+}
+
+.containerContact{
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
+}
