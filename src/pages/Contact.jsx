@@ -12,11 +12,11 @@ const Contact = () => {
             <div>
               <div className="contacttitle">
                 <h1>Gostaria de saber mais?</h1>
-                <h4>Entre em contato para que possamos tirar todas as suas dúvidas</h4>
+                <h4>Utilize nosso canal de contato e entre em contato para que possamos tirar todas as suas dúvidas, e assim, poder melhor atender suas necessidades.</h4>
               </div>
 
               <div className='contact'>
-                <h1>Fale com a gente</h1>
+                <h1>Fale Conosco</h1>
                 <p><BsTelephone /> (99)99999-9999</p>
                 <p><AiOutlineMail /> suporte@wallet.com</p>
               </div>
@@ -25,6 +25,7 @@ const Contact = () => {
 
           <div className='contactForm'>
             <form >
+            <h3>Queremos ouvir você</h3>
               <label>Digite seu nome completo</label>
               <input type="text" placeholder="Nome Completo" required />
 
@@ -36,6 +37,8 @@ const Contact = () => {
                 <option value="1">Contratar serviço</option>
                 <option value="2">Desenvolvedores</option>
                 <option value="3">Estou com dificuldades</option>
+                <option value="4">Elogios</option>
+                <option value="5">Reclamações</option>
               </select>
 
               <label for="">Sua mensagem</label>
