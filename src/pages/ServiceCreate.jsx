@@ -107,6 +107,7 @@ const ServiceCreate = () => {
       descricao: '',
       website: '',
       valor: '',
+      date: '',
       moeda: '',
       periocidade: '',
       gerente: ''
@@ -115,6 +116,7 @@ const ServiceCreate = () => {
 
 
     onSubmit: async (values) => {
+      console.log(values.date);
       values.valor = parseInt(values.valor);
       if ( id) {
         servicoEditDTO.idGerente = values.gerente;
@@ -214,6 +216,7 @@ const ServiceCreate = () => {
             <TextInputLiveFeedback label="descricao" id="descricao" name="descricao" type="text" />
             <TextInputLiveFeedback label="website" id="website" name="website" type="text" />
             <TextInputLiveFeedback label="valor" id="valor" name="valor" type="text" />
+            <TextInputLiveFeedback label="date" id="date" name="date" type="date" />
             <div>
               <label>moeda</label>
               <SelectCustom
