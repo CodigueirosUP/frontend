@@ -1,4 +1,3 @@
-import { wait } from "@testing-library/react"
 import React, { createContext, useState } from "react"
 import ApiWallet from "../api"
 

@@ -7,19 +7,16 @@ import Routers from './routers';
 import { AuthProvider } from './context/AuthContext'
 import { ManagerProvider } from './context/ManagerContext'
 import { ServiceProvider } from './context/ServiceContext';
-import { DashboardProvider } from './context/DashboardContext';
 
 
 ReactDOM.render(
   <React.StrictMode>
     <AuthProvider>
-      <DashboardProvider>
         <ManagerProvider>
           <ServiceProvider>
             <Routers />
           </ServiceProvider>
         </ManagerProvider>
-      </DashboardProvider>
     </AuthProvider>
   </React.StrictMode>,
   document.getElementById('root')
