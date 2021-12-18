@@ -263,10 +263,15 @@ input[type='submit']:focus-visible {
 /* ------------------------------------Contato-----------------------------------*/
 .contacttitle{
 display: flex;
-align-items: center;
 flex-direction: column;
-
+margin-bottom: 70px;
+max-width: 500px;
+line-height: 25px;
 }
+
+.contacttitle h1{
+  margin-bottom: 24px;
+  }
 
 .contact{
 display: flex;
@@ -275,23 +280,80 @@ flex-direction: column;
 margin-bottom: 15px;
 }
 
+.contact h1{
+  margin-bottom: 16px;
+}
+
+.contact p{
+  margin-bottom: 8px;
+  }
+  
+
 .contactquestion{
   width: 100%;
+  margin-bottom: 100px;
   padding-left: 15px;
   font-style: italic;
-  background-color: rgb(211, 211, 211);
   display: flex;
   top: 84px;
   right: 0;
   justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.contactForm {
+  display: flex;
+  width: 400px;
+  justify-content: center;
 
 }
 
+.contactForm h3{
+  margin-top: 10px;
+}
 
-.contactForm{
-  background-color: rgb(238, 42, 37, 0.8);
+
+.contactForm form{
+  background-color: rgb(238, 42, 37, 0.75);
   width: 300px;
- 
+  border-radius: 15px;
+  margin-top: 160px;
+  /* margin-right:100px ; */
+  box-shadow: 
+  0 0 1.75px #fff,
+  0 0 2.5px #fff,
+  0 0 5.25px #fff,
+  0 0 10.5px rgb(0, 156, 219),
+  0 0 20.5px rgb(0, 156, 219),
+  0 0 23px rgb(0, 156, 219),
+  0 0 25.5px rgb(0, 156, 219),
+  0 0 37.7px rgb(0, 156, 219);
+}
+
+.contactForm form:hover{
+  box-shadow:
+  0 0 1.75px #fff,
+  0 0 2.5px #fff,
+  0 0 5.25px #fff,
+  0 0 10.5px rgb(255, 8, 0),
+  0 0 20.5px rgb(255, 8, 0),
+  0 0 23px rgb(255, 8, 0),
+  0 0 25.5px rgb(255, 8, 0),
+  0 0 37.7px rgb(255, 8, 0);
+  transition: 0.75s;
+}
+
+.contactForm form:not(:hover){
+  box-shadow: 
+  0 0 1.75px #fff,
+  0 0 2.5px #fff,
+  0 0 5.25px #fff,
+  0 0 10.5px rgb(0, 156, 219),
+  0 0 20.5px rgb(0, 156, 219),
+  0 0 23px rgb(0, 156, 219),
+  0 0 25.5px rgb(0, 156, 219),
+  0 0 37.7px rgb(0, 156, 219);
+  transition: 0.75s;
 }
 
 .contactForm form{
@@ -303,19 +365,30 @@ margin-bottom: 15px;
 }
 
 .contactForm input{
-  width: 221px;
+  width: 200px;
   border-radius: 5px;
+  height: 8px;
+  border-style: none;
+}
+
+.contactForm textarea{
+  width: 220px;
+  height: 100px;
 }
 
 .contactForm label{
   justify-content: start;
-  width: 235px;
+  width: 215px;
   margin-top: 16px;
+  font-size: 12px;
 }
 
 .contactForm select{
  margin-top: 0;
  border-radius: 5px;
+ width: 218px;
+ height: 30px;
+ border-style: none;
 
 }
 
@@ -346,7 +419,7 @@ margin-bottom: 15px;
   border: 1px solid black;
   cursor: pointer;
   position:relative;
-  background-color: rgb(211, 211, 211);
+  background-color: rgb(211, 211, 211, 0.9);
   
   user-select: none;
   -webkit-user-select: none;
@@ -383,4 +456,11 @@ margin-bottom: 15px;
   max-width: 1200px;
   margin: 0 auto;
   overflow: hidden;
+  background-color: rgb(240, 240, 240);
+}
+
+
+.textContainer {
+  margin-top: 160px;
+  text-align: justify;
 }
