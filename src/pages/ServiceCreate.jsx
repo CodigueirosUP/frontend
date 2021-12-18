@@ -38,7 +38,8 @@ const servicoCreateDTO = {
   nome: "",
   periocidade: "",
   valor: 0,
-  webSite: ""
+  webSite: "",
+  data: ""
 }
 
 const TextInputLiveFeedback = ({ label, helpText, ...props }) => {
@@ -107,6 +108,7 @@ const ServiceCreate = () => {
       descricao: '',
       website: '',
       valor: '',
+      date: '',
       moeda: '',
       periocidade: '',
       gerente: ''
@@ -115,8 +117,9 @@ const ServiceCreate = () => {
 
 
     onSubmit: async (values) => {
+      console.log(values.date);
       values.valor = parseInt(values.valor);
-      if ( id) {
+      if (id) {
         servicoEditDTO.idGerente = values.gerente;
         servicoEditDTO.descricao = values.descricao;
         servicoEditDTO.moeda = values.moeda;
@@ -141,6 +144,7 @@ const ServiceCreate = () => {
         servicoCreateDTO.periocidade = values.periocidade;
         servicoCreateDTO.valor = values.valor;
         servicoCreateDTO.webSite = values.website;
+        servicoCreateDTO.data = values.date;
         postService(values.gerente, servicoCreateDTO)
         .then(() => {
           //navigate('/servicos');
@@ -214,6 +218,7 @@ const ServiceCreate = () => {
             <TextInputLiveFeedback label="descricao" id="descricao" name="descricao" type="text" />
             <TextInputLiveFeedback label="website" id="website" name="website" type="text" />
             <TextInputLiveFeedback label="valor" id="valor" name="valor" type="text" />
+            {!id && <TextInputLiveFeedback label="date" id="date" name="date" type="date" />}
             <div>
               <label>moeda</label>
               <SelectCustom

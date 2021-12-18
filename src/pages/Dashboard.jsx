@@ -12,7 +12,7 @@ const Dashboard = () => {
 
   const { typeUser } = useContext(AuthContext);
   const [dataService, setDataService] = useState([]);
-  const [dataServiceValues, setDataServiceValues] = useState([]);
+  const [dataServiceManager, setDataServiceManager] = useState([]);
   const [moreExpansiveService, setMoreExpansiveService] = useState();
   const [totalValueService, setTotalValueService] = useState();
   const [forecastOfValues, setForecastOfValues] = useState()
@@ -36,11 +36,12 @@ const Dashboard = () => {
   const IdentifyUser = async (user) => {
     if( user.idUser === 1){
       const { data } = await ApiWallet.get('/servico/list-servico');
-      setDataService(data)
-      setDataServiceValues(data)
+      setDataService(data.sort((a, b) => {
+        return a.valor > b.valor ? -1 : (a.valor < b.valor) ? 1 : 0;
+      } ))
     }else{
       setDataService(user)
-      setDataServiceValues(user.servicoDTOList)
+      setDataServiceManager(user.servicoDTOList)
     }
   }
 
@@ -50,7 +51,11 @@ const Dashboard = () => {
       const maxService = dataService.find(service => service.valor === Math.max(...values)); 
       setMoreExpansiveService(maxService);
     }else{
-      
+      if(dataServiceManager){
+        const values = dataServiceManager.map(service => service.valor);
+        const maxService = dataServiceManager.find(service => service.valor === Math.max(...values)); 
+        setMoreExpansiveService(maxService);
+      }
     }
   }
 
@@ -60,7 +65,11 @@ const Dashboard = () => {
       const totalValueService = values.reduce((values, totalValues) => values + totalValues, 0); 
       setTotalValueService(totalValueService);
     }else{
-      
+      if(dataServiceManager){
+        const values = dataServiceManager.map(service => service.valor);
+        const totalValueService = values.reduce((values, totalValues) => values + totalValues, 0); 
+        setTotalValueService(totalValueService);
+      }
     }
   }
 
@@ -69,43 +78,42 @@ const Dashboard = () => {
       const values = dataService.map(service => service.valor);
       setForecastOfValues(parseInt(values.reduce((a, b) => a + b / values.length,0)))
     }else{
-      
+      if(dataServiceManager){
+        const values = dataServiceManager.map(service => service.valor);
+        setForecastOfValues(parseInt(values.reduce((a, b) => a + b / values.length,0)))
+      }
     }
   }
 
-  const filterOrder = (option, user) => {
-    if( user.idUser === 1){
-      if(option === '0'){
-        console.log(option);
-        setDataService(
-          dataService.sort((a, b) => {
-            return a.valor > b.valor ? -1 : (a.valor < b.valor) ? 1 : 0;
-          } )
-        )
-      }
-      else if(option === '1'){
-        console.log(option);
-        setDataService(
-          dataService.sort((a, b) => {
-           return a.valor < b.valor ? -1 : (a.valor > b.valor) ? 1 : 0;
-          } )
-        )
+  const listServiceDashboard = (user) => {
+    if (user.idUser === 1) {
+      return (
+        dataService &&
+        dataService.map(service => (
+          <CardServiceDashboard key={service.idServico} service={service} />))
+      );
+    } else {
+      return (
+        dataServiceManager &&
+        dataServiceManager.map(service => (
+          <CardServiceDashboard key={service.idServico} service={service} />))
+      );
     }
-    }else{
-      
-    }
-    
-}
+  }
 
   return (
     <div className="container">
       <div className="content">
         <div>
           <div>
-            <h4>Todos os gerentes</h4>
+            <h4>{typeUser.nomeCompleto}</h4>
+            {typeUser.usuario === 'admin' ?
+            <>
             <FaFilter />
             <input type="text" placeholder="Nome do gerente" />
             <FaSearch />
+            </>
+            : null}
           </div>
           <div >
             <span>Gasto total</span>
@@ -131,17 +139,7 @@ const Dashboard = () => {
         <div>
           <div className="sectionListService">
             <h3>Serviços</h3>
-           <FaFilter />
-           <select name="filtro" id="filtro" onChange={(e) => filterOrder(e.target.value, typeUser)}>
-             <option value="0" >Maior → Menor</option>
-             <option value="1" >Menor ← Maior</option>
-           </select>
-           <div>
-             {/* {dataService &&
-             dataService.map(service => (
-          <CardServiceDashboard key = {service.idServico} service = {service}/>))   
-             } */}
-           </div>
+             {listServiceDashboard(typeUser)}
           </div>
           <div >
             <div>
@@ -155,5 +153,3 @@ const Dashboard = () => {
 }
 
 export default Dashboard;
-
-{/* <p>{typeUser.nomeCompleto}</p> */}
