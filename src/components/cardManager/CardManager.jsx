@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import { toastError, toastSucess } from '../../utils/toast'
 
 
-const CardManager = ({manager, attList, setIdEdicao}) => {
+const CardManager = ({manager, attList}) => {
 
   const navigate = useNavigate();
 

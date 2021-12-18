@@ -1,7 +1,4 @@
 
-
-
-
 const Loading = () => {
   return (
     <div>

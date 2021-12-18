@@ -8,7 +8,7 @@ import { formactCurrencyReal } from '../../utils/formactCurrency'
 
 
 
-const CardService = ({ service, attList, setIdEdicao }) => {
+const CardService = ({ service, attList }) => {
 
   
 
