@@ -8,19 +8,19 @@ const Welcome = () => {
 
   return (
     <div className="container">
-      <div className="content">
+      <div className="contentWelcome">
         <div className="welcome">
-          <img src={logoDolar} alt="dol-img" />
-          <img src={logoHome} alt="welcome-img" />
-        </div>
-
-        <div className="welcome">
-          <h1>Onde está o Wallet?</h1>
-          <p>Onde está Wallet? é um sistema para gestão financeira de contas de serviços contratados pela DBC Company</p>
+          <div className="left">
+            <img src={logoHome} alt="welcome-img" />
+          </div>
+          <div className="rigth">
+            <h1>Onde está o Wallet?</h1>
+            <p>Onde está Wallet? é um sistema para gestão financeira de contas de serviços contratados pela DBC Company.</p>
+            <button className="buttoninit" onClick={() => navigate("/login")}>Começar</button>
+          </div>
         </div>
       </div>
 
-      <button className="buttoninit" onClick={() => navigate("/login")}>Começar</button>
 
     </div>
 
