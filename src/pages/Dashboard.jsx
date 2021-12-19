@@ -17,16 +17,17 @@ const Dashboard = () => {
   const [moreExpansiveService, setMoreExpansiveService] = useState();
   const [totalValueService, setTotalValueService] = useState();
   const [forecastOfValues, setForecastOfValues] = useState()
+  const [chooseManager, setChooseManager] = useState([]);
 
-  useEffect(()=>{
-    if(typeUser){
+  useEffect(() => {
+    if (typeUser) {
       IdentifyUser(typeUser);
       getManagers();
     }
-  },[typeUser])
+  }, [typeUser])
 
-  useEffect(()=>{
-    if(typeUser){
+  useEffect(() => {
+    if (typeUser) {
       identifyMoreExpansiveValue(typeUser);
       identifyTotalValue(typeUser);
       identifyForecastOfValues(typeUser);
@@ -34,53 +35,53 @@ const Dashboard = () => {
   })
 
   const IdentifyUser = async (user) => {
-    if( user.idUser === 1){
+    if (user.idUser === 1) {
       const { data } = await ApiWallet.get('/servico/list-servico');
       setDataService(data.sort((a, b) => {
         return a.valor > b.valor ? -1 : (a.valor < b.valor) ? 1 : 0;
-      } ))
-    }else{
+      }))
+    } else {
       setDataService(user)
       setDataServiceManager(user.servicoDTOList)
     }
   }
 
-    const identifyMoreExpansiveValue = (user) => {
-    if( user.idUser === 1){
+  const identifyMoreExpansiveValue = (user) => {
+    if (user.idUser === 1) {
       const values = dataService.map(service => service.valor);
-      const maxService = dataService.find(service => service.valor === Math.max(...values)); 
+      const maxService = dataService.find(service => service.valor === Math.max(...values));
       setMoreExpansiveService(maxService);
-    }else{
-      if(dataServiceManager){
+    } else {
+      if (dataServiceManager) {
         const values = dataServiceManager.map(service => service.valor);
-        const maxService = dataServiceManager.find(service => service.valor === Math.max(...values)); 
+        const maxService = dataServiceManager.find(service => service.valor === Math.max(...values));
         setMoreExpansiveService(maxService);
       }
     }
   }
 
   const identifyTotalValue = (user) => {
-    if( user.idUser === 1){
+    if (user.idUser === 1) {
       const values = dataService.map(service => service.valor);
-      const totalValueService = values.reduce((values, totalValues) => values + totalValues, 0); 
+      const totalValueService = values.reduce((values, totalValues) => values + totalValues, 0);
       setTotalValueService(totalValueService);
-    }else{
-      if(dataServiceManager){
+    } else {
+      if (dataServiceManager) {
         const values = dataServiceManager.map(service => service.valor);
-        const totalValueService = values.reduce((values, totalValues) => values + totalValues, 0); 
+        const totalValueService = values.reduce((values, totalValues) => values + totalValues, 0);
         setTotalValueService(totalValueService);
       }
     }
   }
 
   const identifyForecastOfValues = (user) => {
-    if( user.idUser === 1){
+    if (user.idUser === 1) {
       const values = dataService.map(service => service.valor);
-      setForecastOfValues(parseInt(values.reduce((a, b) => a + b / values.length,0)))
-    }else{
-      if(dataServiceManager){
+      setForecastOfValues(parseInt(values.reduce((a, b) => a + b / values.length, 0)))
+    } else {
+      if (dataServiceManager) {
         const values = dataServiceManager.map(service => service.valor);
-        setForecastOfValues(parseInt(values.reduce((a, b) => a + b / values.length,0)))
+        setForecastOfValues(parseInt(values.reduce((a, b) => a + b / values.length, 0)))
       }
     }
   }
@@ -105,8 +106,24 @@ const Dashboard = () => {
 
   {
     managerList.map(manager => {
-      managerOption.push({value: manager.idGerente, label: manager.nomeCompleto})
+      managerOption.push({ idGerente: manager.idGerente, label: manager.nomeCompleto })
     })
+  }
+
+  const filterManager = async (option, user) => {
+    // console.log(option)
+    const { data } = await ApiWallet.get('/servico/list-servico');
+    console.log(data);
+    // const teste = ([{nome: 'a', id: 1}, {nome: 'a', id: 1}, {nome: 'b', id: 3}])
+    // console.log(teste.filter(e => e.id === 1))
+    // console.log(data.filter(e => e.gerente.idGerente === option))
+    const teste2 = data.filter(e => e.gerente.idGerente === Number(option))
+    setChooseManager(teste2);
+    console.log(chooseManager);
+    console.log(teste2);
+    // console.log(chooseManager);
+    // data.filter(manager => manager.gerente.idGerente !== option)
+    // console.log(data.filter(manager => manager.gerente.idGerente === option))
   }
 
   return (
@@ -116,24 +133,24 @@ const Dashboard = () => {
           <div className="nameOrFilter">
             {typeUser.nomeCompleto && <h3 className="nameManager">{typeUser.nomeCompleto}</h3>}
             {typeUser.usuario === 'admin' ?
-            <div className="searchManager">
-            <span className="iconSearch"><FaFilter /></span>
-            <select>
-            <option value=''>Todos os Gerente</option>
-              {managerOption.map(manager => (
-              <option value={manager.value}>{manager.label}</option>
-              ))}
-            </select>
-            <button className="buttonSearch"><FaSearch /></button>
-            </div>
-            : null}
+              <div className="searchManager">
+                <span className="iconSearch"><FaFilter /></span>
+                <select name="filtro" id="filtro" onChange={(value) => filterManager(value.target.value, typeUser)}>
+                  <option value='nada escolhido'>Todos os Gerente</option>
+                  {managerOption.map(manager => (
+                    <option value={manager.idGerente}>{manager.label}</option>
+                  ))}
+                </select>
+                <button className="buttonSearch"><FaSearch /></button>
+              </div>
+              : null}
           </div>
           <div className="dashboardValues">
-            <CardValues title='Gasto total' subTitle='Dezembro/21' totalValueService={totalValueService} />
-            <CardValues title='Estimativa de gasto' subTitle='Janeiro/21' totalValueService={forecastOfValues} />
+            <CardValues key={1} title='Gasto total' subTitle='Dezembro/21' totalValueService={totalValueService} />
+            <CardValues key={2} title='Estimativa de gasto' subTitle='Janeiro/21' totalValueService={forecastOfValues} />
             {moreExpansiveService ?
               <div>
-                <CardValues title='Serviço mais caro' subTitle={moreExpansiveService.nome} totalValueService={moreExpansiveService.valor} />
+                <CardValues key={3} title='Serviço mais caro' subTitle={moreExpansiveService.nome} totalValueService={moreExpansiveService.valor} />
               </div> :
               <div>
                 <h2>Não existem serviços cadastrados</h2>
