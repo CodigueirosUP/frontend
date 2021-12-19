@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { FaFilter, FaSearch } from 'react-icons/fa';
-import { formactCurrencyEuro, formactCurrencyReal } from "../utils/formactCurrency";
 import Graphic from "../components/graphic/Graphic";
 import ApiWallet from "../api";
 import CardServiceDashboard from '../components/cardServiceDashboard/CardServiceDashboard';

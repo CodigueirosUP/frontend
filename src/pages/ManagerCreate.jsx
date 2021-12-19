@@ -43,17 +43,25 @@ const MenagerCreate = () => {
       .min(6, 'Mínumo 6 caracteres')
       .max(12, 'Máximo 12 caracteres')
       .required('Campo Obrigatório')
+      
       // .matches(
       //   /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#])[0-9a-zA-Z$*&@#]{6,}$/,
       //   'Necessário um caractere especial, uma letra maiúscula, uma letra minúscula, um número e no mínimo 6 caracteres'
       // )
+
+    const senhaCheck = Yup.string()
+      .min(6, 'Mínumo 6 caracteres')
+      .max(12, 'Máximo 12 caracteres')
+      .required('Campo Obrigatório')
+      .oneOf([Yup.ref('senha'), null], 'As senhas devem corresponder')
+      
 
     const usuario = Yup.string()
       .min(6, 'Mínimo 6 caracteres')
       .max(12, 'Máximo 12 caracteres')
       .required('Campo Obrigatório')
 
-    return id ? Yup.object({ email, nomeCompleto }) : Yup.object({email, nomeCompleto, usuario, senha})
+    return id ? Yup.object({ email, nomeCompleto }) : Yup.object({email, nomeCompleto, usuario, senha, senhaCheck})
   }
  
   const formik = useFormik({
@@ -61,12 +69,12 @@ const MenagerCreate = () => {
       email: '',
       nomeCompleto: '',
       usuario: '',
-      senha: ''
+      senha: '',
+      senhaCheck: ''
     },
     onSubmit: async (values) => {
       gerenteDTO.email = values.email
       gerenteDTO.nomeCompleto = values.nomeCompleto
-
       if (id) {
         putManager(id, gerenteDTO)
         .then(() => {
@@ -120,10 +128,17 @@ const MenagerCreate = () => {
         <FormikProvider value={formik}>
           <Form>
             <h1>{id ? 'Editar Gerente' : 'Cadastro de Gerente' }</h1>
-            <TextInputLiveFeedback label="Nome Completo" id="nomeCompleto" name="nomeCompleto" type="text" />
-            <TextInputLiveFeedback label="Email" id="email" name="email" type="text" />
-            {!id && <TextInputLiveFeedback label="Usuário" id="usuario" name="usuario" type="text" />}
-            {!id && <TextInputLiveFeedback label="Senha" id="senha" name="senha" type="text" />}
+            <TextInputLiveFeedback label="Nome Completo*" id="nomeCompleto" name="nomeCompleto" type="text" />
+            <TextInputLiveFeedback label="Email*" id="email" name="email" type="text" />
+            {!id && <TextInputLiveFeedback label="Usuário*" id="usuario" name="usuario" type="text" />}
+            {!id && <TextInputLiveFeedback label="Senha*" id="senha" name="senha" type="text" />}
+            {!id && <TextInputLiveFeedback label="Confirmar Senha*" id="senhaCheck" name="senhaCheck" type="text" />}
+            {/* {!id && 
+            <>
+            <label>Repetir Senha*</label>
+            <input id="senhaCheck" name="senhaCheck" type="text" />
+            </>
+            } */}
             <div>
               <button type="submit">Cadastrar</button>
               <button type="reset">Reset</button>
