@@ -11,15 +11,12 @@ export const formactCurrencyYuan = (valor = 0) => valor.toLocaleString('pt-br',{
 export const currencyConvert = async (value, option) => {
   const { data } = await ApiAwesome.get();
 
-
   if(option === 'REAL'){
-    console.log('brazuca')
+    return value
   }else if(option === 'DOLAR') {
-    return (Number(data.EURBRL.high) * value)
+    return (Number(data.USDBRL.high) * value)
     
   }else if(option === 'EURO'){
-    console.log(data.EURBRL)
+    return (Number(data.EURBRL.high) * value)
   }
-
-  
 }
