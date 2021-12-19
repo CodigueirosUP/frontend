@@ -1,12 +1,20 @@
 import logoHome from "../images/img.png"
 import { useNavigate } from "react-router-dom"
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AuthContext } from "../context/AuthContext";
+import { ApiAwesome } from "../api";
 
 const Welcome = () => {
 
   const navigate = useNavigate();
   const { auth } = useContext(AuthContext);
+
+  useEffect(async ()=>{
+    const { data } = await ApiAwesome.get();
+    if(data){
+      console.log(data)
+    }
+  },[])
 
   return (
     <div className="container">

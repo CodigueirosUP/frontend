@@ -6,13 +6,12 @@ import SelectCustom from '../components/customElement/SelectCustom';
 import { ServiceContext } from '../context/ServiceContext';
 import { useNavigate, useParams } from 'react-router-dom';
 import { toastError, toastSucess } from '../utils/toast';
+import { currencyConvert } from '../utils/formactCurrency';
 
 const moedaOption = [
   {value:'REAL', label:'REAL'},
   {value:'DOLAR', label:'DOLAR'},
-  {value:'EURO', label:'EURO'},
-  {value:'IENE', label:'IENE'},
-  {value:'YUAN', label:'YUAN'}
+  {value:'EURO', label:'EURO'}
 ]
 
 const periocidadeOption = [
@@ -117,8 +116,10 @@ const ServiceCreate = () => {
 
 
     onSubmit: async (values) => {
-      console.log(values.date);
       values.valor = parseInt(values.valor);
+      const valueConvert = currencyConvert(values.valor, values.moeda).then(e => {return e});
+      console.log(valueConvert);
+      // valueConvert.then(e => console.log(e))
       if (id) {
         servicoEditDTO.idGerente = values.gerente;
         servicoEditDTO.descricao = values.descricao;

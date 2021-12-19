@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { FaFilter, FaSearch } from 'react-icons/fa';
 import Graphic from "../components/graphic/Graphic";
-import ApiWallet from "../api";
+import {ApiWallet} from "../api";
 import CardServiceDashboard from '../components/cardServiceDashboard/CardServiceDashboard';
 import { ManagerContext } from "../context/ManagerContext";
 import CardValues from "../components/cardValues/CardValues";
@@ -110,20 +110,22 @@ const Dashboard = () => {
     })
   }
 
-  const filterManager = async (option, user) => {
-    // console.log(option)
-    const { data } = await ApiWallet.get('/servico/list-servico');
-    console.log(data);
-    // const teste = ([{nome: 'a', id: 1}, {nome: 'a', id: 1}, {nome: 'b', id: 3}])
-    // console.log(teste.filter(e => e.id === 1))
-    // console.log(data.filter(e => e.gerente.idGerente === option))
-    const teste2 = data.filter(e => e.gerente.idGerente === Number(option))
-    setChooseManager(teste2);
-    console.log(chooseManager);
-    console.log(teste2);
-    // console.log(chooseManager);
-    // data.filter(manager => manager.gerente.idGerente !== option)
-    // console.log(data.filter(manager => manager.gerente.idGerente === option))
+  const filterManager = async (option) => {
+    if(option === 'todos'){
+      const { data } = await ApiWallet.get('/servico/list-servico');
+      setChooseManager(data.sort((a, b) => {
+        return a.valor > b.valor ? -1 : (a.valor < b.valor) ? 1 : 0;
+      }));
+    }else {
+      const { data } = await ApiWallet.get(`/servico/${option}/procura-por-gerente/`);
+      setChooseManager(data.sort((a, b) => {
+        return a.valor > b.valor ? -1 : (a.valor < b.valor) ? 1 : 0;
+      }));
+    }
+  }
+
+  const changeManager = () => {
+    setDataService(chooseManager);
   }
 
   return (
@@ -135,13 +137,13 @@ const Dashboard = () => {
             {typeUser.usuario === 'admin' ?
               <div className="searchManager">
                 <span className="iconSearch"><FaFilter /></span>
-                <select name="filtro" id="filtro" onChange={(value) => filterManager(value.target.value, typeUser)}>
-                  <option value='nada escolhido'>Todos os Gerente</option>
+                <select name="filtro" id="filtro" onChange={(value) => filterManager(value.target.value)}>
+                  <option value='todos'>Todos os Gerente</option>
                   {managerOption.map(manager => (
-                    <option value={manager.idGerente}>{manager.label}</option>
+                    <option key={manager.idGerente} value={manager.idGerente}>{manager.label}</option>
                   ))}
                 </select>
-                <button className="buttonSearch"><FaSearch /></button>
+                <button className="buttonSearch" onClick={()=>changeManager()}><FaSearch /></button>
               </div>
               : null}
           </div>

@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import ApiWallet  from "../api";
+import {ApiWallet}  from "../api";
 import { toastError, toastSucess } from "../utils/toast";
 
 const AuthContext = createContext();

@@ -1,7 +1,7 @@
 import styles from './CardService.module.css'
 import { FaEdit } from 'react-icons/fa'
 import { RiDeleteBin2Fill } from 'react-icons/ri'
-import ApiWallet from '../../api'
+import {ApiWallet} from '../../api'
 import { useNavigate } from 'react-router-dom'
 import { toastError, toastSucess } from '../../utils/toast'
 import { formactCurrencyReal } from '../../utils/formactCurrency'
