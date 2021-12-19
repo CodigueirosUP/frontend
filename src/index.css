@@ -8,7 +8,6 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: rgb(0, 0, 0, 0.9);
 }
 
 html, body, *, span {
@@ -25,8 +24,7 @@ code {
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  background: linear-gradient(to right, rgb(238, 42, 37) , rgb(0, 156, 219));
-  /* background-color: rgb(250, 216, 184); */
+  background-color: rgb(255, 255, 255);
 }
 
 .content {
@@ -411,39 +409,39 @@ margin-bottom: 15px;
   margin-top: 160px;
   /* margin-right:100px ; */
   box-shadow: 
-  0 0 1.75px #fff,
-  0 0 2.5px #fff,
+  0 0 0.9px #fff,
+  0 0 1.25px #fff,
   0 0 5.25px #fff,
-  0 0 10.5px rgb(0, 156, 219),
-  0 0 20.5px rgb(0, 156, 219),
-  0 0 23px rgb(0, 156, 219),
-  0 0 25.5px rgb(0, 156, 219),
-  0 0 37.7px rgb(0, 156, 219);
+  0 0 5.25px rgb(0, 156, 219),
+  0 0 10.25px rgb(0, 156, 219),
+  0 0 11.5px rgb(0, 156, 219),
+  0 0 12.5px rgb(0, 156, 219),
+  0 0 18px rgb(0, 156, 219);
 }
 
 .contactForm form:hover{
   box-shadow:
-  0 0 1.75px #fff,
-  0 0 2.5px #fff,
+  0 0 0.9px #fff,
+  0 0 1.25px #fff,
   0 0 5.25px #fff,
-  0 0 10.5px rgb(255, 8, 0),
-  0 0 20.5px rgb(255, 8, 0),
-  0 0 23px rgb(255, 8, 0),
-  0 0 25.5px rgb(255, 8, 0),
-  0 0 37.7px rgb(255, 8, 0);
+  0 0 5.25px rgb(255, 8, 0),
+  0 0 10.25px rgb(255, 8, 0),
+  0 0 11.5px rgb(255, 8, 0),
+  0 0 12.5px rgb(255, 8, 0),
+  0 0 18px rgb(255, 8, 0);
   transition: 0.75s;
 }
 
 .contactForm form:not(:hover){
   box-shadow: 
-  0 0 1.75px #fff,
-  0 0 2.5px #fff,
+  0 0 0.9px #fff,
+  0 0 1.25px #fff,
   0 0 5.25px #fff,
-  0 0 10.5px rgb(0, 156, 219),
-  0 0 20.5px rgb(0, 156, 219),
-  0 0 23px rgb(0, 156, 219),
-  0 0 25.5px rgb(0, 156, 219),
-  0 0 37.7px rgb(0, 156, 219);
+  0 0 5.25px rgb(0, 156, 219),
+  0 0 10.25px rgb(0, 156, 219),
+  0 0 11.5px rgb(0, 156, 219),
+  0 0 12.5px rgb(0, 156, 219),
+  0 0 18px rgb(0, 156, 219);
   transition: 0.75s;
 }
 
@@ -492,15 +490,6 @@ margin-bottom: 15px;
 
 .contactquestion h1{
   color: rgb(238, 42, 37);
-  text-shadow:
-  0 0 1.75px #fff,
-  0 0 2.5px #fff,
-  0 0 5.25px #fff,
-  0 0 10.5px rgb(0, 156, 219),
-  0 0 20.5px rgb(0, 156, 219),
-  0 0 23px rgb(0, 156, 219),
-  0 0 25.5px rgb(0, 156, 219),
-  0 0 37.7px rgb(0, 156, 219);
 }
 
 .btnContainer{
@@ -556,9 +545,7 @@ margin-bottom: 15px;
   max-width: 1200px;
   margin: 0 auto;
   overflow: hidden;
-  background: linear-gradient(to right, rgb(238, 42, 37) , rgb(0, 156, 219));
-
-  /* background-color: rgb(250, 216, 184); */
+  background-color: rgb(255, 255, 255);
 }
 
 
