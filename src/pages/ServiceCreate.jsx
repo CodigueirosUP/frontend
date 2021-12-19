@@ -85,6 +85,7 @@ const ServiceCreate = () => {
 
 
   const { getManagers, managerList} = useContext(ManagerContext);
+
   useEffect(() => {
     getManagers();
   }, [])
@@ -116,17 +117,18 @@ const ServiceCreate = () => {
 
 
     onSubmit: async (values) => {
+
+      console.log(values)
       values.valor = parseInt(values.valor);
-      const valueConvert = currencyConvert(values.valor, values.moeda).then(e => {return e});
-      console.log(valueConvert);
-      // valueConvert.then(e => console.log(e))
+      const valueConvert = await currencyConvert(values.valor, values.moeda)
+
       if (id) {
         servicoEditDTO.idGerente = values.gerente;
         servicoEditDTO.descricao = values.descricao;
         servicoEditDTO.moeda = values.moeda;
         servicoEditDTO.nome = values.nome;
         servicoEditDTO.periocidade = values.periocidade;
-        servicoEditDTO.valor = values.valor;
+        servicoEditDTO.valor = valueConvert;
         servicoEditDTO.webSite = values.website;
         putService(id, servicoEditDTO)
         .then(() =>{
@@ -136,7 +138,6 @@ const ServiceCreate = () => {
         .catch((errors) => {
           toastError(errors.response.data.errors[0])
         })
-        
       
       } else { 
         servicoCreateDTO.descricao = values.descricao;
