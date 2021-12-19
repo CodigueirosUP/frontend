@@ -1,4 +1,6 @@
 .container {
-  margin: 10px 0;
-  background-color: bisque;
+  margin: 10px;
+  border-radius: 10px;
+  padding: 8px;
+  background-color: rgb(84, 209, 157);
 }

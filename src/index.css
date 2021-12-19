@@ -113,8 +113,95 @@ code {
 
 /* ------------------------------------DASHBOARD-----------------------------------*/
 
-.sectionListService {
-  background-color: #ff9897;
+
+.contentDashboard {
+  min-height: calc(100vh - 109.94px);
+  overflow:auto;
+}
+
+.nameOrFilter {
+  margin-top: 18px;
+}
+
+.contentDashboard .nameManager {
+  text-align: center;
+  border-radius: 20px;
+  background-color: #ccc;
+  color: rgb(0, 0, 0);
+  padding: 5px 0;
+}
+
+.searchManager select{
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  margin: 0 10px;
+  width: 30%;
+}
+
+.dashboardValues {
+  margin: 10px 0;
+  padding: 5px 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  background-color: #ccc;
+  border-radius: 20px;
+}
+
+.iconSearch {
+  color: white;
+  font-size: 28px;
+}
+
+.buttonSearch {
+  padding: 10px;
+}
+
+.contentDashboard .searchManager {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ccc;
+  border-radius: 20px;
+  color: rgb(0, 0, 0);
+  padding: 8px 0;
+}
+
+.listServiceAndgraphic {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 330px;
+  padding: 5px 0;
+  background-color: #ccc;
+  border-radius: 20px;
+}
+
+.listServiceAndgraphic .leftListServiceAndgraphic {
+  width: 30%;
+  height: 100%;
+  background-color: #ffffff;
+  border-radius: 20px;
+}
+
+.listServiceAndgraphic .leftListServiceAndgraphic .header {
+  text-align: center;
+}
+
+.listServiceAndgraphic .leftListServiceAndgraphic .body {
+  height: 300px;
+  overflow:auto;
+}
+
+.listServiceAndgraphic .rigthListServiceAndgraphic {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  height: 100%;
+  background-color: #ffffff;
+  border-radius: 20px;
 }
 
 /* ------------------------------------INSTANTFEEDBACK-----------------------------------*/

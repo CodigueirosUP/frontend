@@ -1,0 +1,9 @@
+
+.body {
+  text-align: center;
+  width: 200px;
+  border-radius: 10px;
+  margin: 0 10px;
+  padding: 5px;
+  background-color: rgb(84, 209, 157);
+}

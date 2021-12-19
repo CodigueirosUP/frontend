@@ -5,22 +5,24 @@ import { formactCurrencyEuro, formactCurrencyReal } from "../utils/formactCurren
 import Graphic from "../components/graphic/Graphic";
 import ApiWallet from "../api";
 import CardServiceDashboard from '../components/cardServiceDashboard/CardServiceDashboard';
-
-
+import { ManagerContext } from "../context/ManagerContext";
+import CardValues from "../components/cardValues/CardValues";
 
 const Dashboard = () => {
 
   const { typeUser } = useContext(AuthContext);
+  const { managerList, getManagers } = useContext(ManagerContext);
+
   const [dataService, setDataService] = useState([]);
   const [dataServiceManager, setDataServiceManager] = useState([]);
   const [moreExpansiveService, setMoreExpansiveService] = useState();
   const [totalValueService, setTotalValueService] = useState();
   const [forecastOfValues, setForecastOfValues] = useState()
 
-
   useEffect(()=>{
     if(typeUser){
       IdentifyUser(typeUser);
+      getManagers();
     }
   },[typeUser])
 
@@ -31,7 +33,6 @@ const Dashboard = () => {
       identifyForecastOfValues(typeUser);
     }
   })
-
 
   const IdentifyUser = async (user) => {
     if( user.idUser === 1){
@@ -101,50 +102,57 @@ const Dashboard = () => {
     }
   }
 
+  const managerOption = [];
+
+  {
+    managerList.map(manager => {
+      managerOption.push({value: manager.idGerente, label: manager.nomeCompleto})
+    })
+  }
+
   return (
     <div className="container">
-      <div className="content">
+      <div className="contentDashboard">
         <div>
-          <div>
-            <h4>{typeUser.nomeCompleto}</h4>
+          <div className="nameOrFilter">
+            {typeUser.nomeCompleto && <h3 className="nameManager">{typeUser.nomeCompleto}</h3>}
             {typeUser.usuario === 'admin' ?
-            <>
-            <FaFilter />
-            <input type="text" placeholder="Nome do gerente" />
-            <FaSearch />
-            </>
+            <div className="searchManager">
+            <span className="iconSearch"><FaFilter /></span>
+            <select>
+            <option value=''>Todos os Gerente</option>
+              {managerOption.map(manager => (
+              <option value={manager.value}>{manager.label}</option>
+              ))}
+            </select>
+            <button className="buttonSearch"><FaSearch /></button>
+            </div>
             : null}
           </div>
-          <div >
-            <span>Gasto total</span>
-            <h1>{formactCurrencyReal(totalValueService)}</h1>
-            <span>Dezembro/21</span>
+          <div className="dashboardValues">
+            <CardValues title='Gasto total' subTitle='Dezembro/21' totalValueService={totalValueService} />
+            <CardValues title='Estimativa de gasto' subTitle='Janeiro/21' totalValueService={forecastOfValues} />
+            {moreExpansiveService ?
+              <div>
+                <CardValues title='Serviço mais caro' subTitle={moreExpansiveService.nome} totalValueService={moreExpansiveService.valor} />
+              </div> :
+              <div>
+                <h2>Não existem serviços cadastrados</h2>
+              </div>
+            }
           </div>
-          <div >
-            <span>Estimativa de gasto</span>
-            <h1>{formactCurrencyReal(forecastOfValues)}</h1>
-            <span>Janeiro/21</span>
-          </div>
-          {moreExpansiveService ?
-            <div>
-              <span>Serviço mais caro</span>
-              <h3>{moreExpansiveService.nome}</h3>
-              <h1>{formactCurrencyEuro(moreExpansiveService.valor)}</h1>
-            </div> :
-            <div>
-              <h2>Não existem serviços cadastrados</h2>
-            </div>
-          }
         </div>
-        <div>
-          <div className="sectionListService">
-            <h3>Serviços</h3>
-             {listServiceDashboard(typeUser)}
-          </div>
-          <div >
-            <div>
-              <Graphic/>
+        <div className="listServiceAndgraphic">
+          <div className="leftListServiceAndgraphic">
+            <div className="header">
+              <h3>Lista de Serviços</h3>
             </div>
+            <div className="body">
+              {listServiceDashboard(typeUser)}
+            </div>
+          </div>
+          <div className="rigthListServiceAndgraphic">
+            <Graphic />
           </div>
         </div>
       </div>

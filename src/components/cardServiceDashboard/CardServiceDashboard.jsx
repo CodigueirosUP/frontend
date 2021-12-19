@@ -1,11 +1,12 @@
 import styles from './CardServiceDashboard.module.css'
+import { formactCurrencyReal } from '../../utils/formactCurrency';
 
-const CardServiceDashboard = ({service}) => {
+const CardServiceDashboard = ({ service }) => {
   return (
     <div className={styles.container}>
-       <p>Nome: {service.nome}</p>
-        <p>Valor: {service.valor}</p>
-        {service.gerente &&  <p>Ger. {service.gerente.nomeCompleto}</p>}
+      <strong>{service.nome}</strong>
+      <p>{formactCurrencyReal(service.valor)}</p>
+      {service.gerente && <p>Ger. {service.gerente.nomeCompleto}</p>}
     </div>
   )
 }

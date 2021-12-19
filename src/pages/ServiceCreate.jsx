@@ -92,9 +92,9 @@ const ServiceCreate = () => {
 
   const { postService, putService, findServiceById  } = useContext(ServiceContext);
 
-  const managerOption = [];
-
   const {id} = useParams(); 
+  
+  const managerOption = [];
 
   {
     managerList.map(manager => {
