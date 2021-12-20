@@ -18,6 +18,7 @@ const Dashboard = () => {
   const [totalValueService, setTotalValueService] = useState();
   const [forecastOfValues, setForecastOfValues] = useState()
   const [chooseManager, setChooseManager] = useState([]);
+  const [allMaxValuesMonths, setAllMaxValuesMonths] = useState({})
 
   useEffect(() => {
     if (typeUser) {
@@ -33,6 +34,16 @@ const Dashboard = () => {
       identifyForecastOfValues(typeUser);
     }
   })
+
+  useEffect(() => {
+    if(dataService) {
+      searchForMonth()
+    }
+  },[dataService])
+
+  useEffect(() => {
+    console.log(allMaxValuesMonths)
+  }, [allMaxValuesMonths])
 
   const IdentifyUser = async (user) => {
     if (user.idUser === 1) {
@@ -127,7 +138,64 @@ const Dashboard = () => {
   const changeManager = () => {
     setDataService(chooseManager);
   }
-  
+
+
+  const searchForMonth = () => {
+    const months = {
+      janeiro: 0,
+      fevereiro: 0,
+      marco: 0,
+      abril: 0,
+      maio: 0,
+      junho: 0,
+      julho: 0,
+      agosto: 0,
+      setembro: 0,
+      outubro: 0,
+      novembro: 0,
+      dezembro:0
+    }
+    const teste = dataService.forEach(data => {
+      const arrData = data.data.split('-')
+      if (arrData[1] === '01') {
+        months.janeiro = months.janeiro + data.valor
+      } 
+      if (arrData[1] === '02') {
+        months.fevereiro = months.fevereiro + data.valor
+      }
+      if (arrData[1] === '03') {
+        months.marco = months.marco + data.valor
+      }
+      if (arrData[1] === '04') {
+        months.abril = months.abril + data.valor
+      }
+      if (arrData[1] === '05') {
+        months.maio = months.maio + data.valor
+      }
+      if (arrData[1] === '06') {
+        months.junho = months.junho + data.valor
+      }
+      if (arrData[1] === '07') {
+        months.julho = months.julho + data.valor
+      }
+      if (arrData[1] === '08') {
+        months.agosto = months.agosto + data.valor
+      }
+      if (arrData[1] === '09') {
+        months.setembro = months.setembro + data.valor
+      }
+      if (arrData[1] === '10') {
+        months.outubro = months.outubro + data.valor
+      }
+      if (arrData[1] === '11') {
+        months.novembro = months.novembro + data.valor
+      }
+      if (arrData[1] === '12') {
+        months.dezembro = months.dezembro + data.valor
+      } 
+    })
+      setAllMaxValuesMonths(months)
+  }
 
   return (
     <div className="container">
@@ -171,7 +239,7 @@ const Dashboard = () => {
             </div>
           </div>
           <div className="rigthListServiceAndgraphic">
-            <Graphic />
+            <Graphic graphValues={allMaxValuesMonths}/>
           </div>
         </div>
       </div>
