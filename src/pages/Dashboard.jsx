@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { FaFilter, FaSearch } from 'react-icons/fa';
 import Graphic from "../components/graphic/Graphic";
-import {ApiWallet} from "../api";
+import {ApiWallet, ApiAwesomeMedia} from "../api";
 import CardServiceDashboard from '../components/cardServiceDashboard/CardServiceDashboard';
 import { ManagerContext } from "../context/ManagerContext";
 import CardValues from "../components/cardValues/CardValues";
@@ -22,6 +22,7 @@ const Dashboard = () => {
   const [totalValueService, setTotalValueService] = useState();
   const [forecastOfValues, setForecastOfValues] = useState()
   const [chooseManager, setChooseManager] = useState([]);
+  const [dolarValueMedia, setDolarValueMedia] = useState([]);
   const [allMaxValuesMonths, setAllMaxValuesMonths] = useState({})
   const months = {
     janeiro: 0,
@@ -65,6 +66,14 @@ const Dashboard = () => {
     
   }, [allMaxValuesMonths])
 
+  // useEffect(async ()=>{
+  //   const { data } = await ApiAwesomeMedia.get();
+  //   setDolarValueMedia(data)
+  //   if(data){
+  //     console.log(dolarValueMedia)
+  //   }
+  // },[])
+
   const IdentifyUser = async (user) => {
     if (user.idUser === 1) {
       const { data } = await ApiWallet.get('/servico/list-servico');
@@ -105,14 +114,19 @@ const Dashboard = () => {
     }
   }
 
-  const identifyForecastOfValues = (user) => {
+  const identifyForecastOfValues = async (user) => {
+
+    const { data } = await ApiAwesomeMedia.get();
+    const mapMediaValue = data.map(value => value.high);
+    const mediaValue = parseFloat(mapMediaValue.reduce((a, b) => a + b / mapMediaValue.length, 0).toFixed(2))
+
     if (user.idUser === 1) {
       const values = dataService.map(service => service.valor);
-      setForecastOfValues(parseInt(values.reduce((a, b) => a + b / values.length, 0)))
+      setForecastOfValues(parseInt(values.reduce((a, b) => a + b * mediaValue, 0)))
     } else {
       if (dataServiceManager) {
         const values = dataServiceManager.map(service => service.valor);
-        setForecastOfValues(parseInt(values.reduce((a, b) => a + b / values.length, 0)))
+        setForecastOfValues(parseInt(values.reduce((a, b) => a + b * mediaValue, 0)))
       }
     }
   }
@@ -125,6 +139,11 @@ const Dashboard = () => {
           <CardServiceDashboard key={service.idServico} service={service} />))
       );
     } else {
+      if (dataServiceManager) {
+        dataServiceManager.sort((a, b) => {
+          return a.valor > b.valor ? -1 : (a.valor < b.valor) ? 1 : 0;
+        })
+      }
       return (
         dataServiceManager &&
         dataServiceManager.map(service => (
