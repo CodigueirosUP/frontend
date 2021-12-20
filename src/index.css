@@ -1,10 +1,13 @@
 
 /* ------------------------------------Geral------------------------------------ */
-
+@font-face {
+  font-family: "Optima";
+  src: url('OPTIMA.TTF') format('truetype'), url('OPTIMA_B.TTF')  format('truetype')
+}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'OPTIMA', 'OPTIMA_B',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -16,7 +19,7 @@ html, body, *, span {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', 'Optima'
     monospace;
 }
 
@@ -30,6 +33,8 @@ code {
 }
 
 /* ------------------------------------WELCOME------------------------------------ */
+
+
 .contentWelcome {
   min-height: calc(100vh - 109.94px);
   overflow: hidden;
@@ -63,6 +68,10 @@ code {
 .welcome .rigth h1{
   color: #EE2A25;
   font-size: 50px;
+  font-family: 'OPTIMA_B';
+  -webkit-text-stroke-width: 1px;              /* largura da borda */
+  -webkit-text-stroke-color: #000;        /* cor  */
+  
 }
 
 .welcome .rigth p{
@@ -347,7 +356,7 @@ input[type='submit']:focus-visible {
   color: red;
 }
 
-/* ------------------------------------Contato-----------------------------------*/
+/* ------------------------------------Contact-----------------------------------*/
 .contacttitle{
 display: flex;
 flex-direction: column;
@@ -358,6 +367,8 @@ line-height: 25px;
 
 .contacttitle h1{
   margin-bottom: 24px;
+  -webkit-text-stroke-width: 1px;              /* largura da borda */
+  -webkit-text-stroke-color: #000;           /*cor*/
   }
 
 .contact{
@@ -369,6 +380,8 @@ margin-bottom: 15px;
 
 .contact h1{
   margin-bottom: 16px;
+  -webkit-text-stroke-width: 1px;              /* largura da borda */
+  -webkit-text-stroke-color: #000;          /*cor */
 }
 
 .contact p{
@@ -488,6 +501,9 @@ margin-bottom: 15px;
 
 .contactquestion h1{
   color: #EE2A25;
+  -webkit-text-stroke-width: 1px;              /* largura da borda */
+  -webkit-text-stroke-color: #000;
+  font-family: 'OPTIMA_B';
 }
 
 .btnContainer{
@@ -551,3 +567,63 @@ margin-bottom: 15px;
   margin-top: 160px;
   text-align: justify;
 }
+
+/* ------------------------------------About-----------------------------------*/
+.aboutInit{
+  background: url('images/OndeEstaWally120.png');
+  width: 100%;
+  height: 150px;
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: space-around;
+  /* flex-direction: column; */
+}
+
+.aboutValues{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  background-color: #d3d3d3e6;
+  text-align: center;
+}
+ .aboutValues li{
+  list-style: none;
+ }
+ 
+.aboutGeneral{
+  width: 370px;
+  margin-left: 30px;
+}
+
+.aboutDev{
+  display: flex;
+  margin-top: 70px;
+  width: 600px;
+  line-height: 45px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.aboutDev li{
+  display: inline;
+}
+
+.aboutGeneral h1{
+  color: #EE2A25;
+  -webkit-text-stroke-width: 1px;              /* largura da borda */
+  -webkit-text-stroke-color: #000;
+  font-family: 'OPTIMA_B';
+}
+
+.aboutInit h1{
+  color: #EE2A25;
+  -webkit-text-stroke-width: 1px;              /* largura da borda */
+  -webkit-text-stroke-color: #000;
+  font-family: 'OPTIMA_B';
+}
+
+
+
+
+
