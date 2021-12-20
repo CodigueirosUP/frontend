@@ -9,12 +9,12 @@ const Welcome = () => {
   const navigate = useNavigate();
   const { auth } = useContext(AuthContext);
 
-  useEffect(async ()=>{
+  useEffect(async () => {
     const { data } = await ApiAwesome.get();
-    if(data){
+    if (data) {
       console.log(data)
     }
-  },[])
+  }, [])
 
   return (
     <div className="container">
@@ -24,11 +24,12 @@ const Welcome = () => {
             <img src={logoHome} alt="welcome-img" />
           </div>
           <div className="rigth">
-            <h1>Onde está o Wallet?</h1>
+            <h1>Onde está </h1>
+            <span className="walletName">Wallet?</span>
             <p>Onde está Wallet? é um sistema para gestão financeira de contas de serviços contratados pela DBC Company.</p>
             {auth ?
-            <button className="buttoninit" onClick={() => navigate("/dashboard")}>Começar</button>
-            :<button className="buttoninit" onClick={() => navigate("/login")}>Começar</button>}
+              <button className="buttoninit" onClick={() => navigate("/dashboard")}>Começar</button>
+              : <button className="buttoninit" onClick={() => navigate("/login")}>Começar</button>}
           </div>
         </div>
       </div>

@@ -59,9 +59,7 @@ code {
 .rigth {
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
   justify-content: center;
-  /* align-content: center; */
   width: 50%;
   margin-left: 30px;
 }
@@ -73,16 +71,28 @@ code {
 
 .welcome .rigth h1{
   color: #EE2A25;
-  font-size: 50px;
+  font-size: 75px;
   font-family: 'OPTIMA_B';
-  -webkit-text-stroke-width: 1px;              /* largura da borda */
-  -webkit-text-stroke-color: #000;        /* cor  */
+  -webkit-text-stroke-width: 1px;              
+  -webkit-text-stroke-color: #000;        
+  font-weight: bold;
   
 }
 
-.welcome .rigth p{
-  font-size: 20px;
+.walletName{
+  color: #027cc9;
+  font-family: 'OPTIMA_B';
+  -webkit-text-stroke-width: 1px;              
+  -webkit-text-stroke-color: #000;
+  font-size: 100px;
   font-weight: bold;
+}
+
+.welcome .rigth p{
+  font-size: 30px;
+  font-weight: bold;
+  font-family: 'OPTIMA_B';
+
 }
 
 .buttoninit{
@@ -376,10 +386,21 @@ max-width: 500px;
 line-height: 25px;
 }
 
+.contacttitle p{
+  margin-bottom: 8px;
+  font-size: 25px;
+  font-weight: bold;
+  font-family: 'OPTIMA_B';
+}
+
 .contacttitle h1{
   margin-bottom: 24px;
-  -webkit-text-stroke-width: 1px;              /* largura da borda */
-  -webkit-text-stroke-color: #000;           /*cor*/
+  -webkit-text-stroke-width: 1px;             
+  -webkit-text-stroke-color: #000;  
+  color: #EE2A25;
+  font-size: 35px;
+  font-family: 'OPTIMA_B';       
+  font-weight: bold;           
   }
 
 .contact{
@@ -391,13 +412,24 @@ margin-bottom: 15px;
 
 .contact h1{
   margin-bottom: 16px;
-  -webkit-text-stroke-width: 1px;              /* largura da borda */
-  -webkit-text-stroke-color: #000;          /*cor */
+  -webkit-text-stroke-width: 1px;             
+  -webkit-text-stroke-color: #000;  
+  color: #EE2A25;
+  font-size: 35px;
+  font-family: 'OPTIMA_B';
+  -webkit-text-stroke-width: 1px;             
+  -webkit-text-stroke-color: #000;        
+  font-weight: bold;        
 }
 
 .contact p{
   margin-bottom: 8px;
+  font-size: 25px;
+  font-weight: bold;
+  font-family: 'OPTIMA_B';
   }
+
+
   
 
 .contactquestion{
@@ -429,7 +461,6 @@ margin-bottom: 15px;
   width: 300px;
   border-radius: 16px;
   margin-top: 160px;
-  /* margin-right:100px ; */
   box-shadow: 
   0 0 0.9px #fff,
   0 0 1.25px #fff,
@@ -503,16 +534,9 @@ margin-bottom: 15px;
 
 }
 
-/* .container button{
-  width: 100px;
-  cursor: pointer;
-  margin: 15px;
-  background-color: #009CDB;
-} */
-
 .contactquestion h1{
   color: #EE2A25;
-  -webkit-text-stroke-width: 1px;              /* largura da borda */
+  -webkit-text-stroke-width: 1px;             
   -webkit-text-stroke-color: #000;
   font-family: 'OPTIMA_B';
 }
@@ -572,7 +596,6 @@ margin-bottom: 15px;
   overflow: hidden;
 }
 
-
 .textContainer {
   margin-top: 160px;
   text-align: justify;
@@ -586,7 +609,6 @@ margin-bottom: 15px;
   margin-bottom: 50px;
   display: flex;
   justify-content: space-around;
-  /* flex-direction: column; */
 }
 
 .aboutValues{
@@ -606,6 +628,12 @@ margin-bottom: 15px;
   margin-left: 30px;
 }
 
+.aboutGeneral li{
+  font-size: 25px;
+  font-weight: bold;
+  font-family: 'OPTIMA_B';
+}
+
 .aboutDev{
   display: flex;
   margin-top: 70px;
@@ -617,19 +645,27 @@ margin-bottom: 15px;
 
 .aboutDev li{
   display: inline;
+  
 }
 
 .aboutGeneral h1{
   color: #EE2A25;
-  -webkit-text-stroke-width: 1px;              /* largura da borda */
+  -webkit-text-stroke-width: 1px;             
   -webkit-text-stroke-color: #000;
+  font-size: 45px;
   font-family: 'OPTIMA_B';
 }
 
 .aboutInit h1{
   color: #EE2A25;
-  -webkit-text-stroke-width: 1px;              /* largura da borda */
+  -webkit-text-stroke-width: 1px;             
   -webkit-text-stroke-color: #000;
+  font-family: 'OPTIMA_B';
+}
+
+.aboutValues p{
+  font-size: 25px;
+  font-weight: bold;
   font-family: 'OPTIMA_B';
 }
 

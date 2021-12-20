@@ -12,7 +12,7 @@ const Contact = () => {
             <div>
               <div className="contacttitle">
                 <h1>Gostaria de saber mais?</h1>
-                <h4>Utilize nosso canal de contato e entre em contato para que possamos tirar todas as suas dúvidas, e assim, poder melhor atender suas necessidades.</h4>
+                <p>Utilize nosso canal de contato e entre em contato para que possamos tirar todas as suas dúvidas, e assim, poder melhor atender suas necessidades.</p>
               </div>
 
               <div className='contact'>
@@ -25,7 +25,7 @@ const Contact = () => {
 
           <div className='contactForm'>
             <form >
-            <h3>Queremos ouvir você</h3>
+              <h3>Queremos ouvir você</h3>
               <label>Digite seu nome completo</label>
               <input type="text" placeholder="Nome Completo" required />
 
