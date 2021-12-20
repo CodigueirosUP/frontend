@@ -12,7 +12,7 @@ import Managers from "./pages/Managers";
 import Services from "./pages/Services";
 import Footer from "./components/footer/Footer";
 import ManagerCreate from "./pages/ManagerCreate";
-import ApiWallet from "./api";
+import {ApiWallet} from "./api";
 import ServiceCreate from "./pages/ServiceCreate";
 import { ServiceContext } from "./context/ServiceContext";
 import Loading from "./components/loading/Loading";

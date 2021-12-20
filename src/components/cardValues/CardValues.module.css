@@ -5,5 +5,6 @@
   border-radius: 10px;
   margin: 0 10px;
   padding: 5px;
-  background-color: rgb(84, 209, 157);
+  background-color: hsl(217, 89%, 61%);
+  color: white;
 }

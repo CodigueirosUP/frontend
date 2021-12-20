@@ -6,13 +6,12 @@ import SelectCustom from '../components/customElement/SelectCustom';
 import { ServiceContext } from '../context/ServiceContext';
 import { useNavigate, useParams } from 'react-router-dom';
 import { toastError, toastSucess } from '../utils/toast';
+import { currencyConvert } from '../utils/formactCurrency';
 
 const moedaOption = [
   {value:'REAL', label:'REAL'},
   {value:'DOLAR', label:'DOLAR'},
-  {value:'EURO', label:'EURO'},
-  {value:'IENE', label:'IENE'},
-  {value:'YUAN', label:'YUAN'}
+  {value:'EURO', label:'EURO'}
 ]
 
 const periocidadeOption = [
@@ -86,6 +85,7 @@ const ServiceCreate = () => {
 
 
   const { getManagers, managerList} = useContext(ManagerContext);
+
   useEffect(() => {
     getManagers();
   }, [])
@@ -117,15 +117,18 @@ const ServiceCreate = () => {
 
 
     onSubmit: async (values) => {
-      console.log(values.date);
+
+      console.log(values)
       values.valor = parseInt(values.valor);
+      const valueConvert = await currencyConvert(values.valor, values.moeda)
+
       if (id) {
         servicoEditDTO.idGerente = values.gerente;
         servicoEditDTO.descricao = values.descricao;
         servicoEditDTO.moeda = values.moeda;
         servicoEditDTO.nome = values.nome;
         servicoEditDTO.periocidade = values.periocidade;
-        servicoEditDTO.valor = values.valor;
+        servicoEditDTO.valor = valueConvert;
         servicoEditDTO.webSite = values.website;
         putService(id, servicoEditDTO)
         .then(() =>{
@@ -135,14 +138,13 @@ const ServiceCreate = () => {
         .catch((errors) => {
           toastError(errors.response.data.errors[0])
         })
-        
       
       } else { 
         servicoCreateDTO.descricao = values.descricao;
         servicoCreateDTO.moeda = values.moeda;
         servicoCreateDTO.nome = values.nome;
         servicoCreateDTO.periocidade = values.periocidade;
-        servicoCreateDTO.valor = values.valor;
+        servicoCreateDTO.valor = valueConvert;
         servicoCreateDTO.webSite = values.website;
         servicoCreateDTO.data = values.date;
         postService(values.gerente, servicoCreateDTO)
@@ -183,7 +185,7 @@ const ServiceCreate = () => {
         .required('Campo Obrigatório')
         .matches(
           /^((ftp|http|https):\/\/)?www\.([A-z]+)\.([A-z]{2,})/,
-          'Favor inserir um website válido'
+          'Favor inserir um website válido (www.seuservico.com)'
         ),
 
         valor: Yup.string()

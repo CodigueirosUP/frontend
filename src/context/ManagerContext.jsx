@@ -1,5 +1,5 @@
 import React, { createContext, useState } from "react"
-import ApiWallet from "../api"
+import {ApiWallet} from "../api"
 
 const ManagerContext = createContext()
 

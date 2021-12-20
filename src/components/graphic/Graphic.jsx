@@ -1,9 +1,7 @@
 import { useState } from "react";
 import Chart from "react-google-charts";
 
-const Graphic = () => {
-
-  const [dataValues, setDataValues] = useState([]);
+const Graphic = ({ graphValues }) => {
 
   return (
     <div>
@@ -15,18 +13,18 @@ const Graphic = () => {
           loader={<div>Loading Chart</div>}
           data={[
             ['Meses', 'valor'],
-            ['Janeiro', 100],
-            ['Fevereiro', 300],
-            ['Março', 200],
-            ['Abril', 400],
-            ['Maio', 600],
-            ['Junho', 500],
-            ['Julho', 700],
-            ['Agosto', 900],
-            ['Setembro', 800],
-            ['Outubro', 400],
-            ['Novembro', 500],
-            ['Dezembro', 600]
+            ['Janeiro', graphValues.janeiro],
+            ['Fevereiro', graphValues.fevereiro],
+            ['Março', graphValues.marco],
+            ['Abril', graphValues.abril],
+            ['Maio', graphValues.maio],
+            ['Junho', graphValues.junho],
+            ['Julho', graphValues.julho],
+            ['Agosto', graphValues.agosto],
+            ['Setembro', graphValues.setembro],
+            ['Outubro', graphValues.outubro],
+            ['Novembro', graphValues.novembro],
+            ['Dezembro', graphValues.dezembro]
           ]}
           options={{
             // Material design options

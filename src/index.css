@@ -5,6 +5,10 @@
   src: url('OPTIMA.TTF') format('truetype'), url('OPTIMA_B.TTF')  format('truetype')
 }
 body {
+
+  background-image: linear-gradient(to bottom, rgba(39, 85, 158, 0.7) 0%,rgba(80, 164, 77, 0.7) 100%), url("./images/fundo1.jpg");
+  background-size: 100%;
+  background-repeat: repeat;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'OPTIMA', 'OPTIMA_B',
@@ -16,6 +20,7 @@ body {
 html, body, *, span {
   margin: 0;
   padding: 0;
+  
 }
 
 code {
@@ -26,6 +31,7 @@ code {
 .container {
   max-width: 1200px;
   margin: 0 auto;
+
 }
 
 .content {
@@ -81,9 +87,9 @@ code {
 
 .buttoninit{
   font-weight: bold;
-  background-color: #009CDB;
+  background-color: #4285F4;
   width: 20%;
-  border: 3px solid #009CDB;
+  border: 3px solid #4285F4;
   border-radius: 8px;
   color: #FFFFFF;
   font-size: 16px;
@@ -94,8 +100,8 @@ code {
 .buttoninit:hover{
   background-color: #FFFFFF;
   cursor: pointer;
-  border: 3px solid #009CDB;
-  color: #009CDB;
+  border: 3px solid #4285F4;
+  color: #4285F4;
 }
 
 
@@ -135,7 +141,7 @@ code {
 .contentDashboard .nameManager {
   text-align: center;
   border-radius: 20px;
-  background-color: #ccc;
+  background-color: rgb(255, 255, 255);
   color: rgb(0, 0, 0);
   padding: 5px 0;
 }
@@ -154,7 +160,8 @@ code {
   width: 100%;
   display: flex;
   justify-content: space-around;
-  background-color: #ccc;
+  background-color: #ffffff;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   border-radius: 20px;
 }
 
@@ -171,7 +178,8 @@ code {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #ccc;
+  background-color: #ffffff;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   border-radius: 20px;
   color: rgb(0, 0, 0);
   padding: 8px 0;
@@ -183,7 +191,8 @@ code {
   align-items: center;
   height: 330px;
   padding: 5px 0;
-  background-color: #ccc;
+  background-color: #ffffff;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   border-radius: 20px;
 }
 
@@ -191,6 +200,7 @@ code {
   width: 30%;
   height: 100%;
   background-color: #ffffff;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
   border-radius: 20px;
 }
 
@@ -210,6 +220,7 @@ code {
   width: 50%;
   height: 100%;
   background-color: #ffffff;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
   border-radius: 20px;
 }
 
@@ -414,45 +425,45 @@ margin-bottom: 15px;
 
 
 .contactForm form{
-  background-color: rgb(238, 42, 37, 0.75);
+  background-color: rgb(167, 146, 112, 0.9);
   width: 300px;
-  border-radius: 15px;
+  border-radius: 16px;
   margin-top: 160px;
   /* margin-right:100px ; */
   box-shadow: 
-  0 0 1.75px #fff,
-  0 0 2.5px #fff,
+  0 0 0.9px #fff,
+  0 0 1.25px #fff,
   0 0 5.25px #fff,
-  0 0 10.5px rgb(0, 156, 219),
-  0 0 20.5px rgb(0, 156, 219),
-  0 0 23px rgb(0, 156, 219),
-  0 0 25.5px rgb(0, 156, 219),
-  0 0 37.7px rgb(0, 156, 219);
+  0 0 5.25px rgb(0, 156, 219),
+  0 0 10.25px rgb(0, 156, 219),
+  0 0 11.5px rgb(0, 156, 219),
+  0 0 12.5px rgb(0, 156, 219),
+  0 0 18px rgb(0, 156, 219);
 }
 
 .contactForm form:hover{
   box-shadow:
-  0 0 1.75px #fff,
-  0 0 2.5px #fff,
+  0 0 0.9px #fff,
+  0 0 1.25px #fff,
   0 0 5.25px #fff,
-  0 0 10.5px rgb(255, 8, 0),
-  0 0 20.5px rgb(255, 8, 0),
-  0 0 23px rgb(255, 8, 0),
-  0 0 25.5px rgb(255, 8, 0),
-  0 0 37.7px rgb(255, 8, 0);
+  0 0 5.25px rgb(255, 8, 0),
+  0 0 10.25px rgb(255, 8, 0),
+  0 0 11.5px rgb(255, 8, 0),
+  0 0 12.5px rgb(255, 8, 0),
+  0 0 18px rgb(255, 8, 0);
   transition: 0.75s;
 }
 
 .contactForm form:not(:hover){
   box-shadow: 
-  0 0 1.75px #fff,
-  0 0 2.5px #fff,
+  0 0 0.9px #fff,
+  0 0 1.25px #fff,
   0 0 5.25px #fff,
-  0 0 10.5px rgb(0, 156, 219),
-  0 0 20.5px rgb(0, 156, 219),
-  0 0 23px rgb(0, 156, 219),
-  0 0 25.5px rgb(0, 156, 219),
-  0 0 37.7px rgb(0, 156, 219);
+  0 0 5.25px rgb(0, 156, 219),
+  0 0 10.25px rgb(0, 156, 219),
+  0 0 11.5px rgb(0, 156, 219),
+  0 0 12.5px rgb(0, 156, 219),
+  0 0 18px rgb(0, 156, 219);
   transition: 0.75s;
 }
 
@@ -534,7 +545,7 @@ margin-bottom: 15px;
 .btnContainer button:after {
   content: "";
   border-radius: 20px;
-  background-color: #009CDB;
+  background-color: rgb(0, 156, 219, 0.9);
   width: 100%;
   z-index: -1;
   position: absolute;
@@ -559,7 +570,6 @@ margin-bottom: 15px;
   max-width: 1200px;
   margin: 0 auto;
   overflow: hidden;
-  background-color: rgb(240, 240, 240);
 }
 
 

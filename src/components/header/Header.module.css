@@ -1,11 +1,14 @@
 .container {
-  background-color: rgb(25, 25, 25);
+  background-color: rgb(194 222 228);
   padding: 10px;
 }
 
 header {
-  background-color: rgb(25, 25, 25);
+  background: rgb(194 222 228);
+  background: linear-gradient(180deg, rgba(78,93,167,1) 0%, rgba(78, 93, 167, 0.753) 35%, rgba(194, 222, 228,0.2) 100%);
   padding: 10px;
+  /* rgb(78 93 167) */
+  /* rgb(183 211 218) */
 }
 .rigth {
   display: flex;

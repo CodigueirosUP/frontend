@@ -43,11 +43,10 @@ const MenagerCreate = () => {
       .min(6, 'Mínumo 6 caracteres')
       .max(12, 'Máximo 12 caracteres')
       .required('Campo Obrigatório')
-      
-      // .matches(
-      //   /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#])[0-9a-zA-Z$*&@#]{6,}$/,
-      //   'Necessário um caractere especial, uma letra maiúscula, uma letra minúscula, um número e no mínimo 6 caracteres'
-      // )
+      .matches(
+        /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#])[0-9a-zA-Z$*&@#]{6,}$/,
+        'Necessário um caractere especial, uma letra maiúscula, uma letra minúscula, um número e no mínimo 6 caracteres'
+      )
 
     const senhaCheck = Yup.string()
       .min(6, 'Mínumo 6 caracteres')
