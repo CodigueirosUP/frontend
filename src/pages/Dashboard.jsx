@@ -6,11 +6,15 @@ import {ApiWallet} from "../api";
 import CardServiceDashboard from '../components/cardServiceDashboard/CardServiceDashboard';
 import { ManagerContext } from "../context/ManagerContext";
 import CardValues from "../components/cardValues/CardValues";
+import moment from 'moment'
 
 const Dashboard = () => {
 
   const { typeUser } = useContext(AuthContext);
   const { managerList, getManagers } = useContext(ManagerContext);
+  moment.locale('pt-br');
+  const currentMonth = moment().format("DD/MM/YYYY").slice(3);
+  const nextMonth = moment().add(1, 'month').format("DD/MM/YYYY").slice(3);
 
   const [dataService, setDataService] = useState([]);
   const [dataServiceManager, setDataServiceManager] = useState([]);
@@ -158,7 +162,6 @@ const Dashboard = () => {
 
   const searchForMonth = (user) => {
     if(user.idUser === 1){
-      console.log(dataService)
       dataService.forEach(data => {
         const arrData = data.data.split('-')
         if (arrData[1] === '01') {
@@ -249,7 +252,6 @@ const Dashboard = () => {
   return (
     <div className="container">
       <div className="contentDashboard">
-        <div>
           <div className="nameOrFilter">
             {typeUser.nomeCompleto && <h3 className="nameManager">{typeUser.nomeCompleto}</h3>}
             {typeUser.usuario === 'admin' ?
@@ -266,18 +268,17 @@ const Dashboard = () => {
               : null}
           </div>
           <div className="dashboardValues">
-            <CardValues key={1} title='Gasto total' subTitle='Dezembro/21' totalValueService={totalValueService} />
-            <CardValues key={2} title='Estimativa de gasto' subTitle='Janeiro/21' totalValueService={forecastOfValues} />
+            <CardValues key={1} title='Gasto total' subTitle={currentMonth} totalValueService={totalValueService} />
+            <CardValues key={2} title='Estimativa de gasto' subTitle={nextMonth} totalValueService={forecastOfValues} />
             {moreExpansiveService ?
               <div>
                 <CardValues key={3} title='Serviço mais caro' subTitle={moreExpansiveService.nome} totalValueService={moreExpansiveService.valor} />
               </div> :
               <div>
-                <h2>Não existem serviços cadastrados</h2>
+                 <CardValues key={4} title='Sem serviços' subTitle='Sem serviços' totalValueService='R$ 0,00' />
               </div>
             }
           </div>
-        </div>
         <div className="listServiceAndgraphic">
           <div className="leftListServiceAndgraphic">
             <div className="header">

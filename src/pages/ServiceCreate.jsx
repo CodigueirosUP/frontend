@@ -185,7 +185,7 @@ const ServiceCreate = () => {
         .required('Campo Obrigatório')
         .matches(
           /^((ftp|http|https):\/\/)?www\.([A-z]+)\.([A-z]{2,})/,
-          'Favor inserir um website válido'
+          'Favor inserir um website válido (www.seuservico.com)'
         ),
 
         valor: Yup.string()
