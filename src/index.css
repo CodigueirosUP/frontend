@@ -2,6 +2,10 @@
 /* ------------------------------------Geral------------------------------------ */
 
 body {
+
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.6) 0%,rgba(255, 255, 255, 0.6) 100%), url("./images/fundo1.jpg");
+  background-size: 100%;
+  background-repeat: no-repeat;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -24,7 +28,7 @@ code {
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  background-color: rgb(255, 255, 255);
+
 }
 
 .content {
@@ -74,9 +78,9 @@ code {
 
 .buttoninit{
   font-weight: bold;
-  background-color: #009CDB;
+  background-color: #4285F4;
   width: 20%;
-  border: 3px solid #009CDB;
+  border: 3px solid #4285F4;
   border-radius: 8px;
   color: #FFFFFF;
   font-size: 16px;
@@ -87,8 +91,8 @@ code {
 .buttoninit:hover{
   background-color: #FFFFFF;
   cursor: pointer;
-  border: 3px solid #009CDB;
-  color: #009CDB;
+  border: 3px solid #4285F4;
+  color: #4285F4;
 }
 
 
@@ -128,7 +132,7 @@ code {
 .contentDashboard .nameManager {
   text-align: center;
   border-radius: 20px;
-  background-color: #ccc;
+  background-color: rgb(255, 255, 255);
   color: rgb(0, 0, 0);
   padding: 5px 0;
 }
@@ -147,7 +151,8 @@ code {
   width: 100%;
   display: flex;
   justify-content: space-around;
-  background-color: #ccc;
+  background-color: #ffffff;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   border-radius: 20px;
 }
 
@@ -164,7 +169,8 @@ code {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #ccc;
+  background-color: #ffffff;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   border-radius: 20px;
   color: rgb(0, 0, 0);
   padding: 8px 0;
@@ -176,7 +182,8 @@ code {
   align-items: center;
   height: 330px;
   padding: 5px 0;
-  background-color: #ccc;
+  background-color: #ffffff;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   border-radius: 20px;
 }
 
@@ -184,6 +191,7 @@ code {
   width: 30%;
   height: 100%;
   background-color: #ffffff;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
   border-radius: 20px;
 }
 
@@ -203,6 +211,7 @@ code {
   width: 50%;
   height: 100%;
   background-color: #ffffff;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
   border-radius: 20px;
 }
 
