@@ -27,6 +27,7 @@ const Header = () => {
             </>
           }
         </div>
+        <div className="bordaHeader"></div>
       </div>
     </header>
   )
