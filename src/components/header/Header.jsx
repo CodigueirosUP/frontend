@@ -15,14 +15,15 @@ const Header = () => {
       <div>
         <a href="/">
           <img width='50px' src={logo} alt="Logo" />
-          <span>Onde está o Wallet?</span>
+          <span>Onde está </span>
+          <span>Wallet?</span>
         </a>
         </div>
         <div className={styles.rigth}>
           <Menu />
           {typeUser.usuario && 
             <>
-              <span><span className={styles.user}><FaUserCircle className={styles.imgUser} />{typeUser.usuario}</span></span>
+              <span className={styles.user}><FaUserCircle className={styles.imgUser} />{typeUser.usuario}</span>
               <button onClick={() => handleLogout()}>sair</button>
             </>
           }

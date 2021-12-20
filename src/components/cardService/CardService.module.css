@@ -4,42 +4,42 @@
   justify-content: center;
   width: 400px;
   margin: 40px;
-  background-color: rgb(167, 146, 112, 0.9);
+  background-color: rgba(190, 190, 190, 0.5);
   border-radius: 16px;
   box-shadow: 
-  0 0 0.9px #fff,
-  0 0 1.25px #fff,
-  0 0 5.25px #fff,
-  0 0 5.25px rgb(0, 156, 219),
-  0 0 10.25px rgb(0, 156, 219),
-  0 0 11.5px rgb(0, 156, 219),
-  0 0 12.5px rgb(0, 156, 219),
-  0 0 18px rgb(0, 156, 219);
+  0 0 0.45px #fff,
+  0 0 0.68px #fff,
+  0 0 2.62px #fff,
+  0 0 2.62px rgb(0, 156, 219),
+  0 0 5.15px rgb(0, 156, 219),
+  0 0 5.8px rgb(0, 156, 219),
+  0 0 6.25px rgb(0, 156, 219),
+  0 0 9px rgb(0, 156, 219);
 }
 
 .containerCardService:hover {
   box-shadow:
-  0 0 0.9px #fff,
-  0 0 1.25px #fff,
-  0 0 5.25px #fff,
-  0 0 5.25px rgb(255, 8, 0),
-  0 0 10.25px rgb(255, 8, 0),
-  0 0 11.5px rgb(255, 8, 0),
-  0 0 12.5px rgb(255, 8, 0),
-  0 0 18px rgb(255, 8, 0);
+  0 0 0.45px #fff,
+  0 0 0.68px #fff,
+  0 0 2.62px #fff,
+  0 0 2.62px rgb(255, 8, 0),
+  0 0 5.15px rgb(255, 8, 0),
+  0 0 5.8px rgb(255, 8, 0),
+  0 0 6.25px rgb(255, 8, 0),
+  0 0 9px rgb(255, 8, 0);
   transition: 0.75s;
 }
 
 .containerCardService:not(:hover) {
   box-shadow: 
-  0 0 0.9px #fff,
-  0 0 1.25px #fff,
-  0 0 5.25px #fff,
-  0 0 5.25px rgb(0, 156, 219),
-  0 0 10.25px rgb(0, 156, 219),
-  0 0 11.5px rgb(0, 156, 219),
-  0 0 12.5px rgb(0, 156, 219),
-  0 0 18px rgb(0, 156, 219);
+  0 0 0.45px #fff,
+  0 0 0.68px #fff,
+  0 0 2.62px #fff,
+  0 0 2.62px rgb(0, 156, 219),
+  0 0 5.15px rgb(0, 156, 219),
+  0 0 5.8px rgb(0, 156, 219),
+  0 0 6.25px rgb(0, 156, 219),
+  0 0 9px rgb(0, 156, 219);
   transition: 0.75s;
 }
 

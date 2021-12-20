@@ -2,6 +2,8 @@ import { useContext } from "react"
 import { AuthContext } from "../context/AuthContext"
 import { Formik, Field, Form } from 'formik';
 import { useNavigate } from 'react-router-dom'
+import { FaUserCircle } from "react-icons/fa";
+import { RiLockFill } from 'react-icons/ri'
 
 const Login = () => {
 
@@ -11,28 +13,32 @@ const Login = () => {
   return (
     <div className="container">
       <div className="content">
-        <h1>login</h1>
-        <Formik
-          initialValues={{
-            usuario: '',
-            senha: ''
-          }}
-          onSubmit={ (values) => {
-            handleLogin(values, navigate);
-          }}
-        >
-          <Form>
-            <div>
-              <label htmlFor="usuario">Usuário</label>
-              <Field id="usuario" name="usuario" placeholder="Usuário" />
-            </div>
-            <div>
-              <label htmlFor="senha">Senha</label>
-              <Field id="senha" name="senha" placeholder="Senha" />
-            </div>
-            <button type="submit">Entrar</button>
-          </Form>
-        </Formik>
+        <div className="loginContainer">
+          <div>
+            <h1>Login</h1>
+            <Formik
+              initialValues={{
+                usuario: '',
+                senha: ''
+              }}
+              onSubmit={ (values) => {
+                handleLogin(values, navigate);
+              }}
+            >
+              <Form className="formContainer">
+                <div className="inputContainer">
+                <FaUserCircle className="userIcon"/>
+                  <Field id="usuario" name="usuario" placeholder="Usuário" className="inputUser"/>
+                </div>
+                <div className="inputContainer">
+                  <RiLockFill className="lockIcon"/>
+                  <Field id="senha" name="senha" placeholder="Senha" className="inputPassword" />
+                </div>
+                <button type="submit">Entrar</button>
+              </Form>
+            </Formik>
+          </div>
+        </div>
       </div>
     </div>
   )
