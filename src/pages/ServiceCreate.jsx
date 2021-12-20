@@ -144,7 +144,7 @@ const ServiceCreate = () => {
         servicoCreateDTO.moeda = values.moeda;
         servicoCreateDTO.nome = values.nome;
         servicoCreateDTO.periocidade = values.periocidade;
-        servicoCreateDTO.valor = values.valor;
+        servicoCreateDTO.valor = valueConvert;
         servicoCreateDTO.webSite = values.website;
         servicoCreateDTO.data = values.date;
         postService(values.gerente, servicoCreateDTO)
