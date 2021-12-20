@@ -108,6 +108,14 @@ code {
   cursor: pointer;
   border: 3px solid #4285F4;
   color: #4285F4;
+  transition: 0.4s;
+}
+
+.buttoninit:not(:hover){
+  background-color: #4285F4;
+  border: 3px solid #4285F4;
+  color: #FFFFFF;
+  transition: 0.4s;
 }
 
 

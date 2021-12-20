@@ -26,7 +26,7 @@ const Welcome = () => {
           <div className="rigth">
             <h1>Onde está </h1>
             <span className="walletName">Wallet?</span>
-            <p>Onde está Wallet? é um sistema para gestão financeira de contas de serviços contratados pela DBC Company.</p>
+            <p>É um sistema para gestão financeira de contas de serviços contratados pela DBC Company.</p>
             {auth ?
               <button className="buttoninit" onClick={() => navigate("/dashboard")}>Começar</button>
               : <button className="buttoninit" onClick={() => navigate("/login")}>Começar</button>}
