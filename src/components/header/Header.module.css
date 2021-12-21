@@ -1,12 +1,13 @@
-.container {
-  background-color: rgb(194 222 228);
+
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
   padding: 10px;
 }
 
-header {
-  background: linear-gradient(180deg, rgba(78,93,167,1) 0%, rgba(78, 93, 167, 1) 45%, rgba(194, 222, 228, 0) 100%);
-  padding: 10px;
-}
 .rigth {
   display: flex;
   margin-right: 10px;
@@ -21,9 +22,12 @@ header {
   display: flex;
   align-items: center;
   color: white;
+  margin-left: 20px;
 }
 
 .headerContainer {
+  width: 1200px;
+  margin-bottom: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;  
@@ -42,12 +46,12 @@ header {
   margin-left: 20px;
   font-family: 'OPTIMA_B';
   color: rgb(0, 156, 219);
-  border-style: 1px solid black;
+  border-style: 1px solid rgb(0, 0, 0, 0.8);
   font-weight: bold;
-  -webkit-text-stroke-width: 1px;              /* largura da borda */
-  -webkit-text-stroke-color: #000;           /*cor*/
+  -webkit-text-stroke-width: 1px;           
+  -webkit-text-stroke-color: rgb(0, 0, 0, 0.8);        
   -webkit-text-stroke-width: 1px;             
-  -webkit-text-stroke-color: #000; 
+  -webkit-text-stroke-color: rgb(0, 0, 0, 0.8); 
   font-size: 30px;
 }
 
@@ -61,6 +65,36 @@ header {
   -webkit-text-stroke-width: 1px;             
   -webkit-text-stroke-color: #000; 
   font-size: 35px;
+}
+
+.barra {
+  height: 3px;
+  border-radius: 1px;
+  width: 1200px;
+  background-color: white;
+}
+
+.buttonLogout{
+  margin-left: 10px;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  padding: 0 10px;
+  background-color: rgba(255, 255, 255, 0.7);
+  color: rgb(67, 135, 244);
+  cursor: pointer;
+}
+
+.buttonLogout:hover{
+  background-color: rgba(255, 0, 0, 0.7);
+  color: rgb(255, 255, 255);
+  transition: 0.4s;
+}
+
+.buttonLogout:not(:hover){
+  background-color: rgba(255, 255, 255, 0.7);
+  color: rgb(67, 135, 244);
+  transition: 0.4s;
 }
 
 

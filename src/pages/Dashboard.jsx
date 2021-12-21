@@ -183,6 +183,11 @@ const Dashboard = () => {
     if(user.idUser === 1){
       dataService.forEach(data => {
         const arrData = data.data.split('-')
+
+        // if(){
+
+        // }
+
         if (arrData[1] === '01') {
           months.janeiro = months.janeiro + data.valor
         } 

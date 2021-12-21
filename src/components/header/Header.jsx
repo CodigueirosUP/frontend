@@ -14,7 +14,7 @@ const Header = () => {
       <div className={styles.headerContainer}>
       <div>
         <a href="/">
-          <img width='50px' src={logo} alt="Logo" />
+          <img width='40px' src={logo} alt="Logo" />
           <span>Onde está </span>
           <span>Wallet?</span>
         </a>
@@ -24,11 +24,12 @@ const Header = () => {
           {typeUser.usuario && 
             <>
               <span className={styles.user}><FaUserCircle className={styles.imgUser} />{typeUser.usuario}</span>
-              <button onClick={() => handleLogout()}>sair</button>
+              <button className={styles.buttonLogout} onClick={() => handleLogout()}>Sair</button>
             </>
           }
         </div>
       </div>
+      <div className={styles.barra}></div>
     </header>
   )
 }

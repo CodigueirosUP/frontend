@@ -2,7 +2,7 @@
 /* ------------------------------------Geral------------------------------------ */
 @font-face {
   font-family: "Optima";
-  src: url('OPTIMA.TTF') format('truetype'), url('OPTIMA_B.TTF')  format('truetype')
+  src: url('./utils/fonts/OPTIMA.TTF') format('truetype'), url('./utils/fonts/OPTIMA_B.TTF')  format('truetype')
 }
 body {
 
@@ -208,6 +208,7 @@ code {
   border-radius: 50px;
   border-style: none;
   margin-top: 50px;
+  cursor: pointer;
 }
 
 .formContainer button:hover {
