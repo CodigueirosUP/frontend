@@ -24,24 +24,9 @@ const Dashboard = () => {
   const [totalValueService, setTotalValueService] = useState();
   const [forecastOfValues, setForecastOfValues] = useState()
   const [chooseManager, setChooseManager] = useState([]);
-  const [dolarValueMedia, setDolarValueMedia] = useState([]);
-  const [allMaxValuesMonths, setAllMaxValuesMonths] = useState({})
+  const [allMaxValuesMonths, setAllMaxValuesMonths] = useState([])
   
   const managerOption = [];
-  const months = {
-    janeiro: 0,
-    fevereiro: 0,
-    marco: 0,
-    abril: 0,
-    maio: 0,
-    junho: 0,
-    julho: 0,
-    agosto: 0,
-    setembro: 0,
-    outubro: 0,
-    novembro: 0,
-    dezembro:0
-  }
 
   useEffect(() => {
     if (typeUser) {
@@ -60,11 +45,11 @@ const Dashboard = () => {
     }
   })
 
-  useEffect(() => {
-    if(dataService) {
-      searchForMonth(typeUser)
-    }
-  },[dataService])
+  // useEffect(() => {
+  //   if(dataService) {
+  //     searchForMonth(typeUser)
+  //   }
+  // },[dataService])
 
   const IdentifyUser = async (user) => {
     if (user.idUser === 1) {
@@ -92,32 +77,51 @@ const Dashboard = () => {
     }
   }
 
-  const identifyTotalValue = (user) => {
+  const identifyTotalValue = async (user) => {
+    const month = currentMonth.slice(0, 2)
     if (user.idUser === 1) {
-      const values = dataService.map(service => service.valor);
-      const totalValueService = values.reduce((values, totalValues) => values + totalValues, 0);
-      setTotalValueService(totalValueService);
+      const { data } = await ApiWallet.get(`list-servicos-mes-ano?ano=2021&mes=${month}`);
+      setTotalValueService(data);
     } else {
       if (dataServiceManager) {
-        const values = dataServiceManager.map(service => service.valor);
-        const totalValueService = values.reduce((values, totalValues) => values + totalValues, 0);
-        setTotalValueService(totalValueService);
+        const { data } = await ApiWallet.get(`list-servicos-mes-ano?ano=2021&mes=${month}`);
+        setTotalValueService(data);
       }
     }
   }
 
-  const identifyForecastOfValues = async (user) => {
-    const { data } = await ApiAwesomeMedia.get();
-    const mapMediaValue = data.map(value => value.high);
-    const mediaValue = parseFloat(mapMediaValue.reduce((a, b) => a + b / mapMediaValue.length, 0).toFixed(2))
+  const [valueDolarMedia, setValueDolarMedia] = useState();
+  const [valueEuroMedia, setValueEuroMedia] = useState();
+  const [valueRealMedia, setValueRealMedia] = useState();
+
+  const dolarValueTotal = async () => {
+    const { data } = await ApiAwesomeMedia.get('/USD-BRL/30');
+    const mapMediaValueDolar = data.map(value => value.high);
+    const mediaValueDolar = parseFloat(mapMediaValueDolar.reduce((a, b) => a + b / mapMediaValueDolar.length, 0).toFixed(2))
+    console.log(mediaValueDolar)
+  }
+
+  const euroValueTotal =  async () => {
+    const { data } = await ApiAwesomeMedia.get('/EUR-BRL/30');
+    const mapMediaValueEuro = data.map(value => value.high);
+    const mediaValueEuro = parseFloat(mapMediaValueEuro.reduce((a, b) => a + b / mapMediaValueEuro.length, 0).toFixed(2))
+    console.log(mediaValueEuro)
+  }
+
+  const realValueTotal = async () => {
+
+  }
+
+  const identifyForecastOfValues = (user) => {
+
+    dolarValueTotal()
+    euroValueTotal()
 
     if (user.idUser === 1) {
-      const values = dataService.map(service => service.valor);
-      setForecastOfValues(parseInt(values.reduce((a, b) => a + b * mediaValue, 0)))
+      
     } else {
       if (dataServiceManager) {
-        const values = dataServiceManager.map(service => service.valor);
-        setForecastOfValues(parseInt(values.reduce((a, b) => a + b * mediaValue, 0)))
+        
       }
     }
   }
@@ -143,12 +147,9 @@ const Dashboard = () => {
     }
   }
 
-
-  {
     managerList.map(manager => {
       managerOption.push({ idGerente: manager.idGerente, label: manager.nomeCompleto })
     })
-  }
 
   const filterManager = async (option) => {
     if(option === 'todos'){
@@ -168,94 +169,18 @@ const Dashboard = () => {
     setDataService(chooseManager);
   }
 
-  const searchForMonth = (user) => {
-    if(user.idUser === 1){
-      dataService.forEach(data => {
-        const arrData = data.data.split('-')
-
-        if (arrData[1] === '01') {
-          months.janeiro = months.janeiro + data.valor
-        } 
-        if (arrData[1] === '02') {
-          months.fevereiro = months.fevereiro + data.valor
-        }
-        if (arrData[1] === '03') {
-          months.marco = months.marco + data.valor
-        }
-        if (arrData[1] === '04') {
-          months.abril = months.abril + data.valor
-        }
-        if (arrData[1] === '05') {
-          months.maio = months.maio + data.valor
-        }
-        if (arrData[1] === '06') {
-          months.junho = months.junho + data.valor
-        }
-        if (arrData[1] === '07') {
-          months.julho = months.julho + data.valor
-        }
-        if (arrData[1] === '08') {
-          months.agosto = months.agosto + data.valor
-        }
-        if (arrData[1] === '09') {
-          months.setembro = months.setembro + data.valor
-        }
-        if (arrData[1] === '10') {
-          months.outubro = months.outubro + data.valor
-        }
-        if (arrData[1] === '11') {
-          months.novembro = months.novembro + data.valor
-        }
-        if (arrData[1] === '12') {
-          months.dezembro = months.dezembro + data.valor
-        } 
-      })
-      setAllMaxValuesMonths(months)
-    }else {
-      if(dataService.servicoDTOList){
-        dataService.servicoDTOList.forEach(data => {
-          const arrData = data.data.split('-')
-          if (arrData[1] === '01') {
-            months.janeiro = months.janeiro + data.valor
-          } 
-          if (arrData[1] === '02') {
-            months.fevereiro = months.fevereiro + data.valor
-          }
-          if (arrData[1] === '03') {
-            months.marco = months.marco + data.valor
-          }
-          if (arrData[1] === '04') {
-            months.abril = months.abril + data.valor
-          }
-          if (arrData[1] === '05') {
-            months.maio = months.maio + data.valor
-          }
-          if (arrData[1] === '06') {
-            months.junho = months.junho + data.valor
-          }
-          if (arrData[1] === '07') {
-            months.julho = months.julho + data.valor
-          }
-          if (arrData[1] === '08') {
-            months.agosto = months.agosto + data.valor
-          }
-          if (arrData[1] === '09') {
-            months.setembro = months.setembro + data.valor
-          }
-          if (arrData[1] === '10') {
-            months.outubro = months.outubro + data.valor
-          }
-          if (arrData[1] === '11') {
-            months.novembro = months.novembro + data.valor
-          }
-          if (arrData[1] === '12') {
-            months.dezembro = months.dezembro + data.valor
-          } 
-        })
-        setAllMaxValuesMonths(months)
-      }
+  const graphicValues = async () => {
+    const graphicData = ([]);
+    for(var n = 1; n <= 12; n++){
+      const { data } = await ApiWallet.get(`list-servicos-mes-ano?ano=2021&mes=${n}`);
+      graphicData.push({valor: data});
     }
-    }
+    setAllMaxValuesMonths(graphicData);
+  }
+  
+  useEffect(()=>{
+    graphicValues()
+  },[])
   
   return (
     <div className="container">
@@ -297,7 +222,8 @@ const Dashboard = () => {
             </div>
           </div>
           <div className="rigthListServiceAndgraphic">
-            <Graphic graphValues={allMaxValuesMonths}/>
+            {allMaxValuesMonths && <Graphic graphValues={allMaxValuesMonths}/>}
+            
           </div>
         </div>
       </div>

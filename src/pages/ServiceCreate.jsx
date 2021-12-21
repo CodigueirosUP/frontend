@@ -28,7 +28,8 @@ const servicoEditDTO = {
     nome: "",
     periocidade: "",
     valor: 0,
-    webSite: ""
+    webSite: "",
+    valorOriginal: 0
 }
 
 const servicoCreateDTO = {
@@ -38,7 +39,8 @@ const servicoCreateDTO = {
   periocidade: "",
   valor: 0,
   webSite: "",
-  data: ""
+  data: "",
+  valorOriginal: 0
 }
 
 const TextInputLiveFeedback = ({ label, helpText, ...props }) => {
@@ -118,6 +120,7 @@ const ServiceCreate = () => {
         servicoEditDTO.periocidade = values.periocidade;
         servicoEditDTO.valor = valueConvert;
         servicoEditDTO.webSite = values.website;
+        servicoEditDTO.valorOriginal = values.valor;
         putService(id, servicoEditDTO)
         .then(() =>{
           navigate('/servicos')
@@ -138,6 +141,7 @@ const ServiceCreate = () => {
         servicoCreateDTO.valor = valueConvert;
         servicoCreateDTO.webSite = values.website;
         servicoCreateDTO.data = values.date;
+        servicoCreateDTO.valorOriginal = values.valor;
         postService(values.gerente, servicoCreateDTO)
         .then(() => {
           //navigate('/servicos');

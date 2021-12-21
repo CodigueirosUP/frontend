@@ -9,8 +9,7 @@ const ApiAwesome = axios.create({
 })
 
 const ApiAwesomeMedia = axios.create({
-  baseURL: 'https://economia.awesomeapi.com.br/json/daily/USD-BRL/30'
+  baseURL: 'https://economia.awesomeapi.com.br/json/daily'
 })
-
 
 export  {ApiWallet, ApiAwesome, ApiAwesomeMedia};
