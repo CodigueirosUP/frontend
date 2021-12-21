@@ -223,8 +223,18 @@ code {
   align-items: center;
 }
 
+.notFound h1{
+  font-size: 50px;
+  color: #EE2A25;
+  -webkit-text-stroke-width: 1px;             
+  -webkit-text-stroke-color: #000;
+  font-family: 'OPTIMA_B';
+}
 .notFound p{
-  color: gray;
+  font-size: 25px;
+  font-weight: bold;
+  font-family: 'OPTIMA_B';
+
 }
 
 .notFound img{
@@ -548,7 +558,11 @@ margin-bottom: 15px;
   font-size: 25px;
   font-weight: bold;
   font-family: 'OPTIMA_B';
+<<<<<<< HEAD
+  }
+=======
 }
+>>>>>>> d3fb25ef3288f2867d55ed8cba5ce6fcf95bb4de
 
 .contactquestion{
   width: 100%;
@@ -997,6 +1011,10 @@ margin-bottom: 15px;
   color: #000;
 }
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> d3fb25ef3288f2867d55ed8cba5ce6fcf95bb4de
 .aboutGeneral h1{
   color: #EE2A25;
   -webkit-text-stroke-width: 1px;             
