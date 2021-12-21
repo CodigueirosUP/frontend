@@ -27,13 +27,11 @@ const Graphic = ({ graphValues }) => {
             ['Dezembro', graphValues.dezembro]
           ]}
           options={{
-            // Material design options
             chart: {
               title: 'Gastos dos ultimos 12 meses',
               subtitle: 'Gastos dos ultimos 12 meses',
             },
           }}
-          // For tests
           rootProps={{ 'data-testid': '2' }}
         />
       </div>

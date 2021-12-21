@@ -1,6 +1,5 @@
 import logoErro from "../images/img.png";
 
-
 const NotFound = () => {
   return (
     <div className="container">
@@ -17,4 +16,4 @@ const NotFound = () => {
   )
 }
 
-export default NotFound
+export default NotFound;

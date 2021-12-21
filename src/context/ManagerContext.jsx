@@ -1,7 +1,7 @@
 import React, { createContext, useState } from "react"
-import {ApiWallet} from "../api"
+import { ApiWallet } from "../api"
 
-const ManagerContext = createContext()
+const ManagerContext = createContext();
 
 const ManagerProvider = ({ children }) => {
 
@@ -17,17 +17,23 @@ const ManagerProvider = ({ children }) => {
   }
 
   const putManager = async (id, gerenteValues) => {
-    await ApiWallet.put(`/gerente/${id}`, gerenteValues)
+    await ApiWallet.put(`/gerente/${id}`, gerenteValues);
   }
 
   const findManagerById = async (id) => {
-    const { data } = await ApiWallet.get(`/gerente/${id}`)
-    return data
+    const { data } = await ApiWallet.get(`/gerente/${id}`);
+    return data;
   }
 
-
   return (
-    <ManagerContext.Provider value={{ postManager, getManagers, managerList, putManager, findManagerById }}>
+    <ManagerContext.Provider value={
+      {
+        postManager,
+        getManagers,
+        managerList,
+        putManager,
+        findManagerById
+      }}>
       {children}
     </ManagerContext.Provider>
   )

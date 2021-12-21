@@ -32,7 +32,7 @@ const Login = () => {
                 </div>
                 <div className="inputContainer">
                   <RiLockFill className="lockIcon"/>
-                  <Field id="senha" name="senha" placeholder="Senha" className="inputPassword" />
+                  <Field id="senha" name="senha" placeholder="Senha" className="inputPassword" type='password'/>
                 </div>
                 <button type="submit">Entrar</button>
               </Form>
@@ -44,4 +44,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default Login;

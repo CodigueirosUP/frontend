@@ -5,7 +5,6 @@ import { ApiWallet } from '../../api'
 import { useNavigate } from 'react-router-dom'
 import { toastError, toastSucess } from '../../utils/toast'
 
-
 const CardManager = ({ manager, attList }) => {
 
   const navigate = useNavigate();
@@ -14,15 +13,14 @@ const CardManager = ({ manager, attList }) => {
     try {
       await ApiWallet.delete(`/gerente/${idGerente}`)
         .then(() => {
-          toastSucess('Gerente removido com sucesso')
+          toastSucess('Gerente removido com sucesso');
         })
         .catch(() => {
-          toastError('Algo deu errado ao tentar remover')
+          toastError('Algo deu errado ao tentar remover');
         })
     } finally {
-      attList()
+      attList();
     }
-
   }
 
   return (
@@ -42,4 +40,4 @@ const CardManager = ({ manager, attList }) => {
   )
 }
 
-export default CardManager
+export default CardManager;

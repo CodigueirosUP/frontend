@@ -10,9 +10,11 @@ import moment from 'moment'
 
 const Dashboard = () => {
 
+  moment.locale('pt-br');
+
   const { typeUser } = useContext(AuthContext);
   const { managerList, getManagers } = useContext(ManagerContext);
-  moment.locale('pt-br');
+  
   const currentMonth = moment().format("DD/MM/YYYY").slice(3);
   const nextMonth = moment().add(1, 'month').format("DD/MM/YYYY").slice(3);
 
@@ -24,6 +26,8 @@ const Dashboard = () => {
   const [chooseManager, setChooseManager] = useState([]);
   const [dolarValueMedia, setDolarValueMedia] = useState([]);
   const [allMaxValuesMonths, setAllMaxValuesMonths] = useState({})
+  
+  const managerOption = [];
   const months = {
     janeiro: 0,
     fevereiro: 0,
@@ -61,18 +65,6 @@ const Dashboard = () => {
       searchForMonth(typeUser)
     }
   },[dataService])
-
-  useEffect(() => {
-    
-  }, [allMaxValuesMonths])
-
-  // useEffect(async ()=>{
-  //   const { data } = await ApiAwesomeMedia.get();
-  //   setDolarValueMedia(data)
-  //   if(data){
-  //     console.log(dolarValueMedia)
-  //   }
-  // },[])
 
   const IdentifyUser = async (user) => {
     if (user.idUser === 1) {
@@ -115,7 +107,6 @@ const Dashboard = () => {
   }
 
   const identifyForecastOfValues = async (user) => {
-
     const { data } = await ApiAwesomeMedia.get();
     const mapMediaValue = data.map(value => value.high);
     const mediaValue = parseFloat(mapMediaValue.reduce((a, b) => a + b / mapMediaValue.length, 0).toFixed(2))
@@ -152,7 +143,6 @@ const Dashboard = () => {
     }
   }
 
-  const managerOption = [];
 
   {
     managerList.map(manager => {
@@ -178,12 +168,11 @@ const Dashboard = () => {
     setDataService(chooseManager);
   }
 
-
   const searchForMonth = (user) => {
-    console.log(dataService)
     if(user.idUser === 1){
       dataService.forEach(data => {
         const arrData = data.data.split('-')
+
         if (arrData[1] === '01') {
           months.janeiro = months.janeiro + data.valor
         } 
@@ -268,39 +257,6 @@ const Dashboard = () => {
     }
     }
   
-  // -----------------------------------------------------------------------------------------
-  
-  // const moment = require('moment')
-  // const array = require('./array')
-
-  // function addDate(d, m) {
-  //   return moment(d, 'DD/MM/YYYY').add(m, 'month').format('DD/MM/YYYY')
-  // }
-
-  // function getMonths(p) {
-  //   if (p == 'ANUAL') return 12;
-  //   if (p == 'MENSAL') return 1;
-  //   if (p == 'TRIMESTRAL') return 3;
-  //   return 6;
-  // }
-
-  // let results = []
-
-  // for (let k = 0; k < array.length; k++) {
-  //   let list = []
-  //   for (let m = 0; m < getMonths(array[k].period); m++) {
-  //     list.push({
-  //       ...array[k],
-  //       date: addDate(array[k].date, m)
-  //     })
-  //   }
-  //   results.push(list)
-  // }
-
-  // console.log(results)
-
-  // -----------------------------------------------------------------------------------------
-
   return (
     <div className="container">
       <div className="contentDashboard">

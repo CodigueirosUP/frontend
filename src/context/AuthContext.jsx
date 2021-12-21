@@ -12,14 +12,14 @@ const AuthProvider = ({children}) => {
   const [typeUser, setTypeUser] = useState([]);
  
   const handleLogin =  (values) => {
-    setLoading(true)
+    setLoading(true);
     ApiWallet.post('/auth', values)
     .then((response) => {
-      toastSucess('Você logou!')
+      toastSucess('Você logou!');
       localStorage.setItem('token', response.data);
       ApiWallet.defaults.headers.common['Authorization'] = response.data;
       setAuth(true);
-      window.location.href = '/dashboard'
+      window.location.href = '/dashboard';
     })
     .catch((error) => {
       if (error.response) {
@@ -32,27 +32,36 @@ const AuthProvider = ({children}) => {
       }
     })
     .finally(() => {
-      setLoading(false)
+      setLoading(false);
     })
   }
 
   const handleLogout = () => {
-
-    setLoading(true)
+    setLoading(true);
     localStorage.removeItem('token');
     ApiWallet.defaults.headers.common['Authorization'] = '';
-    window.location.href = '/login'
+    window.location.href = '/login';
   }
 
   const getType = async () => {
-    const { data } = await ApiWallet.get(`/username`)
+    const { data } = await ApiWallet.get(`/username`);
     setTypeUser(data);
   }
 
   return(
     <AuthContext.Provider value={
-      {handleLogin, loading, auth, setLoading, setAuth, handleLogout, setUserInput, userInput, getType, typeUser}
-      }>
+      {
+        handleLogin,
+        loading,
+        auth,
+        setLoading,
+        setAuth,
+        handleLogout,
+        setUserInput,
+        userInput,
+        getType,
+        typeUser
+      }}>
       {children}
     </AuthContext.Provider>
   );
