@@ -96,7 +96,9 @@ const MenagerCreate = () => {
           toastSucess('Gerente cadastrado com sucesso!')
         })
         .catch((error) => {
-          toastError(error.response.data.message)
+          // console.log(JSON.stringify(error.response), 'entrooou')
+          // toastError(error?.response?.data?.message || 'Falha ao cadastrar!')
+          error?.response?.data?.errors?.forEach(err => toastError(err))
         })
         .finaly(() => {
           //toastSucess(message)

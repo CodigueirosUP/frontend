@@ -35,12 +35,14 @@ const Services = () => {
 
   return (
     <div className="container">
-      <div className="content">
+      <div className="content contentService">
         <div className='serviceHeader'>
           <h1>Serviços</h1>
           <button onClick={() => navigate('/criarservico')}><AiFillFileAdd/></button>
         </div>
-        {adminOrManager()}
+        <div className='serviceList'>
+          {adminOrManager()}
+        </div>
       </div>
     </div>
   )

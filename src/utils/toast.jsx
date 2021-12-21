@@ -16,7 +16,7 @@ export const toastSucess = (text) => {
 }
 
 export const toastError = (text) => {
-  toast.error(text, defaultToastStyle);
+  toast.error(text, {...defaultToastStyle, autoClose: 5000});
 }
 
 
