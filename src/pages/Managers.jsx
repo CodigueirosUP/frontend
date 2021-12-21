@@ -2,28 +2,31 @@ import { useEffect, useContext } from "react"
 import { ManagerContext } from "../context/ManagerContext"
 import { useNavigate } from 'react-router-dom'
 import CardManager from '../components/cardManager/CardManager'
+import { HiUserAdd } from 'react-icons/hi'
 
 const Managers = () => {
 
-  const {getManagers, managerList} = useContext(ManagerContext);
+  const { getManagers, managerList } = useContext(ManagerContext);
   const navigate = useNavigate();
 
-  useEffect(()=>{
+  useEffect(() => {
     getManagers();
   }, [])
 
   const CardManagerList = () => {
     return (
       managerList && managerList.map(manager => (
-        <CardManager key= {manager.idGerente} manager={manager} attList={getManagers} />
+        <CardManager key={manager.idGerente} manager={manager} attList={getManagers} />
       )))
   }
 
   return (
     <div className="container">
       <div className="content">
-        <h1>Gerentes</h1>
-        <button onClick={()=>navigate('/criargerentes')}>Adicionar gerente</button>
+        <div className='managerHeader'>
+          <h1>Gerentes</h1>
+          <button onClick={() => navigate('/criargerentes')}><HiUserAdd/></button>
+        </div>
         <CardManagerList />
       </div>
     </div>

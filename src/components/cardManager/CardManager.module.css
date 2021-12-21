@@ -3,9 +3,44 @@
   flex-direction: column;
   justify-content: center;
   width: 400px;
-  height: 100px;
-  margin-bottom: 20px;
-  background-color: rgb(175, 175, 175);
+  margin: 10px 0;
+  background-color: rgb(255, 255, 255, 0.8);
+  border-radius: 16px;
+  box-shadow: 
+  0 0 0.45px #fff,
+  0 0 0.68px #fff,
+  0 0 2.62px #fff,
+  0 0 2.62px rgb(0, 156, 219),
+  0 0 5.15px rgb(0, 156, 219),
+  0 0 5.8px rgb(0, 156, 219),
+  0 0 6.25px rgb(0, 156, 219),
+  0 0 9px rgb(0, 156, 219);
+}
+
+.containerCardMenager:hover {
+  box-shadow:
+  0 0 0.45px #fff,
+  0 0 0.68px #fff,
+  0 0 2.62px #fff,
+  0 0 2.62px rgb(255, 8, 0),
+  0 0 5.15px rgb(255, 8, 0),
+  0 0 5.8px rgb(255, 8, 0),
+  0 0 6.25px rgb(255, 8, 0),
+  0 0 9px rgb(255, 8, 0);
+  transition: 0.75s;
+}
+
+.containerCardMenager:not(:hover) {
+  box-shadow: 
+  0 0 0.45px #fff,
+  0 0 0.68px #fff,
+  0 0 2.62px #fff,
+  0 0 2.62px rgb(0, 156, 219),
+  0 0 5.15px rgb(0, 156, 219),
+  0 0 5.8px rgb(0, 156, 219),
+  0 0 6.25px rgb(0, 156, 219),
+  0 0 9px rgb(0, 156, 219);
+  transition: 0.75s;
 }
 
 .containerCardMenager p {
@@ -16,4 +51,56 @@
   display: flex;
   width: 100%;
   justify-content: center;
+}
+
+.buttons button:first-child {
+  padding: 8px 16px;
+  border-radius: 8px;
+  min-width: 80px;
+  cursor: pointer;
+  border-style: none;
+}
+
+.buttons button:first-child:hover {
+  background-color: rgb(0, 156, 219);
+  color: white;
+  transition: 0.4s;
+} 
+
+.buttons button:first-child:not(:hover) {
+  color: black;
+  transition: 0.45s;
+} 
+
+.buttons button:last-child {
+  padding: 8px 16px;
+  border-radius: 8px;
+  min-width: 80px;
+  cursor: pointer;
+  border-style: none;
+}
+
+.buttons button:last-child:hover {
+  background-color: rgb(238, 42, 37);
+  color: white;
+  transition: 0.4s;
+} 
+
+.buttons button:last-child:not(:hover) {
+  color: black;
+  transition: 0.45s;
+} 
+
+.buttons {
+  display: flex;
+  justify-content:space-around ;
+  margin: 24px 0 16px 0;
+}
+
+.linesContainer {
+  margin-top: 16px;
+}
+
+.icons {
+  font-size: 14px;
 }

@@ -3,8 +3,8 @@
   flex-direction: column;
   justify-content: center;
   width: 400px;
-  margin: 40px;
-  background-color: rgba(190, 190, 190, 0.5);
+  margin: 10px 0;
+  background-color: rgb(255, 255, 255, 0.8);
   border-radius: 16px;
   box-shadow: 
   0 0 0.45px #fff,
@@ -46,8 +46,6 @@
 .containerCardService p {
   margin-left: 24px;
 }
-
-
 
 .pageCardService {
   display: flex;
@@ -95,10 +93,6 @@
   transition: 0.45s;
 } 
 
-
-
-
-
 .buttons {
   display: flex;
   justify-content:space-around ;
@@ -111,13 +105,5 @@
 
 .icons {
   font-size: 14px;
-  /* color: red; */
 }
 
-/* border: none;
-  background-color: rgb(25, 25, 25);
-  padding: 5px 15px;
-  border-radius: 5px;
-  color: #FFF;
-  min-width: 80px;
-  cursor: pointer; */
