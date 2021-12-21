@@ -191,6 +191,9 @@ const ServiceCreate = () => {
         valor: Yup.string()
         .max(32, 'Máximo 12 caracteres')
         .required('Campo Obrigatório'),
+
+        date: Yup.string()
+        .required('Campo Obrigatório'),
     }),
   });
   
@@ -216,22 +219,27 @@ const ServiceCreate = () => {
       <div className='content'>
         <FormikProvider value={formik}>
           <Form>
+          <div className='containerServiceCreate'>
+          <div className='headerServiceCreate'>
+            <h1>{id ? 'Editar Serviço' : 'Cadastro de Serviço'}</h1>
+          </div>
+          <div className='bodyServiceCreate'>
             <TextInputLiveFeedback label="Nome do Serviço" id="nome" name="nome" type="text" />
-            <TextInputLiveFeedback label="descricao" id="descricao" name="descricao" type="text" />
-            <TextInputLiveFeedback label="website" id="website" name="website" type="text" />
-            <TextInputLiveFeedback label="valor" id="valor" name="valor" type="text" />
-            {!id && <TextInputLiveFeedback label="date" id="date" name="date" type="date" />}
+            <TextInputLiveFeedback label="Descricao" id="descricao" name="descricao" type="text" />
+            <TextInputLiveFeedback label="Website" id="website" name="website" type="text" />
+            <TextInputLiveFeedback label="Valor" id="valor" name="valor" type="text" />
+            {!id && <TextInputLiveFeedback className='inputDate' label="Data" id="date" name="date" type="date" />}
             <div>
-              <label>moeda</label>
-              <SelectCustom
+              <label>Moeda</label>
+              <SelectCustom className='selectCustom'
                 onChange={moeda => formik.setFieldValue('moeda', moeda.value)}
                 value={formik.values.moeda}
                 options={moedaOption}
               />
             </div>
             <div>
-              <label>periocidade</label>
-              <SelectCustom
+              <label>Periodicidade</label>
+              <SelectCustom className='selectCustom'
                 onChange={periocidade => formik.setFieldValue('periocidade', periocidade.value)}
                 value={formik.values.periocidade}
                 options={periocidadeOption}
@@ -239,16 +247,15 @@ const ServiceCreate = () => {
             </div>
             <div>
               <label>Gerente</label>
-              <SelectCustom
+              <SelectCustom className='selectCustom'
                 onChange={gerente => formik.setFieldValue('gerente', gerente.value)}
                 value={formik.values.gerente}
                 options={managerOption}
               />
             </div>
-            <div>
               <button type="submit">Adicionar</button>
-              <button type="reset">Resetar</button>
-            </div>
+          </div>
+          </div>
           </Form>
         </FormikProvider>
       </div>

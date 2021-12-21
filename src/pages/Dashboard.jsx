@@ -180,14 +180,10 @@ const Dashboard = () => {
 
 
   const searchForMonth = (user) => {
+    console.log(dataService)
     if(user.idUser === 1){
       dataService.forEach(data => {
         const arrData = data.data.split('-')
-
-        // if(){
-
-        // }
-
         if (arrData[1] === '01') {
           months.janeiro = months.janeiro + data.valor
         } 
@@ -271,7 +267,39 @@ const Dashboard = () => {
       }
     }
     }
-    
+  
+  // -----------------------------------------------------------------------------------------
+  
+  // const moment = require('moment')
+  // const array = require('./array')
+
+  // function addDate(d, m) {
+  //   return moment(d, 'DD/MM/YYYY').add(m, 'month').format('DD/MM/YYYY')
+  // }
+
+  // function getMonths(p) {
+  //   if (p == 'ANUAL') return 12;
+  //   if (p == 'MENSAL') return 1;
+  //   if (p == 'TRIMESTRAL') return 3;
+  //   return 6;
+  // }
+
+  // let results = []
+
+  // for (let k = 0; k < array.length; k++) {
+  //   let list = []
+  //   for (let m = 0; m < getMonths(array[k].period); m++) {
+  //     list.push({
+  //       ...array[k],
+  //       date: addDate(array[k].date, m)
+  //     })
+  //   }
+  //   results.push(list)
+  // }
+
+  // console.log(results)
+
+  // -----------------------------------------------------------------------------------------
 
   return (
     <div className="container">

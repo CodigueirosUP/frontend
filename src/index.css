@@ -714,6 +714,109 @@ margin-bottom: 15px;
   text-align: justify;
 }
 
+/* ------------------------------------SERVICESCREATE-----------------------------------*/
+
+.headerServiceCreate {
+  text-align: center;
+  color: white;
+  margin: 20px;
+}
+
+.inputDate {
+  border: none;
+  border-radius: 5px;
+  padding: 10px 10px;
+}
+
+.bodyServiceCreate {
+  color: white;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.containerServiceCreate {
+  height: 100%;
+}
+
+.bodyServiceCreate button{
+  margin: 20px;
+  border: none;
+  background-color: white;
+  color: #027cc9;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.bodyServiceCreate button:hover{
+  background-color: #027cc9;
+  color: white;
+  transition: 0.4s;
+}
+
+.bodyServiceCreate button:not(:hover){
+  background-color: white;
+  color: #027cc9;
+  transition: 0.4s;
+}
+
+.bodyServiceCreate input{
+  width: 220px;
+  margin: 5px 0;
+}
+
+/* ------------------------------------MANAGERCREATE-----------------------------------*/
+
+.headerManagerCreate {
+  text-align: center;
+  color: white;
+  margin: 20px;
+}
+
+.bodyManagerCreate {
+  color: white;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.containerManagerCreate {
+  height: 100%;
+}
+
+.bodyManagerCreate button{
+  margin: 20px;
+  border: none;
+  background-color: white;
+  color: #027cc9;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.bodyManagerCreate button:hover{
+  background-color: #027cc9;
+  color: white;
+  transition: 0.4s;
+}
+
+.bodyManagerCreate button:not(:hover){
+  background-color: white;
+  color: #027cc9;
+  transition: 0.4s;
+}
+
+.bodyManagerCreate input{
+  margin: 5px 0;
+}
+
 /* ------------------------------------MANAGERS-----------------------------------*/
 
 .managerHeader {
