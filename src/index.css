@@ -558,11 +558,7 @@ margin-bottom: 15px;
   font-size: 25px;
   font-weight: bold;
   font-family: 'OPTIMA_B';
-<<<<<<< HEAD
   }
-=======
-}
->>>>>>> d3fb25ef3288f2867d55ed8cba5ce6fcf95bb4de
 
 .contactquestion{
   width: 100%;
@@ -745,13 +741,15 @@ margin-bottom: 15px;
 .bodyServiceCreate {
   color: white;
   display: flex;
-  align-content: center;
   align-items: center;
-  justify-content: center;
   flex-direction: column;
+  width: 220px;
 }
 
 .containerServiceCreate {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   height: 100%;
 }
 
@@ -794,13 +792,15 @@ margin-bottom: 15px;
 .bodyManagerCreate {
   color: white;
   display: flex;
-  align-content: center;
   align-items: center;
-  justify-content: center;
   flex-direction: column;
+  width: 220px;
 }
 
 .containerManagerCreate {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   height: 100%;
 }
 
@@ -1011,10 +1011,6 @@ margin-bottom: 15px;
   color: #000;
 }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> d3fb25ef3288f2867d55ed8cba5ce6fcf95bb4de
 .aboutGeneral h1{
   color: #EE2A25;
   -webkit-text-stroke-width: 1px;             
