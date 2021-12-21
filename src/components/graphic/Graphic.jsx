@@ -8,7 +8,7 @@ const Graphic = ({ graphValues }) => {
       <div>
         <Chart
           width={'500px'}
-          height={'300px'}
+          height={'570px'}
           chartType="Bar"
           loader={<div>Loading Chart</div>}
           data={[
