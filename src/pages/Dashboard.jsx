@@ -25,7 +25,12 @@ const Dashboard = () => {
   const [forecastOfValues, setForecastOfValues] = useState()
   const [chooseManager, setChooseManager] = useState([]);
   const [allMaxValuesMonths, setAllMaxValuesMonths] = useState([])
-  
+  const [dolarMedia, setDolarMedia] = useState();
+  const [totalDolar, setTotalDolar] = useState();
+  const [EuroMedia, setEuroMedia] = useState();
+  const [totalEuro, setTotalEuro] = useState();
+  const [totalReal, setTotalReal] = useState();
+
   const managerOption = [];
 
   useEffect(() => {
@@ -44,12 +49,6 @@ const Dashboard = () => {
       identifyForecastOfValues(typeUser);
     }
   })
-
-  // useEffect(() => {
-  //   if(dataService) {
-  //     searchForMonth(typeUser)
-  //   }
-  // },[dataService])
 
   const IdentifyUser = async (user) => {
     if (user.idUser === 1) {
@@ -90,40 +89,45 @@ const Dashboard = () => {
     }
   }
 
-  const [valueDolarMedia, setValueDolarMedia] = useState();
-  const [valueEuroMedia, setValueEuroMedia] = useState();
-  const [valueRealMedia, setValueRealMedia] = useState();
+  const getTotalDolar = async () => {
+    const { data } = await ApiWallet.get('/list-servicos-dolar');
+    setTotalDolar(data);
+  }
 
-  const dolarValueTotal = async () => {
+  const getMediaDolar = async () => {
     const { data } = await ApiAwesomeMedia.get('/USD-BRL/30');
     const mapMediaValueDolar = data.map(value => value.high);
     const mediaValueDolar = parseFloat(mapMediaValueDolar.reduce((a, b) => a + b / mapMediaValueDolar.length, 0).toFixed(2))
-    console.log(mediaValueDolar)
+    setDolarMedia(mediaValueDolar);
   }
 
-  const euroValueTotal =  async () => {
+  const getTotalEuro = async () => {
+    const { data } = await ApiWallet.get('/list-servicos-euro');
+    setTotalEuro(data);
+  }
+
+  const getMediaEuro =  async () => {
     const { data } = await ApiAwesomeMedia.get('/EUR-BRL/30');
     const mapMediaValueEuro = data.map(value => value.high);
     const mediaValueEuro = parseFloat(mapMediaValueEuro.reduce((a, b) => a + b / mapMediaValueEuro.length, 0).toFixed(2))
-    console.log(mediaValueEuro)
+    setEuroMedia(mediaValueEuro);
   }
 
-  const realValueTotal = async () => {
-
+  const getTotalReal = async () => {
+    const { data } = await ApiWallet.get('/list-servicos-real');
+    setTotalReal(data);
   }
 
-  const identifyForecastOfValues = (user) => {
-
-    dolarValueTotal()
-    euroValueTotal()
-
-    if (user.idUser === 1) {
-      
-    } else {
-      if (dataServiceManager) {
-        
-      }
-    }
+  const identifyForecastOfValues = () => {
+    getTotalDolar();
+    getMediaDolar();
+    getTotalEuro();
+    getMediaEuro();
+    getTotalReal();
+    const mediaDolar = (totalDolar * dolarMedia)
+    const mediaEuro = (totalEuro * EuroMedia)
+    const valueTotalPreview = (mediaDolar + mediaEuro + totalReal)
+    setForecastOfValues(valueTotalPreview);
   }
 
   const listServiceDashboard = (user) => {
