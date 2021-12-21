@@ -22,12 +22,14 @@ const Managers = () => {
 
   return (
     <div className="container">
-      <div className="content">
-        <div className='managerHeader'>
+      <div className="content contentManager">
+        <div className='managerHeader '>
           <h1>Gerentes</h1>
           <button onClick={() => navigate('/criargerentes')}><HiUserAdd/></button>
         </div>
-        <CardManagerList />
+        <div className='managerList'>
+          <CardManagerList />
+        </div>
       </div>
     </div>
   )

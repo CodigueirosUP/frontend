@@ -49,7 +49,6 @@
 
 .pageCardService {
   display: flex;
-  width: 100%;
   justify-content: center;
 }
 
@@ -107,3 +106,8 @@
   font-size: 14px;
 }
 
+@media only screen and (max-width: 1187px) {
+  .pageCardService {
+    width: 100%;
+  }
+}
