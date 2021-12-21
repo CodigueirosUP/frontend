@@ -2,6 +2,7 @@ import React from 'react';
 import Select from 'react-select';
 import styles from './SelectCustom.module.css'
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default ({ onChange, options, value }) => {
 
     const defaultValue = (options, value) => {

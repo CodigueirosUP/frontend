@@ -32,24 +32,24 @@ const About = () => {
               <h2>Nossa equipe</h2>
               <ul>
                 <li>
-                  <a href="https://github.com/GutoCitton"><img className='imageDev' src={guto} alt="github photo" /></a>
-                  <a href="https://github.com/GutoCitton" target="_blank" ><AiFillGithub />Augusto Citon</a>
+                  <a href="https://github.com/GutoCitton"><img className='imageDev' src={guto} alt="github pic" /></a>
+                  <a href="https://github.com/GutoCitton" target="blank" ><AiFillGithub />Augusto Citon</a>
                 </li>
                 <li>
-                  <a href="https://github.com/brenolyES" target="_blank" ><img className='imageDev' src={breno} alt="github photo" /></a>
-                  <a href="https://github.com/brenolyES" target="_blank" ><AiFillGithub />Brenoly Porto</a>
+                  <a href="https://github.com/brenolyES" target="blank" ><img className='imageDev' src={breno} alt="github pic" /></a>
+                  <a href="https://github.com/brenolyES" target="blank" ><AiFillGithub />Brenoly Porto</a>
                 </li>
                 <li>
-                  <a href="https://github.com/deborahregina" target="_blank" ><img className='imageDev' src={deb} alt="" /></a>
-                  <a href="https://github.com/brenolyES" target="_blank" ><AiFillGithub />Deborah Regina</a>
+                  <a href="https://github.com/deborahregina" target="blank" ><img className='imageDev' src={deb} alt="github pic" /></a>
+                  <a href="https://github.com/brenolyES" target="blank" ><AiFillGithub />Deborah Regina</a>
                 </li>
                 <li>
-                  <a href="https://github.com/LeoCardoso1" target="_blank" ><img className='imageDev' src={leo} alt="" /></a>
-                  <a href="https://github.com/LeoCardoso1" target="_blank" > <AiFillGithub />Leo Cardoso</a>
+                  <a href="https://github.com/LeoCardoso1" target="blank" ><img className='imageDev' src={leo} alt="github pic" /></a>
+                  <a href="https://github.com/LeoCardoso1" target="blank" > <AiFillGithub />Leo Cardoso</a>
                 </li>
                 <li>
-                  <a href="https://github.com/samu357" target="_blank" ><img className='imageDev' src={samu} alt="" /></a>
-                  <a href="https://github.com/samu357" target="_blank" ><AiFillGithub />Samuel Lopes</a>
+                  <a href="https://github.com/samu357" target="blank" ><img className='imageDev' src={samu} alt="github pic" /></a>
+                  <a href="https://github.com/samu357" target="blank" ><AiFillGithub />Samuel Lopes</a>
                 </li>
               </ul>
             </div>

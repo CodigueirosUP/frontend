@@ -45,6 +45,7 @@ const servicoCreateDTO = {
 
 const TextInputLiveFeedback = ({ label, helpText, ...props }) => {
   const [field, meta] = useField(props);
+  // eslint-disable-next-line no-unused-vars
   const [didFocus, setDidFocus] = React.useState(false);
   const handleFocus = () => setDidFocus(true);
   const showFeedback = meta.touched;
@@ -90,8 +91,10 @@ const ServiceCreate = () => {
 
   useEffect(() => {
     getManagers();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  // eslint-disable-next-line array-callback-return
   managerList.map(manager => {
     managerOption.push({ value: manager.idGerente, label: manager.nomeCompleto })
   })
@@ -202,6 +205,7 @@ const ServiceCreate = () => {
 
   useEffect( () => {
     fetchService()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[id])
 
   return (

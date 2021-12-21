@@ -40,6 +40,7 @@ const Dashboard = () => {
         getManagers();
       }
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [typeUser])
 
   useEffect(() => {
@@ -151,6 +152,7 @@ const Dashboard = () => {
     }
   }
 
+    // eslint-disable-next-line array-callback-return
     managerList.map(manager => {
       managerOption.push({ idGerente: manager.idGerente, label: manager.nomeCompleto })
     })

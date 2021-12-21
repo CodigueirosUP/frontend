@@ -14,6 +14,7 @@ const Services = () => {
 
   useEffect(() => {
     getService(typeUser);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [getType])
 
   const adminOrManager = () => {

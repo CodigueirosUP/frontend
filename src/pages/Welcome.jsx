@@ -1,6 +1,6 @@
 import logoHome from "../images/img.png"
 import { useNavigate } from "react-router-dom"
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 
 const Welcome = () => {

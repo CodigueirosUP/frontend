@@ -24,9 +24,9 @@ const Contact = () => {
               <h3>Queremos ouvir você</h3>
               <label>Digite seu nome completo</label>
               <input type="text" placeholder="Nome Completo" required />
-              <label for="email">Digite seu e-mail</label>
+              <label>Digite seu e-mail</label>
               <input type="email" placeholder="E-mail" required />
-              <label for="motivo">Qual o motivo do contato?</label>
+              <label>Qual o motivo do contato?</label>
               <select name="motivo" id="motivo">
                 <option value="1">Contratar serviço</option>
                 <option value="2">Desenvolvedores</option>
@@ -34,7 +34,7 @@ const Contact = () => {
                 <option value="4">Elogios</option>
                 <option value="5">Reclamações</option>
               </select>
-              <label for="">Sua mensagem</label>
+              <label >Sua mensagem</label>
               <textarea name="texto" id="texto" cols="30" rows="10"></textarea>
               <div className="btnContainer">
                 <button>Enviar</button>
