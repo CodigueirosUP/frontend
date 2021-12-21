@@ -91,18 +91,20 @@ const MenagerCreate = () => {
         gerenteDTO.usuario.usuario = values.usuario
         gerenteDTO.usuario.senha = values.senha
         postManager(gerenteDTO)
-          .then(() => {
-            navigate('/gerentes')
-            toastSucess('Gerente cadastrado com sucesso!')
-          })
-          .catch((error) => {
-            toastError(error.response.data.message)
-          })
-          .finaly(() => {
-            //toastSucess(message)
-            //console.log("entroiuuuuy")
-          })
-
+        .then(() => {
+          navigate('/gerentes')
+          toastSucess('Gerente cadastrado com sucesso!')
+        })
+        .catch((error) => {
+          // console.log(JSON.stringify(error.response), 'entrooou')
+          // toastError(error?.response?.data?.message || 'Falha ao cadastrar!')
+          error?.response?.data?.errors?.forEach(err => toastError(err))
+        })
+        .finaly(() => {
+          //toastSucess(message)
+          //console.log("entroiuuuuy")
+        })
+        
       }
     },
     validationSchema: validationSchema()
