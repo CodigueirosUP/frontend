@@ -52,6 +52,10 @@ code {
   margin-top: 20px;
 }
 
+.welcome p{
+ color: white;
+}
+
 .rigth {
   display: flex;
   flex-direction: column;
@@ -708,6 +712,94 @@ margin-bottom: 15px;
 .textContainer {
   margin-top: 160px;
   text-align: justify;
+}
+
+/* ------------------------------------MANAGERS-----------------------------------*/
+
+.managerHeader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  margin: 20px;
+}
+
+.managerHeader h1 {
+  color: #EE2A25;
+  -webkit-text-stroke-width: 1px;             
+  -webkit-text-stroke-color: #000;
+  font-size: 45px;
+  font-family: 'OPTIMA_B';
+}
+
+.managerHeader button {
+  margin-top: 8px;
+  border: none;
+  background-color: #027cc9;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+  padding: 10px ;
+  font-size: 20px;
+  color: white;
+  cursor: pointer;
+}
+
+.managerHeader button:hover {
+  background-color: white;
+  color: #027cc9;
+  transition: 0.4s;
+}
+
+.managerHeader button:not(:hover) {
+  background-color: 027cc9;
+  color: white;
+  transition: 0.4s;
+}
+
+/* ------------------------------------SERVICES-----------------------------------*/
+
+.serviceHeader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  margin: 20px;
+}
+
+.serviceHeader h1 {
+  color: #EE2A25;
+  -webkit-text-stroke-width: 1px;             
+  -webkit-text-stroke-color: #000;
+  font-size: 45px;
+  font-family: 'OPTIMA_B';
+}
+
+.serviceHeader button {
+  margin-top: 8px;
+  border: none;
+  background-color: #027cc9;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+  padding: 10px ;
+  font-size: 20px;
+  color: white;
+  cursor: pointer;
+}
+
+.serviceHeader button:hover {
+  background-color: white;
+  color: #027cc9;
+  transition: 0.4s;
+}
+
+.serviceHeader button:not(:hover) {
+  background-color: 027cc9;
+  color: white;
+  transition: 0.4s;
 }
 
 /* ------------------------------------About-----------------------------------*/
