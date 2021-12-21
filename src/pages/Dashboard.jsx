@@ -35,6 +35,7 @@ const Dashboard = () => {
         getManagers();
       }
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [typeUser])
 
   useEffect(() => {
@@ -90,9 +91,9 @@ const Dashboard = () => {
     }
   }
 
-  const [valueDolarMedia, setValueDolarMedia] = useState();
-  const [valueEuroMedia, setValueEuroMedia] = useState();
-  const [valueRealMedia, setValueRealMedia] = useState();
+  // const [valueDolarMedia, setValueDolarMedia] = useState();
+  // const [valueEuroMedia, setValueEuroMedia] = useState();
+  // const [valueRealMedia, setValueRealMedia] = useState();
 
   const dolarValueTotal = async () => {
     const { data } = await ApiAwesomeMedia.get('/USD-BRL/30');
@@ -108,9 +109,9 @@ const Dashboard = () => {
     console.log(mediaValueEuro)
   }
 
-  const realValueTotal = async () => {
+  // const realValueTotal = async () => {
 
-  }
+  // }
 
   const identifyForecastOfValues = (user) => {
 
@@ -147,6 +148,7 @@ const Dashboard = () => {
     }
   }
 
+    // eslint-disable-next-line array-callback-return
     managerList.map(manager => {
       managerOption.push({ idGerente: manager.idGerente, label: manager.nomeCompleto })
     })

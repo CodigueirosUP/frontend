@@ -33,6 +33,7 @@ const Routers = () => {
       getService(typeUser);
       setLoading(false);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const authorizationRouters = () => {
@@ -65,6 +66,7 @@ const Routers = () => {
     }
   }
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const allRoutes = useMemo(() => {
     return ( auth ?    
       authorizationRouters()
