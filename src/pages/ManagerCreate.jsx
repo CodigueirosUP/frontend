@@ -1,22 +1,17 @@
 import React, { useContext, useEffect } from 'react';
 import { useFormik, FormikProvider, Form } from 'formik';
 import { useNavigate, useParams } from 'react-router-dom';
-// import './styles.css';
 import * as Yup from 'yup';
 import { ManagerContext } from '../context/ManagerContext';
 import TextInputLiveFeedback from '../components/TextInpuLiveFeedback/TextInputLiveFeedback';
 import { toastSucess, toastError } from '../utils/toast'
 
-// const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-
-
 const MenagerCreate = () => {
 
-  const { postManager, putManager, findManagerById } = useContext(ManagerContext)
+  const { postManager, putManager, findManagerById } = useContext(ManagerContext);
 
-  const { id } = useParams()
-
-  const navigate = useNavigate()
+  const { id } = useParams();
+  const navigate = useNavigate();
 
   const gerenteDTO = {
     email: '',
@@ -85,7 +80,6 @@ const MenagerCreate = () => {
           })
           .finaly(() => {
             toastSucess('entrou aquii')
-            console.log("entroiuuuuy")
           })
       } else {
         gerenteDTO.usuario.usuario = values.usuario
@@ -96,15 +90,8 @@ const MenagerCreate = () => {
           toastSucess('Gerente cadastrado com sucesso!')
         })
         .catch((error) => {
-          // console.log(JSON.stringify(error.response), 'entrooou')
-          // toastError(error?.response?.data?.message || 'Falha ao cadastrar!')
           error?.response?.data?.errors?.forEach(err => toastError(err))
         })
-        .finaly(() => {
-          //toastSucess(message)
-          //console.log("entroiuuuuy")
-        })
-        
       }
     },
     validationSchema: validationSchema()

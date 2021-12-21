@@ -1,6 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useEffect, useContext, useMemo } from 'react'
 import { AuthContext } from "./context/AuthContext";
+import {ApiWallet} from "./api";
+import { ServiceContext } from "./context/ServiceContext";
+import { ToastContainer } from 'react-toastify';
 import Welcome from './pages/Welcome'
 import Login from './pages/Login';
 import NotFound from "./pages/NotFound";
@@ -12,11 +15,8 @@ import Managers from "./pages/Managers";
 import Services from "./pages/Services";
 import Footer from "./components/footer/Footer";
 import ManagerCreate from "./pages/ManagerCreate";
-import {ApiWallet} from "./api";
 import ServiceCreate from "./pages/ServiceCreate";
-import { ServiceContext } from "./context/ServiceContext";
 import Loading from "./components/loading/Loading";
-import { ToastContainer } from 'react-toastify';
 
 
 const Routers = () => {
@@ -63,7 +63,6 @@ const Routers = () => {
       </Routes>
       );
     }
-
   }
 
   const allRoutes = useMemo(() => {

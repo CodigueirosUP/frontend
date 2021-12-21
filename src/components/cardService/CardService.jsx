@@ -5,6 +5,7 @@ import {ApiWallet} from '../../api'
 import { useNavigate } from 'react-router-dom'
 import { toastError, toastSucess } from '../../utils/toast'
 import { formactCurrencyReal } from '../../utils/formactCurrency'
+import moment from 'moment'
 
 
 
@@ -25,7 +26,6 @@ const CardService = ({ service, attList }) => {
     })
       
     } finally {
-      console.log("teste da lista")
       attList()
     }
   }
@@ -41,6 +41,7 @@ const CardService = ({ service, attList }) => {
           <p><strong>Valor {service.moeda !== 'REAL' ? <span>({service.moeda}/REAL)</span> : null}:</strong> {formactCurrencyReal(service.valor)}</p>
           <p><strong>Moeda:</strong> {service.moeda}</p>
           <p><strong>Periodicidade:</strong> {service.periocidade}</p>
+          <p><strong>Data de contrato:</strong> {moment(service.data).format('DD/MM/YYYY')}</p>
         </div>
         <div className={styles.buttons}>
           <button onClick={() => { navigate(`/criarservico/${service.idServico}`) }} ><FaEdit className={styles.icons}/> Editar Serviço</button>

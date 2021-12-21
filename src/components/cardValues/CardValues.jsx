@@ -11,4 +11,4 @@ const CardValues = ({title, subTitle, totalValueService}) => {
   )
 }
 
-export default CardValues
+export default CardValues;

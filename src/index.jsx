@@ -8,7 +8,6 @@ import { AuthProvider } from './context/AuthContext'
 import { ManagerProvider } from './context/ManagerContext'
 import { ServiceProvider } from './context/ServiceContext';
 
-
 ReactDOM.render(
   <React.StrictMode>
     <AuthProvider>
@@ -22,7 +21,4 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();

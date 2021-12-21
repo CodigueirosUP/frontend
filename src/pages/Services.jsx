@@ -9,13 +9,12 @@ const Services = () => {
 
   const { typeUser, getType } = useContext(AuthContext);
   const { getService, getServiceAttListAdmin, listService } = useContext(ServiceContext);
+
   const navigate = useNavigate();
 
   useEffect(() => {
     getService(typeUser);
   }, [getType])
-  // console.log(typeUser)
-  // console.log(listService)
 
   const adminOrManager = () => {
     if (typeUser.usuario === 'admin') {
@@ -48,4 +47,4 @@ const Services = () => {
   )
 }
 
-export default Services
+export default Services;

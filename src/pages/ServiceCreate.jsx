@@ -43,11 +43,9 @@ const servicoCreateDTO = {
 
 const TextInputLiveFeedback = ({ label, helpText, ...props }) => {
   const [field, meta] = useField(props);
-
   const [didFocus, setDidFocus] = React.useState(false);
   const handleFocus = () => setDidFocus(true);
-  const showFeedback =
-    meta.touched;
+  const showFeedback = meta.touched;
 
   return (
     <div
@@ -81,27 +79,21 @@ const TextInputLiveFeedback = ({ label, helpText, ...props }) => {
 
 const ServiceCreate = () => {
 
-  const navigate = useNavigate();
-
-
   const { getManagers, managerList} = useContext(ManagerContext);
+  const { postService, putService, findServiceById  } = useContext(ServiceContext);
+  
+  const navigate = useNavigate();
+  const {id} = useParams(); 
+  const managerOption = [];
 
   useEffect(() => {
     getManagers();
   }, [])
 
-  const { postService, putService, findServiceById  } = useContext(ServiceContext);
-
-  const {id} = useParams(); 
+  managerList.map(manager => {
+    managerOption.push({ value: manager.idGerente, label: manager.nomeCompleto })
+  })
   
-  const managerOption = [];
-
-  {
-    managerList.map(manager => {
-      managerOption.push({value: manager.idGerente, label: manager.nomeCompleto})
-    })
-  }
-
   const formik = useFormik({
     initialValues: {
       nome: '',
@@ -113,12 +105,8 @@ const ServiceCreate = () => {
       periocidade: '',
       gerente: ''
     },
-
-
-
     onSubmit: async (values) => {
 
-      console.log(values)
       values.valor = parseInt(values.valor);
       const valueConvert = await currencyConvert(values.valor, values.moeda)
 
@@ -136,9 +124,12 @@ const ServiceCreate = () => {
           toastSucess('Serviço editado com sucesso!')
         })
         .catch((errors) => {
-          toastError(errors.response.data.errors[0])
+          if(errors.response.data.errors){
+            toastError(errors.response.data.errors[0])
+          }else if(errors.response.data.message) {
+            toastError(errors.response.data.message[0])
+          }
         })
-      
       } else { 
         servicoCreateDTO.descricao = values.descricao;
         servicoCreateDTO.moeda = values.moeda;
@@ -156,9 +147,7 @@ const ServiceCreate = () => {
         .catch((errors) => {
           toastError(errors.response.data.errors[0])
         })
-        
       }
-  
     },
       validationSchema: Yup.object({
         nome: Yup.string()
@@ -190,9 +179,6 @@ const ServiceCreate = () => {
 
         valor: Yup.string()
         .max(32, 'Máximo 12 caracteres')
-        .required('Campo Obrigatório'),
-
-        date: Yup.string()
         .required('Campo Obrigatório'),
     }),
   });
@@ -228,7 +214,7 @@ const ServiceCreate = () => {
             <TextInputLiveFeedback label="Descricao" id="descricao" name="descricao" type="text" />
             <TextInputLiveFeedback label="Website" id="website" name="website" type="text" />
             <TextInputLiveFeedback label="Valor" id="valor" name="valor" type="text" />
-            {!id && <TextInputLiveFeedback className='inputDate' label="Data" id="date" name="date" type="date" />}
+            {!id && <TextInputLiveFeedback className='inputDate' label="Data" id="date" name="date" type="date" required/>}
             <div>
               <label>Moeda</label>
               <SelectCustom className='selectCustom'
