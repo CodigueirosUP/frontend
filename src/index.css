@@ -148,8 +148,8 @@ code {
   color: rgb(0, 156, 219);
   border-style: 1px solid black;
   font-weight: bold;
-  -webkit-text-stroke-width: 1px;              /* largura da borda */
-  -webkit-text-stroke-color: #000;           /*cor*/
+  -webkit-text-stroke-width: 1px;         
+  -webkit-text-stroke-color: #000;          
   -webkit-text-stroke-width: 1px;             
   -webkit-text-stroke-color: #000;  
 }
@@ -971,12 +971,21 @@ margin-bottom: 15px;
 
 /* ------------------------------------About-----------------------------------*/
 .aboutInit{
-  background: url('images/OndeEstaWally120.png');
+  margin-top: 50px;
   width: 100%;
-  height: 150px;
-  margin-bottom: 50px;
+  /* height: 150px; */
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+}
+
+.aboutValues div{
+  display: flex;
+  flex-direction: column;
+  margin-top: 70px;
+  width: 1200px;
+  background-color: rgba(190, 190, 190, 0.5);
+  border-radius: 20px;
+  padding: 10px 0;
 }
 
 .aboutValues{
@@ -984,7 +993,6 @@ margin-bottom: 15px;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-  background-color: #d3d3d3e6;
   text-align: center;
 }
  .aboutValues li{
@@ -992,29 +1000,36 @@ margin-bottom: 15px;
  }
  
 .aboutGeneral{
-  width: 370px;
+  width: 390px;
   margin-left: 30px;
-}
-
-.aboutGeneral li{
-  font-size: 25px;
-  font-weight: bold;
-  font-family: 'OPTIMA_B';
-}
-
-.aboutDev{
   display: flex;
-  margin-top: 70px;
-  width: 600px;
-  line-height: 45px;
   flex-direction: column;
   align-items: center;
+  justify-content: space-around;
+  margin-bottom: 25px;
 }
 
-.aboutDev li{
-  display: inline;
-  
+.aboutGeneral li a{
+  font-size: 18px;
+  font-weight: bold;
+  font-family: 'OPTIMA_B';
+  text-decoration: none;
+  margin: 8px 20px;
+  color: #000;
 }
+
+
+/* .aboutDev{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around; 
+} */
+
+/* .aboutDev li a{
+  text-decoration: none;
+  padding: 30px;
+} */
 
 .aboutGeneral h1{
   color: #EE2A25;
@@ -1022,9 +1037,34 @@ margin-bottom: 15px;
   -webkit-text-stroke-color: #000;
   font-size: 45px;
   font-family: 'OPTIMA_B';
+  margin: 10px 0 25px 0;
+
+}
+
+.aboutGeneral h2{
+  color: #EE2A25;
+  -webkit-text-stroke-width: 1px;             
+  -webkit-text-stroke-color: #000;
+  font-size: 45px;
+  font-family: 'OPTIMA_B';
+  margin: 10px 0 25px 0;
+
+}
+
+.aboutGeneral li{
+  display: flex;
+  margin-left: 30px;
+  flex-direction: column;
+  align-items: center;
+
+}
+.aboutGeneral ul{
+  display: flex;
+  justify-content: space-between;
 }
 
 .aboutInit h1{
+  font-size: 50px;
   color: #EE2A25;
   -webkit-text-stroke-width: 1px;             
   -webkit-text-stroke-color: #000;
@@ -1037,6 +1077,11 @@ margin-bottom: 15px;
   font-family: 'OPTIMA_B';
 }
 
+.imageDev{
+  width: 80px;
+  border-radius: 50px;
+  display: flex;
+}
 
 
 
