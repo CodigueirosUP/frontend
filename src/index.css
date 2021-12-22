@@ -722,6 +722,10 @@ margin-bottom: 15px;
 
 /* ------------------------------------SERVICESCREATE-----------------------------------*/
 
+.contentServiceCreate {
+  margin-bottom: 100px;
+}
+
 .headerServiceCreate {
   text-align: center;
   color: white;

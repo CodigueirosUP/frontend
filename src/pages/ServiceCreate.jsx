@@ -210,7 +210,7 @@ const ServiceCreate = () => {
 
   return (
     <div className='container'>
-      <div className='content'>
+      <div className='content contentServiceCreate'>
         <FormikProvider value={formik}>
           <Form>
           <div className='containerServiceCreate'>
