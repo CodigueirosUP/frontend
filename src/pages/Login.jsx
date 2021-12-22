@@ -11,7 +11,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   useEffect(()=>{
-    setTabVisualization('service')
+    setTabVisualization('login')
     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
 

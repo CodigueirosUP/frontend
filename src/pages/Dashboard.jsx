@@ -35,7 +35,7 @@ const Dashboard = () => {
   const managerOption = [];
 
   useEffect(()=>{
-    setTabVisualization('service')
+    setTabVisualization('dashboard')
     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
 
@@ -57,6 +57,7 @@ const Dashboard = () => {
     }
   })
 
+  //Funçao que identifica o usuario de acordo com o seu login e seta as informaçoes que serao usadas.//
   const IdentifyUser = async (user) => {
     if (user.idUser === 1) {
       const { data } = await ApiWallet.get('/servico/list-servico');
@@ -69,6 +70,7 @@ const Dashboard = () => {
     }
   }
 
+  //funçao que identifica o serviço com o valor mais alto.//
   const identifyMoreExpansiveValue = (user) => {
     if (user.idUser === 1) {
       const values = dataService.map(service => service.valor);
@@ -83,6 +85,7 @@ const Dashboard = () => {
     }
   }
 
+  //Funçao que identifica o gasto total do mes atual.//
   const identifyTotalValue = async (user) => {
     const month = currentMonth.slice(0, 2)
     if (user.idUser === 1) {
@@ -96,11 +99,13 @@ const Dashboard = () => {
     }
   }
 
+  //Funçao que pega o valor total de todos os serviços cadastrados em dolar(valor sem ser convertido).//
   const getTotalDolar = async () => {
     const { data } = await ApiWallet.get('/list-servicos-dolar');
     setTotalDolar(data);
   }
 
+  //Funçap que pega a media do dolar dos ultimos 30 dias.//
   const getMediaDolar = async () => {
     const { data } = await ApiAwesomeMedia.get('/USD-BRL/30');
     const mapMediaValueDolar = data.map(value => value.high);
@@ -108,11 +113,13 @@ const Dashboard = () => {
     setDolarMedia(mediaValueDolar);
   }
 
+  //Funçao que pega o valor total de todos os serviços cadastrados em euro(valor sem ser convertido).//
   const getTotalEuro = async () => {
     const { data } = await ApiWallet.get('/list-servicos-euro');
     setTotalEuro(data);
   }
 
+  //Funçap que pega a media do euro dos ultimos 30 dias.//
   const getMediaEuro =  async () => {
     const { data } = await ApiAwesomeMedia.get('/EUR-BRL/30');
     const mapMediaValueEuro = data.map(value => value.high);
@@ -120,11 +127,13 @@ const Dashboard = () => {
     setEuroMedia(mediaValueEuro);
   }
 
+  //Funçao que pega o valor total de todos os serviços cadastrados em real.//
   const getTotalReal = async () => {
     const { data } = await ApiWallet.get('/list-servicos-real');
     setTotalReal(data);
   }
 
+  //Funçao que faz os calculos para indentificar o valor gasto total do proximo mes.//
   const identifyForecastOfValues = () => {
     getTotalDolar();
     getMediaDolar();
@@ -137,6 +146,7 @@ const Dashboard = () => {
     setForecastOfValues(valueTotalPreview);
   }
 
+  //Funçao que lista os serviços dea acordo com o usuario logado.// 
   const listServiceDashboard = (user) => {
     if (user.idUser === 1) {
       return (
@@ -158,11 +168,13 @@ const Dashboard = () => {
     }
   }
 
+    //Aqui e onde é setado as opcoes do select para o admin filtrar por gerente.//
     // eslint-disable-next-line array-callback-return
     managerList.map(manager => {
       managerOption.push({ idGerente: manager.idGerente, label: manager.nomeCompleto })
     })
 
+  //Funçao que seta as informacoes referente a escolha do admin no select de filtrar gerentes.//
   const filterManager = async (option) => {
     if(option === 'todos'){
       const { data } = await ApiWallet.get('/servico/list-servico');
@@ -177,10 +189,12 @@ const Dashboard = () => {
     }
   }
 
+  //Funçao que seta as novas informaçoes nos dados gereis que esta sendo visualizado na dashboard.// 
   const changeManager = () => {
     setDataService(chooseManager);
   }
 
+  //Funçao que busca todos os valores que foram gastos para colocar no grafico.//
   const graphicValues = async () => {
     const graphicData = ([]);
     for(var n = 1; n <= 12; n++){

@@ -12,7 +12,7 @@ const Managers = () => {
   const navigate = useNavigate();
 
   useEffect(()=>{
-    setTabVisualization('service')
+    setTabVisualization('manager')
     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
 

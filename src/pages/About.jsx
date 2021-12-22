@@ -12,7 +12,7 @@ const About = () => {
   const { setTabVisualization } = useContext(AuthContext);
 
   useEffect(()=>{
-    setTabVisualization('service')
+    setTabVisualization('about')
     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
 
