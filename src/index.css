@@ -716,6 +716,10 @@ margin-bottom: 15px;
   text-align: justify;
 }
 
+.textContainer p{
+  color: white;
+}
+
 /* ------------------------------------SERVICESCREATE-----------------------------------*/
 
 .headerServiceCreate {

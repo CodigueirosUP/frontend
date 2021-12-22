@@ -7,10 +7,15 @@ import { AiFillFileAdd } from 'react-icons/ai'
 
 const Services = () => {
 
-  const { typeUser, getType } = useContext(AuthContext);
+  const { typeUser, getType, setTabVisualization } = useContext(AuthContext);
   const { getService, getServiceAttListAdmin, listService } = useContext(ServiceContext);
 
   const navigate = useNavigate();
+
+  useEffect(()=>{
+    setTabVisualization('service')
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[])
 
   useEffect(() => {
     getService(typeUser);

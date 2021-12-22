@@ -10,6 +10,7 @@ const AuthProvider = ({children}) => {
   const [auth, setAuth] = useState(false);
   const [userInput, setUserInput] = useState('');
   const [typeUser, setTypeUser] = useState([]);
+  const [tabVisualization, setTabVisualization]  = useState('welcome');
  
   const handleLogin =  (values, navigate) => {
     setLoading(true);
@@ -60,7 +61,9 @@ const AuthProvider = ({children}) => {
         setUserInput,
         userInput,
         getType,
-        typeUser
+        typeUser,
+        tabVisualization,
+        setTabVisualization
       }}>
       {children}
     </AuthContext.Provider>

@@ -10,14 +10,15 @@ import moment from 'moment'
 
 const Dashboard = () => {
 
+  
   moment.locale('pt-br');
-
-  const { typeUser } = useContext(AuthContext);
+  
+  const { typeUser, setTabVisualization } = useContext(AuthContext);
   const { managerList, getManagers } = useContext(ManagerContext);
   
   const currentMonth = moment().format("DD/MM/YYYY").slice(3);
   const nextMonth = moment().add(1, 'month').format("DD/MM/YYYY").slice(3);
-
+  
   const [dataService, setDataService] = useState([]);
   const [dataServiceManager, setDataServiceManager] = useState([]);
   const [moreExpansiveService, setMoreExpansiveService] = useState();
@@ -30,8 +31,13 @@ const Dashboard = () => {
   const [EuroMedia, setEuroMedia] = useState();
   const [totalEuro, setTotalEuro] = useState();
   const [totalReal, setTotalReal] = useState();
-
+  
   const managerOption = [];
+
+  useEffect(()=>{
+    setTabVisualization('service')
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[])
 
   useEffect(() => {
     if (typeUser) {

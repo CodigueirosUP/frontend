@@ -1,4 +1,4 @@
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import { AuthContext } from "../context/AuthContext"
 import { Formik, Field, Form } from 'formik';
 import { useNavigate } from 'react-router-dom'
@@ -7,9 +7,14 @@ import { RiLockFill } from 'react-icons/ri'
 
 const Login = () => {
 
-  const { handleLogin } = useContext(AuthContext);
+  const { handleLogin, setTabVisualization } = useContext(AuthContext);
   const navigate = useNavigate();
-  
+
+  useEffect(()=>{
+    setTabVisualization('service')
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[])
+
   return (
     <div className="container">
       <div className="content">

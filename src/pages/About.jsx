@@ -4,8 +4,18 @@ import guto from '../images/gutoImage.jpg';
 import leo from '../images/leoimage.jfif'
 import deb from '../images/debImage.jfif'
 import samu from '../images/samuImage.jpg'
+import { useContext, useEffect } from 'react';
+import { AuthContext } from '../context/AuthContext';
 
 const About = () => {
+
+  const { setTabVisualization } = useContext(AuthContext);
+
+  useEffect(()=>{
+    setTabVisualization('service')
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[])
+
   return (
     <div className="container">
       < div className="content">

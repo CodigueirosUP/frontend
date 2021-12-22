@@ -1,7 +1,17 @@
 import { BsTelephone } from 'react-icons/bs'
 import { AiOutlineMail } from 'react-icons/ai'
+import { useContext, useEffect } from 'react';
+import { AuthContext } from '../context/AuthContext';
 
 const Contact = () => {
+
+  const { setTabVisualization } = useContext(AuthContext);
+
+  useEffect(()=>{
+    setTabVisualization('service')
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[])
+
   return (
     <div className="containerContact">
       <div className="content">

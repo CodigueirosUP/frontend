@@ -5,3 +5,11 @@
   background-color: #4285F4;
   color: white;
 }
+
+.containerExpired {
+  margin: 10px;
+  border-radius: 10px;
+  padding: 8px;
+  background-color: #f46b42;
+  color: white;
+}
