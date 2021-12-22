@@ -28,13 +28,23 @@ const Routers = () => {
     const token = localStorage.getItem('token');
     if (token) {
       ApiWallet.defaults.headers.common['Authorization'] = token;
-      getType();
-      setAuth(true);
+      // getType();
+      // setAuth(true);
       getService(typeUser);
       setLoading(false);
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      ApiWallet.defaults.headers.common['Authorization'] = token;
+      getType();
+      setAuth(true);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [auth])
 
   const authorizationRouters = () => {
     if (typeUser.usuario === 'admin') {

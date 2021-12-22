@@ -11,7 +11,7 @@ const AuthProvider = ({children}) => {
   const [userInput, setUserInput] = useState('');
   const [typeUser, setTypeUser] = useState([]);
  
-  const handleLogin =  (values) => {
+  const handleLogin =  (values, navigate) => {
     setLoading(true);
     ApiWallet.post('/auth', values)
     .then((response) => {
@@ -19,7 +19,7 @@ const AuthProvider = ({children}) => {
       localStorage.setItem('token', response.data);
       ApiWallet.defaults.headers.common['Authorization'] = response.data;
       setAuth(true);
-      window.location.href = '/dashboard';
+      navigate('/dashboard');
     })
     .catch((error) => {
       if (error.response) {
